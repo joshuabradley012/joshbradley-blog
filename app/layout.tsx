@@ -55,8 +55,6 @@ export default function RootLayout({
             <nav className="flex justify-between items-center">
               <Link href="/" className="text-xl font-bold">Josh Bradley</Link>
               <div className="flex gap-4">
-                <Link href="/" className="hover:underline">Home</Link>
-                <Link href="/about" className="hover:underline">About</Link>
                 <Link href="/api/rss" className="flex items-center gap-1 hover:underline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 11a9 9 0 0 1 9 9"></path>

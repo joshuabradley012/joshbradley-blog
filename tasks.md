@@ -1,1 +1,14 @@
 - [ ] Add og image
+- [ ] Add favicon
+- [ ] Add logo.png
+- [ ] Update page loading to be a fade effect
+- [ ] Update layout and ensure it's mobile friendly
+- [ ] Add a syntax highlighter component
+- [ ] Add a LaTex renderer component
+- [ ] Add a mermaid renderer component
+- [ ] Add an image component
+- [ ] Migrate the old blog posts to the new format
+- [ ] Add a newsletter signup form
+- [ ] Related posts?
+- [ ] For long articles, add a table of contents
+- [ ] Consider ISR for performance
