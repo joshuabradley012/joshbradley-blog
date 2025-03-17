@@ -1,9 +1,9 @@
-import { getPostBySlug } from '../../../lib/posts'
+import { getPostBySlug } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import type { Metadata } from 'next'
-import { feedConfig } from '../../../lib/feedConfig'
-import BlogJsonLd from '../../../components/ui/BlogJsonLd'
+import { feedConfig } from '@/lib/feedConfig'
+import BlogJsonLd from '@/components/ui/BlogJsonLd'
 
 interface PageProps {
   params: Promise<{

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Feed } from 'feed';
-import { getAllPosts } from '../../../lib/posts';
-import { createFeedOptions, createFeedItems, feedConfig } from '../../../lib/feedConfig';
+import { getAllPosts } from '@/lib/posts';
+import { createFeedOptions, createFeedItems, feedConfig } from '@/lib/feedConfig';
 
 export async function GET() {
   const posts = getAllPosts();

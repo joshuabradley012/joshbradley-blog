@@ -1,4 +1,4 @@
-import { getAllPosts } from '../lib/posts'
+import { getAllPosts } from '@/lib/posts'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {

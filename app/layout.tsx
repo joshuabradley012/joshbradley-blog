@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
 import './globals.css'
-import { feedConfig } from '../lib/feedConfig'
+import { feedConfig } from '@/lib/feedConfig'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(feedConfig.siteUrl),
   title: {
     default: feedConfig.siteTitle,
-    template: `%s | ${feedConfig.siteTitle}`
+    template: `%s - ${feedConfig.siteTitle}`
   },
   description: feedConfig.siteDescription,
   openGraph: {
@@ -31,10 +30,38 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     creator: '@josh_b_rad'
   },
+  appleWebApp: {
+    title: feedConfig.siteTitle,
+    statusBarStyle: 'black-translucent',
+  },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "96x96",
+      url: "/favicon.ico/favicon-96x96.png",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/favicon.ico/favicon.svg",
+    },
+    {
+      rel: "shortcut icon",
+      type: "image/x-icon",
+      url: "/favicon.ico/favicon.ico",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/favicon.ico/apple-touch-icon.png",
+    },
+  ],
+  manifest: "/favicon.ico/site.webmanifest",
   robots: {
     index: true,
     follow: true
-  }
+  },
 }
 
 export default function RootLayout({
@@ -50,31 +77,9 @@ export default function RootLayout({
         <link rel="alternate" type="application/json" title={`${feedConfig.siteTitle} JSON Feed`} href={feedConfig.feedPaths.json} />
       </head>
       <body className={inter.className}>
-        <header className="py-6 border-b">
-          <div className="container max-w-4xl mx-auto px-4">
-            <nav className="flex justify-between items-center">
-              <Link href="/" className="text-xl font-bold">Josh Bradley</Link>
-              <div className="flex gap-4">
-                <Link href="/api/rss" className="flex items-center gap-1 hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 11a9 9 0 0 1 9 9"></path>
-                    <path d="M4 4a16 16 0 0 1 16 16"></path>
-                    <circle cx="5" cy="19" r="1"></circle>
-                  </svg>
-                  RSS
-                </Link>
-              </div>
-            </nav>
-          </div>
-        </header>
         <main className="container max-w-4xl mx-auto px-4 py-8">
           {children}
         </main>
-        <footer className="py-6 border-t">
-          <div className="container max-w-4xl mx-auto px-4 text-center text-gray-500">
-            © {new Date().getFullYear()} Josh Bradley
-          </div>
-        </footer>
       </body>
     </html>
   )

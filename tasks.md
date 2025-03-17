@@ -1,9 +1,6 @@
-- [ ] Add og image
-- [ ] Add favicon
-- [ ] Add logo.png
 - [ ] Update page loading to be a fade effect
 - [ ] Update layout and ensure it's mobile friendly
-- [ ] Add a syntax highlighter component
+- [ ] Add a syntax highlighter component, including inline code
 - [ ] Add a LaTex renderer component
 - [ ] Add a mermaid renderer component
 - [ ] Add an image component

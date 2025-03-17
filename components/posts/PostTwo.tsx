@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useLoadingSignal } from '@/hooks/useLoadingSignal'
 
 type Tool = {
   name: string
@@ -49,6 +50,9 @@ const aiTools: Tool[] = [
 ]
 
 export default function AiToolsOverview() {
+  // Signal that this component has loaded
+  useLoadingSignal();
+  
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   
   const filteredTools = selectedCategory 

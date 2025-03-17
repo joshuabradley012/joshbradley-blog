@@ -1,5 +1,5 @@
-import { Post } from '../../lib/posts'
-import { feedConfig } from '../../lib/feedConfig'
+import { Post } from '@/lib/posts'
+import { feedConfig } from '@/lib/feedConfig'
 
 export default function BlogJsonLd({ post }: { post: Post }) {
   const jsonLd = {

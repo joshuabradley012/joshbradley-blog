@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^12.5.0",
+    "jotai": "^2.12.2",
     "next": "^15.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { useLoadingSignal } from '@/hooks/useLoadingSignal'
 
 const data = [
   { name: 'Jan', value: 400 },
@@ -13,6 +14,9 @@ const data = [
 ]
 
 export default function InteractiveChartDemo() {
+  // Signal that this component has loaded
+  useLoadingSignal();
+  
   const [activePoint, setActivePoint] = useState<string | null>(null)
   
   return (

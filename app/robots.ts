@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { feedConfig } from '../lib/feedConfig'
+import { feedConfig } from '@/lib/feedConfig'
 
 export default function robots(): MetadataRoute.Robots {
   return {
