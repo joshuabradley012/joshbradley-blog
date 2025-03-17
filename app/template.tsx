@@ -1,15 +1,22 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useAtom } from 'jotai';
 import { loadingAtom } from '@/lib/atoms';
 import { useEffect } from 'react';
 
 const variants = {
-  hidden: { opacity: 0 },
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
+  hidden: { 
+    opacity: 0,
+    filter: "blur(4px)",
+    scale: 1.02
+  },
+  enter: { 
+    opacity: 1,
+    filter: "blur(0px)",
+    scale: 1
+  },
 };
 
 export default function Template({ children }: { children: React.ReactNode }) {
@@ -22,20 +29,18 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, [pathname, setIsLoading]);
   
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        variants={variants}
-        initial="hidden"
-        animate={isLoading ? "hidden" : "enter"}
-        exit="exit"
-        transition={{ 
-          duration: 0.4,
-          ease: "easeInOut"
-        }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={pathname}
+      variants={variants}
+      initial="hidden"
+      animate={isLoading ? "hidden" : "enter"}
+      transition={{ 
+        duration: 0.4,
+        ease: "easeInOut",
+        filter: { delay: 0.1 }
+      }}
+    >
+      {children}
+    </motion.div>
   );
 } 

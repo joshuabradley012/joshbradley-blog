@@ -56,18 +56,10 @@ export default async function BlogPost(props: PageProps) {
   }
   
   // Dynamically import the post component
-  const PostComponent = dynamic(post.component, {
-    loading: () => (
-      <div className="space-y-4 animate-pulse">
-        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-        <div className="h-4 bg-gray-200 rounded"></div>
-        <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-      </div>
-    ),
-  })
+  const PostComponent = dynamic(post.component)
   
   return (
-    <>
+    <div className="container max-w-4xl mx-auto px-4 py-8">
       <BlogJsonLd post={post} />
       <article className="prose prose-lg max-w-none">
         <header className="mb-8">
@@ -77,6 +69,6 @@ export default async function BlogPost(props: PageProps) {
         
         <PostComponent />
       </article>
-    </>
+    </div>
   )
 }

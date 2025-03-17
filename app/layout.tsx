@@ -77,7 +77,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/json" title={`${feedConfig.siteTitle} JSON Feed`} href={feedConfig.feedPaths.json} />
       </head>
       <body className={inter.className}>
-        <main className="container max-w-4xl mx-auto px-4 py-8">
+        <main>
           {children}
         </main>
       </body>

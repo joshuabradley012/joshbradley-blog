@@ -7,7 +7,7 @@ export default function Home() {
   
   return (
     <HomeWrapper>
-      <div>
+      <div className="container max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Blog Posts</h1>
         <div>
           {posts.map((post) => (
