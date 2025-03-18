@@ -1,9 +1,21 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { EB_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { feedConfig } from '@/lib/feedConfig'
+import JotaiProvider from '@/components/JotaiProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter'
+})
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono' 
+})
+const ebGaramond = EB_Garamond({
+  subsets: ['latin'],
+  variable: '--font-eb-garamond'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(feedConfig.siteUrl),
@@ -76,10 +88,10 @@ export default function RootLayout({
         <link rel="alternate" type="application/atom+xml" title={`${feedConfig.siteTitle} Atom Feed`} href={feedConfig.feedPaths.atom} />
         <link rel="alternate" type="application/json" title={`${feedConfig.siteTitle} JSON Feed`} href={feedConfig.feedPaths.json} />
       </head>
-      <body className={inter.className}>
-        <main>
+      <body className={`antialiased text-sm text-neutral-700 ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}>
+        <JotaiProvider>
           {children}
-        </main>
+        </JotaiProvider>
       </body>
     </html>
   )

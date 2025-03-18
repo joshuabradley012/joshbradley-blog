@@ -1,4 +1,4 @@
-- [ ] Update page loading to be a fade effect
+- [ ] Update styles to be awesome
 - [ ] Update layout and ensure it's mobile friendly
 - [ ] Add a syntax highlighter component, including inline code
 - [ ] Add a LaTex renderer component

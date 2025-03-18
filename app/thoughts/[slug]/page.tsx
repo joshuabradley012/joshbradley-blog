@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import type { Metadata } from 'next'
 import { feedConfig } from '@/lib/feedConfig'
 import BlogJsonLd from '@/components/ui/BlogJsonLd'
+import Container from '@/components/ui/Container'
 
 interface PageProps {
   params: Promise<{
@@ -59,7 +60,7 @@ export default async function BlogPost(props: PageProps) {
   const PostComponent = dynamic(post.component)
   
   return (
-    <div className="container max-w-4xl mx-auto px-4 py-8">
+    <Container>
       <BlogJsonLd post={post} />
       <article className="prose prose-lg max-w-none">
         <header className="mb-8">
@@ -69,6 +70,6 @@ export default async function BlogPost(props: PageProps) {
         
         <PostComponent />
       </article>
-    </div>
+    </Container>
   )
 }

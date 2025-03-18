@@ -10,7 +10,7 @@ type BlogCardProps = {
 export default function BlogCard({ title, description, slug, date }: BlogCardProps) {
   return (
     <Link 
-      href={`/blog/${slug}`}
+      href={`/thoughts/${slug}`}
       className="block border rounded-lg p-6 mb-6 hover:border-blue-500 transition-colors"
     >
       <time className="text-sm text-gray-500">{date}</time>
