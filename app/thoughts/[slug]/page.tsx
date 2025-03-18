@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import { getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
-import type { Metadata } from "next";
 import { feedConfig } from "@/lib/feedConfig";
 import BlogJsonLd from "@/components/ui/BlogJsonLd";
 import Container from "@/components/ui/Container";
@@ -12,7 +12,6 @@ interface PageProps {
   }>;
 }
 
-// Generate metadata using Next.js's own type
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
@@ -20,9 +19,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!post) {
     return {};
   }
-
-  // Optionally, you can merge with parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
 
   return {
     title: post.title,
@@ -46,7 +42,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 // Use the simplest form for the page component
-export default async function BlogPost(props: PageProps) {
+export default async function Post(props: PageProps) {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
 

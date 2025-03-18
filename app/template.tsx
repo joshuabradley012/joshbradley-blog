@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { loadingAtom } from "@/lib/atoms";
-import { useEffect } from "react";
 
 const variants = {
   hidden: {

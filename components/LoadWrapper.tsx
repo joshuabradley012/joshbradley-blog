@@ -1,7 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useLoadingSignal } from "@/hooks/useLoadingSignal";
-import { ReactNode } from "react";
 
 export default function LoadWrapper({ children }: { children: ReactNode }) {
   // Signal that the home page has loaded

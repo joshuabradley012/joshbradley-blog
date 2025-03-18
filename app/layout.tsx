@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { feedConfig } from "@/lib/feedConfig";
 import JotaiProvider from "@/components/JotaiProvider";
+import Nav from "@/components/ui/Nav";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 });
-const ebGaramond = EB_Garamond({
+const ebGaramond = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-eb-garamond",
+  variable: "--font-source-serif-4",
 });
 
 export const metadata: Metadata = {
@@ -106,7 +107,14 @@ export default function RootLayout({
       <body
         className={`text-sm text-neutral-700 antialiased ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}
       >
-        <JotaiProvider>{children}</JotaiProvider>
+        <JotaiProvider>
+          <div className="flex p-24">
+            <Nav />
+            <div className="w-full max-w-xl border-l border-neutral-200 pl-8">
+              {children}
+            </div>
+          </div>
+        </JotaiProvider>
       </body>
     </html>
   );

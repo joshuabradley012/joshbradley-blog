@@ -13,7 +13,7 @@ export function getAllPosts(): Post[] {
       slug: "interactive-chart-demo",
       title: "Interactive Chart Demo",
       description:
-        "A demonstration of interactive charts built directly in React components",
+        "A demonstration of interactive charts built directly in React components.",
       date: "March 16, 2025",
       component: () =>
         import("../components/posts/PostOne").then((mod) => mod.default),
@@ -21,7 +21,7 @@ export function getAllPosts(): Post[] {
     {
       slug: "ai-tools-overview",
       title: "AI Tools Overview",
-      description: "Exploring the best AI tools for developers in 2025",
+      description: "Exploring the best AI tools for developers in 2025.",
       date: "March 10, 2025",
       component: () =>
         import("../components/posts/PostTwo").then((mod) => mod.default),

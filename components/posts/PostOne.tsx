@@ -11,7 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useLoadingSignal } from "@/hooks/useLoadingSignal";
+import LoadWrapper from "@/components/LoadWrapper";
 
 const data = [
   { name: "Jan", value: 400 },
@@ -23,75 +23,75 @@ const data = [
 ];
 
 export default function InteractiveChartDemo() {
-  // Signal that this component has loaded
-  useLoadingSignal();
-
   const [activePoint, setActivePoint] = useState<string | null>(null);
 
   return (
-    <div>
-      <p>
-        This blog post demonstrates how we can create fully interactive
-        components directly within our blog posts. The chart below is built with
-        Recharts and has interactive state managed within the component.
-      </p>
+    <LoadWrapper>
+      <div>
+        <p>
+          This blog post demonstrates how we can create fully interactive
+          components directly within our blog posts. The chart below is built
+          with Recharts and has interactive state managed within the component.
+        </p>
 
-      <div className="my-8 h-80">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            onMouseMove={(e) => {
-              if (e.activeLabel) {
-                setActivePoint(e.activeLabel);
-              }
-            }}
-            onMouseLeave={() => setActivePoint(null)}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      {activePoint && (
-        <div className="mb-6 rounded bg-blue-50 p-4">
-          <p className="font-medium">Currently hovering: {activePoint}</p>
-          <p>
-            This text updates based on user interaction with the chart above!
-          </p>
+        <div className="my-8 h-80">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={data}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              onMouseMove={(e) => {
+                if (e.activeLabel) {
+                  setActivePoint(e.activeLabel);
+                }
+              }}
+              onMouseLeave={() => setActivePoint(null)}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
-      )}
 
-      <h2 className="mt-8 mb-4 text-2xl font-bold">How It Works</h2>
-      <p>
-        This entire blog post is a React component, giving us the power to
-        include any interactive elements we want. We're using useState hooks to
-        track user interactions, and we can include any React libraries we need.
-      </p>
+        {activePoint && (
+          <div className="mb-6 rounded bg-blue-50 p-4">
+            <p className="font-medium">Currently hovering: {activePoint}</p>
+            <p>
+              This text updates based on user interaction with the chart above!
+            </p>
+          </div>
+        )}
 
-      <h2 className="mt-8 mb-4 text-2xl font-bold">
-        Adding Custom Interactions
-      </h2>
-      <div className="my-6">
-        <InteractiveDemo />
+        <h2 className="mt-8 mb-4 text-2xl font-bold">How It Works</h2>
+        <p>
+          This entire blog post is a React component, giving us the power to
+          include any interactive elements we want. We're using useState hooks
+          to track user interactions, and we can include any React libraries we
+          need.
+        </p>
+
+        <h2 className="mt-8 mb-4 text-2xl font-bold">
+          Adding Custom Interactions
+        </h2>
+        <div className="my-6">
+          <InteractiveDemo />
+        </div>
+
+        <p>
+          The beauty of this approach is that we can nest custom components
+          within our blog posts, keeping our code organized while providing
+          rich, interactive experiences for readers.
+        </p>
       </div>
-
-      <p>
-        The beauty of this approach is that we can nest custom components within
-        our blog posts, keeping our code organized while providing rich,
-        interactive experiences for readers.
-      </p>
-    </div>
+    </LoadWrapper>
   );
 }
 

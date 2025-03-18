@@ -3,7 +3,7 @@ export const feedConfig = {
   // Site information
   siteTitle: "Josh Bradley",
   siteDescription:
-    "A blog about my experiences and thoughts on software development",
+    "A blog about philosophy, technology, spirituality, business, and politics.",
   siteUrl: "https://joshbradley.me",
 
   // Author information

@@ -1,17 +1,37 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import InlineLink from "@/components/ui/InlineLink";
 
+const links = [
+  {
+    href: "/",
+    text: "about",
+  },
+  {
+    href: "/thoughts",
+    text: "thoughts",
+  },
+];
+
 export default function Nav() {
+  const pathname = usePathname();
+
   return (
-    <div className="mb-8 flex items-center justify-between">
-      <div className="flex gap-4">
-        <InlineLink href="/" className="font-serif italic no-underline">
-          about
+    <div className="mr-8 flex flex-col gap-1 text-right">
+      {links.map((link) => (
+        <InlineLink
+          key={link.href}
+          href={link.href}
+          data-active={
+            pathname === link.href ||
+            (link.href !== "/" && pathname.startsWith(link.href))
+          }
+          className="font-serif text-neutral-400 italic no-underline data-[active=true]:text-black"
+        >
+          {link.text}
         </InlineLink>
-        <InlineLink href="/thoughts" className="font-serif italic no-underline">
-          thoughts
-        </InlineLink>
-        {/* <InlineLink href="/projects" className="font-serif italic no-underline">projects</InlineLink> */}
-      </div>
+      ))}
     </div>
   );
 }
