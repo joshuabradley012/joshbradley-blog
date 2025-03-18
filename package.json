@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -26,7 +27,19 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint"
+    ],
+    "**/*.{ts,tsx,js,jsx,css,html,scss,json,yml,yaml}": [
+      "prettier --write --end-of-line auto"
+    ]
   }
 }
