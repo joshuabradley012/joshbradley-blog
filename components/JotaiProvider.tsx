@@ -1,14 +1,10 @@
-'use client'
+"use client";
 
-import { Provider } from 'jotai'
-import { ReactNode } from 'react'
-import { useInitializeAtoms } from '@/hooks/useInitializeAtoms'
+import { Provider } from "jotai";
+import { ReactNode } from "react";
+import { useInitializeAtoms } from "@/hooks/useInitializeAtoms";
 
 export default function JotaiProvider({ children }: { children: ReactNode }) {
-  useInitializeAtoms()
-  return (
-    <Provider>
-      {children}
-    </Provider>
-  )
+  useInitializeAtoms();
+  return <Provider>{children}</Provider>;
 }

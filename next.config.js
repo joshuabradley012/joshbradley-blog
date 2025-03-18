@@ -5,11 +5,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/feed',
-        destination: '/rss.xml',
+        source: "/feed",
+        destination: "/rss.xml",
       },
-    ]
+    ];
   },
-}
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;

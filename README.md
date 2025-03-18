@@ -77,4 +77,4 @@ To learn more about the technologies used in this project:
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [React Documentation](https://reactjs.org/docs)
-- [Recharts Documentation](https://recharts.org/en-US/) 
+- [Recharts Documentation](https://recharts.org/en-US/)

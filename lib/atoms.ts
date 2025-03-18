@@ -1,4 +1,4 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
 // Global loading state
-export const loadingAtom = atom(true); 
+export const loadingAtom = atom(true);

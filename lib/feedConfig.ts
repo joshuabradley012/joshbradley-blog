@@ -1,35 +1,47 @@
 // Feed configuration shared across all feed formats
 export const feedConfig = {
   // Site information
-  siteTitle: 'Josh Bradley',
-  siteDescription: 'A blog about my experiences and thoughts on software development',
-  siteUrl: 'https://joshbradley.me',
-  
+  siteTitle: "Josh Bradley",
+  siteDescription:
+    "A blog about my experiences and thoughts on software development",
+  siteUrl: "https://joshbradley.me",
+
   // Author information
-  authorName: 'Josh Bradley',
-  authorEmail: 'hello@joshbradley.me',
-  
+  authorName: "Josh Bradley",
+  authorEmail: "hello@joshbradley.me",
+
   // Feed paths
   feedPaths: {
-    rss: '/api/rss',
-    json: '/api/feed',
-    atom: '/api/atom',
+    rss: "/api/rss",
+    json: "/api/feed",
+    atom: "/api/atom",
   },
-  
+
   // Assets
-  logoUrl: '/logo.png',
-  ogImage: '/og-image.png',
-  faviconUrl: '/favicon.ico',
-  
+  logoUrl: "/logo.png",
+  ogImage: "/og-image.png",
+  faviconUrl: "/favicon.ico",
+
   // Other settings
-  language: 'en',
+  language: "en",
   copyright: `All rights reserved ${new Date().getFullYear()}, Josh Bradley`,
-}
+};
 
 // Helper function to create feed options
 export function createFeedOptions() {
-  const { siteTitle, siteDescription, siteUrl, authorName, authorEmail, feedPaths, ogImage, faviconUrl, language, copyright } = feedConfig;
-  
+  const {
+    siteTitle,
+    siteDescription,
+    siteUrl,
+    authorName,
+    authorEmail,
+    feedPaths,
+    ogImage,
+    faviconUrl,
+    language,
+    copyright,
+  } = feedConfig;
+
   return {
     title: siteTitle,
     description: siteDescription,
@@ -40,7 +52,7 @@ export function createFeedOptions() {
     favicon: `${siteUrl}${faviconUrl}`,
     copyright,
     updated: new Date(),
-    generator: 'Next.js using Feed',
+    generator: "Next.js using Feed",
     feedLinks: {
       rss2: `${siteUrl}${feedPaths.rss}`,
       json: `${siteUrl}${feedPaths.json}`,
@@ -57,8 +69,8 @@ export function createFeedOptions() {
 // Helper function to create feed items from posts
 export function createFeedItems(posts: any[], siteUrl: string) {
   const { authorName, authorEmail } = feedConfig;
-  
-  return posts.map(post => ({
+
+  return posts.map((post) => ({
     title: post.title,
     id: `${siteUrl}/thoughts/${post.slug}`,
     link: `${siteUrl}/thoughts/${post.slug}`,
@@ -72,4 +84,4 @@ export function createFeedItems(posts: any[], siteUrl: string) {
       },
     ],
   }));
-} 
+}

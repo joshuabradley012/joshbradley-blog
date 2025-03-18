@@ -1,32 +1,32 @@
-import type { Metadata } from 'next'
-import { EB_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
-import './globals.css'
-import { feedConfig } from '@/lib/feedConfig'
-import JotaiProvider from '@/components/JotaiProvider'
+import type { Metadata } from "next";
+import { EB_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+import { feedConfig } from "@/lib/feedConfig";
+import JotaiProvider from "@/components/JotaiProvider";
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter'
-})
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono' 
-})
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 const ebGaramond = EB_Garamond({
-  subsets: ['latin'],
-  variable: '--font-eb-garamond'
-})
+  subsets: ["latin"],
+  variable: "--font-eb-garamond",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(feedConfig.siteUrl),
   title: {
     default: feedConfig.siteTitle,
-    template: `%s - ${feedConfig.siteTitle}`
+    template: `%s - ${feedConfig.siteTitle}`,
   },
   description: feedConfig.siteDescription,
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
+    type: "website",
+    locale: "en_US",
     url: feedConfig.siteUrl,
     siteName: feedConfig.siteTitle,
     images: [
@@ -34,17 +34,17 @@ export const metadata: Metadata = {
         url: feedConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: feedConfig.siteTitle
-      }
-    ]
+        alt: feedConfig.siteTitle,
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
-    creator: '@josh_b_rad'
+    card: "summary_large_image",
+    creator: "@josh_b_rad",
   },
   appleWebApp: {
     title: feedConfig.siteTitle,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: "black-translucent",
   },
   icons: [
     {
@@ -72,27 +72,42 @@ export const metadata: Metadata = {
   manifest: "/favicon.ico/site.webmanifest",
   robots: {
     index: true,
-    follow: true
+    follow: true,
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <head>
-        <link rel="alternate" type="application/rss+xml" title={`${feedConfig.siteTitle} RSS Feed`} href={feedConfig.feedPaths.rss} />
-        <link rel="alternate" type="application/atom+xml" title={`${feedConfig.siteTitle} Atom Feed`} href={feedConfig.feedPaths.atom} />
-        <link rel="alternate" type="application/json" title={`${feedConfig.siteTitle} JSON Feed`} href={feedConfig.feedPaths.json} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${feedConfig.siteTitle} RSS Feed`}
+          href={feedConfig.feedPaths.rss}
+        />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title={`${feedConfig.siteTitle} Atom Feed`}
+          href={feedConfig.feedPaths.atom}
+        />
+        <link
+          rel="alternate"
+          type="application/json"
+          title={`${feedConfig.siteTitle} JSON Feed`}
+          href={feedConfig.feedPaths.json}
+        />
       </head>
-      <body className={`antialiased text-sm text-neutral-700 ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}>
-        <JotaiProvider>
-          {children}
-        </JotaiProvider>
+      <body
+        className={`text-sm text-neutral-700 antialiased ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}
+      >
+        <JotaiProvider>{children}</JotaiProvider>
       </body>
     </html>
-  )
-} 
+  );
+}

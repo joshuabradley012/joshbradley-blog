@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { useAtom } from 'jotai';
-import { loadingAtom } from '@/lib/atoms';
-import { useEffect } from 'react';
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useAtom } from "jotai";
+import { loadingAtom } from "@/lib/atoms";
+import { useEffect } from "react";
 
 const variants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
   },
-  enter: { 
+  enter: {
     opacity: 1,
   },
 };
@@ -18,19 +18,19 @@ const variants = {
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useAtom(loadingAtom);
-  
+
   // Reset loading state to true on route change
   useEffect(() => {
     setIsLoading(true);
   }, [pathname, setIsLoading]);
-  
+
   return (
     <motion.div
       key={pathname}
       variants={variants}
       initial="hidden"
       animate={isLoading ? "hidden" : "enter"}
-      transition={{ 
+      transition={{
         duration: 0.4,
         ease: "easeInOut",
       }}
@@ -38,4 +38,4 @@ export default function Template({ children }: { children: React.ReactNode }) {
       {children}
     </motion.div>
   );
-} 
+}

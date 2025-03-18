@@ -5,5 +5,10 @@ export default function InlineLink({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link>) {
-  return <Link className={cn("underline transition-colors hover:text-black", className)} {...props} />;
+  return (
+    <Link
+      className={cn("underline transition-colors hover:text-black", className)}
+      {...props}
+    />
+  );
 }

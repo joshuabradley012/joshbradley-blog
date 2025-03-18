@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useHydrateAtoms } from 'jotai/utils'
-import { loadingAtom } from '@/lib/atoms'
+import { useHydrateAtoms } from "jotai/utils";
+import { loadingAtom } from "@/lib/atoms";
 
 /**
  * Hook to initialize atoms with their default values
@@ -9,5 +9,5 @@ import { loadingAtom } from '@/lib/atoms'
  */
 export function useInitializeAtoms() {
   // Set initial atom values
-  useHydrateAtoms([[loadingAtom, true]])
-} 
+  useHydrateAtoms([[loadingAtom, true]]);
+}
