@@ -1,10 +1,12 @@
-- [ ] Update styles to be awesome
-- [ ] Update layout and ensure it's mobile friendly
 - [ ] Add a syntax highlighter component, including inline code
 - [ ] Add a LaTex renderer component
-- [ ] Add a mermaid renderer component
 - [ ] Add an image component
+- [ ] Add block quote component
+- [ ] Add foot notes component
 - [ ] Migrate the old blog posts to the new format
+- [ ] Add projects from the old site, include static projects
+- [ ] Consider adding reading list, listening log, quotes, big ideas, etc
+- [ ] Add a mermaid renderer component
 - [ ] Add a newsletter signup form
 - [ ] Related posts?
 - [ ] For long articles, add a table of contents

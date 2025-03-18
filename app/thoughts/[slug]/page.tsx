@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { feedConfig } from "@/lib/feedConfig";
 import BlogJsonLd from "@/components/ui/BlogJsonLd";
-import Container from "@/components/ui/Container";
 
 interface PageProps {
   params: Promise<{
@@ -54,16 +53,15 @@ export default async function Post(props: PageProps) {
   const PostComponent = dynamic(post.component);
 
   return (
-    <Container>
+    <>
       <BlogJsonLd post={post} />
       <article className="prose prose-lg max-w-none">
         <header className="mb-8">
           <time className="text-gray-500">{post.date}</time>
           <h1 className="mt-2 text-3xl font-bold">{post.title}</h1>
         </header>
-
         <PostComponent />
       </article>
-    </Container>
+    </>
   );
 }
