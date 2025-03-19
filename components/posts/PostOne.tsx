@@ -1,4 +1,4 @@
-import CodeBlock from "@/components/ui/CodeBlock";
+import { CodeBlock, InlineCode } from "@/components/ui/CodeBlock";
 import InteractiveChart from "@/components/demos/InteractiveChart";
 import CounterDemo from "@/components/demos/CounterDemo";
 import LoadWrapper from "@/components/LoadWrapper";
@@ -14,9 +14,17 @@ export default function InteractiveChartDemo() {
 
       <InteractiveChart />
 
+      <p>
+        This is an amazing example of an inline code block. Testing to ensure it
+        works in the middle of a sentence{" "}
+        <InlineCode code="`const array = [1, 2, 3]{:js}`" /> oh hell yeah that's
+        a thing. I just want to make sure it works with multiple lines. Because
+        that will be a thing
+      </p>
+
       <CodeBlock
         code={`
-\`\`\`jsx
+\`\`\`jsx showLineNumbers {4-5,26} /unified/ title="CodeBlock.tsx" caption="This is showing how to create a code block using RSC."
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -24,7 +32,7 @@ import rehypeStringify from 'rehype-stringify';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 export default async function CodeBlock({ code }: { code: string }) {
-  const highlightedCode = await highlightCode(code);
+  const highlightedCode = await highlightCode(code); const highlightedCode = await highlightCode(code);
   return (
     <section
       dangerouslySetInnerHTML={{

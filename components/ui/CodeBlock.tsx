@@ -3,18 +3,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypePrettyCode from "rehype-pretty-code";
-
-export default async function CodeBlock({ code }: { code: string }) {
-  const highlightedCode = await highlightCode(code);
-  return (
-    <section
-      className="border border-neutral-200 bg-neutral-50 p-2 text-xs"
-      dangerouslySetInnerHTML={{
-        __html: highlightedCode,
-      }}
-    />
-  );
-}
+import { cn } from "@/lib/utils";
 
 async function highlightCode(code: string) {
   const file = await unified()
@@ -28,4 +17,45 @@ async function highlightCode(code: string) {
     .process(code);
 
   return String(file);
+}
+
+export async function CodeBlock({
+  code,
+  className,
+}: {
+  code: string;
+  className?: string;
+}) {
+  const highlightedCode = await highlightCode(code);
+  return (
+    <section
+      className={cn("my-8 text-xs", className)}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
+}
+
+export async function InlineCode({
+  code,
+  className,
+}: {
+  code: string;
+  className?: string;
+}) {
+  let highlightedCode = await highlightCode(code);
+  highlightedCode = highlightedCode.replace(/^<p>/, "");
+  highlightedCode = highlightedCode.replace(/<\/p>$/, "");
+  return (
+    <span
+      className={cn(
+        "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
+        className,
+      )}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
 }

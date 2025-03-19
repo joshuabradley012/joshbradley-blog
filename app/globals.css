@@ -11,4 +11,67 @@
   *::selection {
     background-color: var(--color-neutral-200);
   }
+
+  figure[data-rehype-pretty-code-figure] pre {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-200) var(--color-neutral-50);
+    @apply overflow-x-auto border border-neutral-200 bg-neutral-50 py-2;
+  }
+
+  figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar {
+    @apply h-1 bg-transparent;
+  }
+
+  figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar-thumb {
+    @apply rounded-none bg-neutral-200;
+  }
+
+  figure[data-rehype-pretty-code-figure] pre > code {
+    counter-reset: line;
+  }
+
+  figure[data-rehype-pretty-code-figure] code[data-line-numbers] {
+    counter-reset: line;
+  }
+
+  figure[data-rehype-pretty-code-figure]
+    code[data-line-numbers]
+    > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply mr-4 inline-block w-4 text-right text-neutral-400;
+  }
+
+  figure[data-rehype-pretty-code-figure]
+    code[data-line-numbers-max-digits="3"]
+    > [data-line]::before {
+    @apply w-5;
+  }
+
+  figure[data-rehype-pretty-code-figure]
+    code[data-line-numbers-max-digits="4"]
+    > [data-line]::before {
+    @apply w-7;
+  }
+
+  figure[data-rehype-pretty-code-figure] [data-line] {
+    @apply border-l border-transparent pl-2;
+  }
+
+  figure[data-rehype-pretty-code-figure] [data-highlighted-line] {
+    @apply border-l border-blue-400 bg-blue-500/10;
+  }
+
+  figure[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+    @apply rounded bg-blue-500/10;
+    box-shadow: 0 0 0 2px rgb(21 93 252 / 0.1);
+  }
+
+  [data-rehype-pretty-code-title] {
+    @apply border-x border-t border-neutral-200 p-2 font-medium;
+  }
+
+  [data-rehype-pretty-code-caption] {
+    @apply mt-1 font-serif text-neutral-500;
+  }
 }
