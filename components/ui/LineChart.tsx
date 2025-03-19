@@ -18,11 +18,11 @@ export default function LineChart({
 }) {
   return (
     <>
-      <div className="my-8 h-80 border border-neutral-200 bg-neutral-50 pt-2">
+      <div className="my-8 h-100 border border-neutral-200">
         <ResponsiveContainer width="100%" height="100%">
           <RechartsLineChart
             data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 30, right: 30, left: 0, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
@@ -33,7 +33,7 @@ export default function LineChart({
               type="monotone"
               dataKey="value"
               stroke="#8884d8"
-              activeDot={{ r: 8 }}
+              activeDot={{ r: 6 }}
             />
           </RechartsLineChart>
         </ResponsiveContainer>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "katex/dist/katex.min.css";
 
 @theme {
   --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
@@ -78,6 +79,6 @@
   }
 
   [data-rehype-pretty-code-caption] {
-    @apply mt-1 font-serif text-neutral-500;
+    @apply mt-2 font-serif text-neutral-500;
   }
 }

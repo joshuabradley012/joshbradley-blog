@@ -19,7 +19,7 @@ async function highlightCode(code: string) {
   return String(file);
 }
 
-export async function CodeBlock({
+export async function BlockCode({
   code,
   className,
 }: {

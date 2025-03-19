@@ -22,7 +22,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className="mb-8 flex flex-wrap justify-end gap-4 border-b border-neutral-200 pb-4 sm:mr-8 sm:mb-0 sm:flex-col sm:justify-start sm:gap-1 sm:border-none sm:pb-0 sm:text-right">
+    <div className="mb-8 flex flex-wrap justify-end gap-4 border-b border-neutral-200 pb-4 sm:mr-8 sm:mb-0 sm:flex-col sm:justify-start sm:gap-1 sm:border-none sm:pb-0 sm:text-right md:mr-12">
       {links.map((link) => (
         <Link
           key={link.href}
