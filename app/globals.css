@@ -62,6 +62,12 @@
     @apply border-l border-blue-400 bg-blue-500/10;
   }
 
+  figure[data-rehype-pretty-code-figure]
+    code[data-line-numbers]
+    > [data-highlighted-line]::before {
+    @apply text-neutral-600;
+  }
+
   figure[data-rehype-pretty-code-figure] [data-highlighted-chars] {
     @apply rounded bg-blue-500/10;
     box-shadow: 0 0 0 2px rgb(21 93 252 / 0.1);
