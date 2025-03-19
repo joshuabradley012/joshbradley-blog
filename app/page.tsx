@@ -13,12 +13,12 @@ export default function Home() {
         <p>
           Currently I am building{" "}
           <InlineLink href="https://celest.tech">Celest</InlineLink>, a
-          marketing tool for AI. By creating value for others, I hope to
-          dedicate my time towards gaining and sharing knowledge.
+          marketing tool for AI. I hope to dedicate my time towards gaining and
+          sharing knowledge to create value for others.
         </p>
         <p>
-          I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO, and the
-          founder of{" "}
+          I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO employee,
+          and the founder of{" "}
           <InlineLink href="https://bradleydigital.agency">
             Bradley Digital
           </InlineLink>

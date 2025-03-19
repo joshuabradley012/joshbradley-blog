@@ -1,124 +1,72 @@
-"use client";
-
-import { useState } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import CodeBlock from "@/components/ui/CodeBlock";
+import InteractiveChart from "@/components/demos/InteractiveChart";
+import CounterDemo from "@/components/demos/CounterDemo";
 import LoadWrapper from "@/components/LoadWrapper";
 
-const data = [
-  { name: "Jan", value: 400 },
-  { name: "Feb", value: 300 },
-  { name: "Mar", value: 600 },
-  { name: "Apr", value: 800 },
-  { name: "May", value: 500 },
-  { name: "Jun", value: 900 },
-];
-
 export default function InteractiveChartDemo() {
-  const [activePoint, setActivePoint] = useState<string | null>(null);
-
   return (
     <LoadWrapper>
-      <div>
-        <p>
-          This blog post demonstrates how we can create fully interactive
-          components directly within our blog posts. The chart below is built
-          with Recharts and has interactive state managed within the component.
-        </p>
+      <p>
+        This blog post demonstrates how we can create fully interactive
+        components directly within our blog posts. The chart below is built with
+        Recharts and has interactive state managed within the component.
+      </p>
 
-        <div className="my-8 h-80">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              onMouseMove={(e) => {
-                if (e.activeLabel) {
-                  setActivePoint(e.activeLabel);
-                }
-              }}
-              onMouseLeave={() => setActivePoint(null)}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+      <InteractiveChart />
 
-        {activePoint && (
-          <div className="mb-6 rounded bg-blue-50 p-4">
-            <p className="font-medium">Currently hovering: {activePoint}</p>
-            <p>
-              This text updates based on user interaction with the chart above!
-            </p>
-          </div>
-        )}
+      <CodeBlock
+        code={`
+\`\`\`jsx
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypePrettyCode from 'rehype-pretty-code';
 
-        <h2 className="mt-8 mb-4 text-2xl font-bold">How It Works</h2>
-        <p>
-          This entire blog post is a React component, giving us the power to
-          include any interactive elements we want. We're using useState hooks
-          to track user interactions, and we can include any React libraries we
-          need.
-        </p>
-
-        <h2 className="mt-8 mb-4 text-2xl font-bold">
-          Adding Custom Interactions
-        </h2>
-        <div className="my-6">
-          <InteractiveDemo />
-        </div>
-
-        <p>
-          The beauty of this approach is that we can nest custom components
-          within our blog posts, keeping our code organized while providing
-          rich, interactive experiences for readers.
-        </p>
-      </div>
-    </LoadWrapper>
+export default async function CodeBlock({ code }: { code: string }) {
+  const highlightedCode = await highlightCode(code);
+  return (
+    <section
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
   );
 }
 
-// A nested interactive component
-function InteractiveDemo() {
-  const [count, setCount] = useState(0);
+async function highlightCode(code: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrettyCode)
+    .use(rehypeStringify)
+    .process(code);
 
-  return (
-    <div className="rounded-lg border bg-gray-50 p-6">
-      <p className="mb-4">
-        This is a nested interactive component with its own state:
+  return String(file);
+}
+\`\`\`
+      `}
+      />
+
+      <h2 className="mt-8 mb-4 text-2xl font-bold">How It Works</h2>
+      <p>
+        This entire blog post is a React component, giving us the power to
+        include any interactive elements we want. We're using useState hooks to
+        track user interactions, and we can include any React libraries we need.
       </p>
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => setCount((prev) => prev - 1)}
-          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-        >
-          Decrease
-        </button>
-        <span className="text-2xl font-bold">{count}</span>
-        <button
-          onClick={() => setCount((prev) => prev + 1)}
-          className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600"
-        >
-          Increase
-        </button>
+
+      <h2 className="mt-8 mb-4 text-2xl font-bold">
+        Adding Custom Interactions
+      </h2>
+      <div className="my-6">
+        <CounterDemo />
       </div>
-    </div>
+
+      <p>
+        The beauty of this approach is that we can nest custom components within
+        our blog posts, keeping our code organized while providing rich,
+        interactive experiences for readers.
+      </p>
+    </LoadWrapper>
   );
 }
