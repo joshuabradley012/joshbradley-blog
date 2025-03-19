@@ -22,17 +22,20 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className="mb-8 flex flex-wrap justify-end gap-4 border-b border-neutral-200 pb-4 sm:mr-8 sm:mb-0 sm:flex-col sm:justify-start sm:gap-1 sm:border-none sm:pb-0 sm:text-right md:mr-12">
-      {links.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          data-active={isActive(pathname, link.href)}
-          className="font-serif text-neutral-400 italic transition-colors hover:text-black data-[active=true]:text-black"
-        >
-          {link.text}
-        </Link>
-      ))}
-    </div>
+    <nav className="xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 mb-8 border-b border-neutral-200 pb-4 sm:mr-8 md:mr-12">
+      <ul className="xs:flex-col xs:justify-start xs:gap-1 xs:text-right xs:sticky xs:top-6 flex flex-wrap justify-end gap-4 sm:top-12 md:top-24">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              data-active={isActive(pathname, link.href)}
+              className="font-serif text-neutral-400 italic transition-colors hover:text-black data-[active=true]:text-black"
+            >
+              {link.text}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

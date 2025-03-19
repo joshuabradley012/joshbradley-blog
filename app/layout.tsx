@@ -108,12 +108,13 @@ export default function RootLayout({
         className={`text-sm text-neutral-700 antialiased ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}
       >
         <JotaiProvider>
-          <div className="flex flex-col p-4 pb-12 sm:flex-row sm:p-12 md:p-24 md:pb-24">
+          <main className="xs:flex-row xs:p-6 flex flex-col p-4 pb-12 sm:p-12 md:p-24 md:pb-24">
             <Nav />
-            <div className="w-full min-w-0 sm:max-w-2xl sm:border-l sm:border-neutral-200 sm:pl-8 md:pl-12">
-              {children}
+            <div className="xs:pl-6 relative w-full min-w-0 sm:max-w-2xl sm:pl-8 md:pl-12">
+              <div className="xs:block absolute top-0 left-0 hidden h-full border-l border-neutral-200" />
+              <div className="relative">{children}</div>
             </div>
-          </div>
+          </main>
         </JotaiProvider>
       </body>
     </html>

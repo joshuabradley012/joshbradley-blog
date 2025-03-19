@@ -1,11 +1,12 @@
 @import "tailwindcss";
-@import "katex/dist/katex.min.css";
 
 @theme {
   --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
   --font-serif: "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
   --font-mono:
     "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace;
+
+  --breakpoint-xs: 32rem;
 }
 
 @layer base {

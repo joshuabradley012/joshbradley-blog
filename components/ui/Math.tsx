@@ -1,8 +1,6 @@
-"use client";
-
 import React, { useMemo } from "react";
 import KaTeX from "katex";
-
+import { cn } from "@/lib/utils";
 const createMathComponent = (
   Component: React.ComponentType<{ html: string }>,
   { displayMode }: { displayMode: boolean },
@@ -60,16 +58,34 @@ const createMathComponent = (
   return MathComponent;
 };
 
-const InternalBlockMath = ({ html }: { html: string }) => {
+const InternalBlockMath = ({
+  html,
+  className,
+}: {
+  html: string;
+  className?: string;
+}) => {
   return (
-    <div data-testid="react-katex" dangerouslySetInnerHTML={{ __html: html }} />
+    <div
+      className={cn(
+        "my-8 border border-neutral-200 py-8 text-base text-black",
+        className,
+      )}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 };
 
-const InternalInlineMath = ({ html }: { html: string }) => {
+const InternalInlineMath = ({
+  html,
+  className,
+}: {
+  html: string;
+  className?: string;
+}) => {
   return (
     <span
-      data-testid="react-katex"
+      className={cn("text-black", className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

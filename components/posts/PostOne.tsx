@@ -3,6 +3,7 @@ import { BlockMath, InlineMath } from "@/components/ui/Math";
 import LineChart from "@/components/ui/LineChart";
 import CounterDemo from "@/components/demos/CounterDemo";
 import LoadWrapper from "@/components/LoadWrapper";
+import BlockQuote from "@/components/ui/BlockQuote";
 
 const data = [
   { name: "Jan", value: 400 },
@@ -17,6 +18,23 @@ export default function InteractiveChartDemo() {
   return (
     <LoadWrapper>
       <div className="space-y-4">
+        <BlockQuote author="C.S Lewis" source="The Four Loves">
+          <p>
+            There is no safe investment. To love at all is to be vulnerable.
+            Love anything, and your heart will certainly be wrung and possibly
+            be broken. If you want to make sure of keeping it intact, you must
+            give your heart to no one, not even to an animal. Wrap it carefully
+            round with hobbies and little luxuries; avoid all entanglements;
+            lock it up safe in the casket of coffin of your selfishness. But in
+            that casket-safe, dark, motionless, air-less, it will change. It
+            will not be broken; it will become unbreakable, impenetrable,
+            irredeemable. The alternative to tragedy, or at least to the risk of
+            tragedy, is damnation. The only place outside Heaven where you can
+            be perfectly safe from all the dangers and perturbations of love is
+            Hell.
+          </p>
+        </BlockQuote>
+
         <p>
           This blog post demonstrates how we can create fully interactive
           components directly within our blog posts. The chart below is built
@@ -97,7 +115,6 @@ export default function InteractiveChartDemo() {
       />
     );
   }
-
   \`\`\`
         `}
         />
@@ -106,8 +123,10 @@ export default function InteractiveChartDemo() {
           Now, let's see how we can use the math renderer. I want to ensure it
           works inline with text, like so:{" "}
           <InlineMath math="\int_0^\infty x^2 dx" />. And also works in block
-          quotes, like so:
+          quotes. And I need to make sure it works with multiple lines. Just a
+          little longer like this.
         </p>
+
         <BlockMath
           math="f(x) = \int_{-\infty}^{\infty}
           \hat{f}(\xi)e^{2 \pi i \xi x}
