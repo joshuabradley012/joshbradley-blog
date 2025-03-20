@@ -22,7 +22,7 @@ export default function BlockQuote({
     >
       {children}
       {(author || source) && (
-        <footer className="mt-4 text-xs text-neutral-500 not-italic">
+        <footer className="text-xs text-neutral-500 not-italic">
           &mdash; {author && <span>{author}</span>}
           {author && source && <span>,</span>}{" "}
           {source && <cite className="not-italic">{source}</cite>}

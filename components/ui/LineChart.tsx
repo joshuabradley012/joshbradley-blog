@@ -13,12 +13,14 @@ import {
 
 export default function LineChart({
   data,
+  name,
 }: {
   data: { name: string; value: number }[];
+  name?: string;
 }) {
   return (
     <>
-      <div className="my-8 h-100 border border-neutral-200">
+      <div className="my-8 aspect-video border border-neutral-200">
         <ResponsiveContainer width="100%" height="100%">
           <RechartsLineChart
             data={data}
@@ -31,7 +33,7 @@ export default function LineChart({
             <Legend />
             <Line
               type="monotone"
-              dataKey="value"
+              dataKey={name || "value"}
               stroke="#8884d8"
               activeDot={{ r: 6 }}
             />

@@ -82,4 +82,11 @@
   [data-rehype-pretty-code-caption] {
     @apply mt-2 font-serif text-neutral-500;
   }
+
+  [data-rmiz-content="found"] img,
+  [data-rmiz-content="found"] svg,
+  [data-rmiz-content="found"] [role="img"],
+  [data-rmiz-content="found"] [data-zoom] {
+    @apply !cursor-pointer;
+  }
 }

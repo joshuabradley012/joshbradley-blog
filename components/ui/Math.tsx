@@ -42,8 +42,6 @@ const createMathComponent = (
       }
     }, [formula, errorColor, renderError]);
 
-    console.log({ html, error });
-
     if (error) {
       return renderError ? (
         renderError(error)
@@ -67,10 +65,7 @@ const InternalBlockMath = ({
 }) => {
   return (
     <div
-      className={cn(
-        "my-8 border border-neutral-200 py-8 text-base text-black",
-        className,
-      )}
+      className={cn("my-8 text-base text-black", className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

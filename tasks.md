@@ -1,5 +1,3 @@
-- [ ] Add block quote component
-- [ ] Add an image component
 - [ ] Add foot notes component
 - [ ] Migrate the old blog posts to the new format
 - [ ] Add projects from the old site, include static projects

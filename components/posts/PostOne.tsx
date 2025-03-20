@@ -4,6 +4,9 @@ import LineChart from "@/components/ui/LineChart";
 import CounterDemo from "@/components/demos/CounterDemo";
 import LoadWrapper from "@/components/LoadWrapper";
 import BlockQuote from "@/components/ui/BlockQuote";
+import Figure from "@/components/ui/Figure";
+
+import OGImage from "@/public/og-image.png";
 
 const data = [
   { name: "Jan", value: 400 },
@@ -140,6 +143,8 @@ export default function InteractiveChartDemo() {
           to track user interactions, and we can include any React libraries we
           need.
         </p>
+
+        <Figure src={OGImage} alt="OG Image" caption="This is a caption" />
 
         <h2 className="mt-8 font-medium text-black">
           Adding Custom Interactions
