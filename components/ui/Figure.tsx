@@ -1,7 +1,7 @@
 import Image, { ImageProps } from "next/image";
-import { cn } from "@/lib/utils";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import { cn } from "@/lib/utils";
 
 interface FigureProps extends Omit<ImageProps, "alt"> {
   alt: string;

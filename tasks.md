@@ -2,8 +2,11 @@
 - [ ] Migrate the old blog posts to the new format
 - [ ] Add projects from the old site, include static projects
 - [ ] Consider adding reading list, listening log, quotes, big ideas, etc
+- [ ] Add an embed tweet component, can use Vercel's react-tweet
+- [ ] Add a video component
 - [ ] Add a mermaid renderer component
 - [ ] Add a newsletter signup form
 - [ ] Related posts?
 - [ ] For long articles, add a table of contents
 - [ ] Consider ISR for performance
+

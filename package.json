@@ -28,6 +28,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.14",
     "@types/node": "^20.11.0",
     "@types/react": "^19.0.0",
