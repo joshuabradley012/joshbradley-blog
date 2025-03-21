@@ -7,11 +7,14 @@
     "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace;
 
   --breakpoint-xs: 32rem;
+
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: calc(0.75 / 0.625);
 }
 
 @layer base {
   *::selection {
-    background-color: var(--color-neutral-200);
+    background-color: oklch(0.371 0 0 / 0.1);
   }
 
   figure[data-rehype-pretty-code-figure] pre {

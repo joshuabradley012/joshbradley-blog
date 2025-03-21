@@ -23,7 +23,7 @@ export default function Nav() {
 
   return (
     <nav className="xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 mb-8 border-b border-neutral-200 pb-4 sm:mr-8 md:mr-12">
-      <ul className="xs:flex-col xs:justify-start xs:gap-1 xs:text-right xs:sticky xs:top-6 flex flex-wrap justify-end gap-4 sm:top-12 md:top-24">
+      <menu className="xs:flex-col xs:justify-start xs:gap-1 xs:text-right xs:sticky xs:top-6 flex flex-wrap justify-end gap-4 sm:top-12 md:top-24">
         {links.map((link) => (
           <li key={link.href}>
             <Link
@@ -35,7 +35,7 @@ export default function Nav() {
             </Link>
           </li>
         ))}
-      </ul>
+      </menu>
     </nav>
   );
 }

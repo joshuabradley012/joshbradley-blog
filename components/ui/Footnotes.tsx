@@ -1,0 +1,119 @@
+"use client";
+
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Ol, Li } from "@/components/ui/List";
+import { cn } from "@/lib/utils";
+
+interface Footnote {
+  id: number;
+  content: ReactNode;
+}
+
+interface FootnotesContextType {
+  footnotes: Footnote[];
+}
+
+const FootnotesContext = createContext<FootnotesContextType | undefined>(
+  undefined,
+);
+
+// Provider component
+export function FootnotesProvider({
+  children,
+  footnotes,
+}: {
+  children: ReactNode;
+  footnotes: Footnote[];
+}) {
+  return (
+    <FootnotesContext.Provider value={{ footnotes }}>
+      <div className="relative">{children}</div>
+    </FootnotesContext.Provider>
+  );
+}
+
+// Hook for consuming context
+function useFootnotes() {
+  const context = useContext(FootnotesContext);
+  if (context === undefined) {
+    throw new Error("useFootnotes must be used within a FootnotesProvider");
+  }
+  return context;
+}
+
+// Component for inline footnote links
+export function FootnoteLink({ id }: { id: number }) {
+  const { footnotes } = useFootnotes();
+  const footnote = footnotes.find((f) => f.id === id);
+
+  if (!footnote) return null;
+
+  return (
+    <span>
+      <Link
+        id={`fnref${id}`}
+        href={`#fn${id}`}
+        className="text-2xs rounded border border-neutral-200 bg-neutral-50 px-1 align-top transition-colors hover:border-black hover:text-black"
+      >
+        {id}
+      </Link>
+      <span className="absolute left-full ml-12 hidden w-64 -translate-y-5 text-xs text-neutral-500 xl:block">
+        <span className="absolute top-0 -translate-x-full pr-1 tabular-nums">
+          {footnote.id}.
+        </span>{" "}
+        <span>{footnote.content}</span>
+      </span>
+    </span>
+  );
+}
+
+// Component for footnotes list at bottom of page
+export function Footnotes() {
+  const { footnotes } = useFootnotes();
+  const [activeFootnote, setActiveFootnote] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    setActiveFootnote(hash);
+  }, [searchParams]);
+
+  return (
+    <>
+      <hr className="my-8 border-neutral-200" />
+      <Ol className="space-y-2 text-xs text-neutral-500">
+        {footnotes
+          .sort((a, b) => a.id - b.id)
+          .map((footnote) => (
+            <Li
+              key={footnote.id}
+              id={`fn${footnote.id}`}
+              data-footnote-id={`${footnote.id}. `}
+              className={cn(
+                `marker:content-[attr(data-footnote-id)]`,
+                activeFootnote === `#fn${footnote.id}`
+                  ? "bg-neutral-700/10 text-neutral-700"
+                  : "",
+              )}
+            >
+              {footnote.content}
+              <Link
+                href={`#fnref${footnote.id}`}
+                className="ml-1 transition-colors hover:text-black"
+              >
+                ^
+              </Link>
+            </Li>
+          ))}
+      </Ol>
+    </>
+  );
+}
