@@ -22,14 +22,16 @@ async function highlightCode(code: string) {
 
 export async function BlockCode({
   code,
+  meta,
   className,
 }: {
   code: string;
+  meta?: string;
   className?: string;
 }) {
-  const highlightedCode = await highlightCode(code);
+  const highlightedCode = await highlightCode(`\`\`\`${meta}\n${code}\n\`\`\``);
   return (
-    <section
+    <div
       className={cn("my-8 text-xs", className)}
       dangerouslySetInnerHTML={{
         __html: highlightedCode,
@@ -40,12 +42,16 @@ export async function BlockCode({
 
 export async function InlineCode({
   code,
+  meta,
   className,
 }: {
   code: string;
+  meta?: string;
   className?: string;
 }) {
-  let highlightedCode = await highlightCode(code);
+  let highlightedCode = await highlightCode(
+    `\`${code}${meta ? `{:${meta}}\`` : "`"}`,
+  );
   highlightedCode = highlightedCode.replace(/^<p>/, "");
   highlightedCode = highlightedCode.replace(/<\/p>$/, "");
   return (

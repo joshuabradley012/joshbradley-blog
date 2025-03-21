@@ -13,7 +13,7 @@ export function getAllPosts(): Post[] {
       slug: "rebuilding-this-website",
       title: "Rebuilding This Website",
       description: "The design choices behind building a custom React blog.",
-      date: "March 20, 2025",
+      date: "Mar 20, 2025",
       component: () =>
         import("../components/posts/Rebuild").then((mod) => mod.default),
     },
@@ -22,9 +22,18 @@ export function getAllPosts(): Post[] {
       title: "Understanding the Power of LISP",
       description:
         "Notable programmers describe understanding and coding in LISP as a semi-religious experience. What gives the language this power?",
-      date: "April 3, 2020",
+      date: "Apr 3, 2020",
       component: () =>
         import("../components/posts/Lisp").then((mod) => mod.default),
+    },
+    {
+      slug: "building-this-website",
+      title: "Building This Website",
+      description:
+        "This site is tiny and powerful, featuring schema markup and ServiceWorkers. Here is what I learned while building it.",
+      date: "Jan 27, 2020",
+      component: () =>
+        import("../components/posts/Build").then((mod) => mod.default),
     },
     // Add more posts here
   ];

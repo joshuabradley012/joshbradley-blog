@@ -87,77 +87,74 @@ export default function PostOne() {
           <p>
             This is an amazing example of an inline code block. Testing to
             ensure it works in the middle of a sentence{" "}
-            <InlineCode code="`const array = [1, 2, 3]{:js}`" /> oh hell yeah
+            <InlineCode meta="js" code="const array = [1, 2, 3]" /> oh hell yeah
             that's a thing. I just want to make sure it works with multiple
             lines. Because that will be a thing.
           </p>
 
           <BlockCode
-            code={`
-  \`\`\`jsx showLineNumbers {13-14,48-49} /unified/ title="BlockCode.tsx" caption="This is showing how to create a code block using RSC."
-  import { unified } from "unified";
-  import remarkParse from "remark-parse";
-  import remarkRehype from "remark-rehype";
-  import rehypeStringify from "rehype-stringify";
-  import rehypePrettyCode from "rehype-pretty-code";
-  import { cn } from "@/lib/utils";
+            meta={`jsx showLineNumbers {13-14,48-49} /unified/ title="BlockCode.tsx" caption="This is showing how to create a code block using RSC."`}
+            code={`import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypePrettyCode from "rehype-pretty-code";
+import { cn } from "@/lib/utils";
 
-  async function highlightCode(code: string) {
-    const file = await unified()
-      .use(remarkParse)
-      .use(remarkRehype)
-      .use(rehypePrettyCode, {
-        theme: "github-light",
-        keepBackground: false,
-      })
-      .use(rehypeStringify)
-      .process(code);
+async function highlightCode(code: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrettyCode, {
+      theme: "github-light",
+      keepBackground: false,
+    })
+    .use(rehypeStringify)
+    .process(code);
 
-    return String(file);
-  }
+  return String(file);
+}
 
-  export async function BlockCode({
-    code,
-    className,
-  }: {
-    code: string;
-    className?: string;
-  }) {
-    const highlightedCode = await highlightCode(code);
-    return (
-      <section
-        className={cn("my-8 text-xs", className)}
-        dangerouslySetInnerHTML={{
-          __html: highlightedCode,
-        }}
-      />
-    );
-  }
+export async function BlockCode({
+  code,
+  className,
+}: {
+  code: string;
+  className?: string;
+}) {
+  const highlightedCode = await highlightCode(code);
+  return (
+    <section
+      className={cn("my-8 text-xs", className)}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
+}
 
-  export async function InlineCode({
-    code,
-    className,
-  }: {
-    code: string;
-    className?: string;
-  }) {
-    let highlightedCode = await highlightCode(code);
-    highlightedCode = highlightedCode.replace(/^<p>/, "");
-    highlightedCode = highlightedCode.replace(/<\/p>$/, "");
-    return (
-      <span
-        className={cn(
-          "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
-          className,
-        )}
-        dangerouslySetInnerHTML={{
-          __html: highlightedCode,
-        }}
-      />
-    );
-  }
-  \`\`\`
-          `}
+export async function InlineCode({
+  code,
+  className,
+}: {
+  code: string;
+  className?: string;
+}) {
+  let highlightedCode = await highlightCode(code);
+  highlightedCode = highlightedCode.replace(/^<p>/, "");
+  highlightedCode = highlightedCode.replace(/<\/p>$/, "");
+  return (
+    <span
+      className={cn(
+        "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
+        className,
+      )}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
+}`}
           />
 
           <p>

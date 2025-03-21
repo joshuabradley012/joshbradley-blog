@@ -35,7 +35,7 @@ export function FootnotesProvider({
 }) {
   return (
     <FootnotesContext.Provider value={{ footnotes }}>
-      <div className="relative">{children}</div>
+      {children}
     </FootnotesContext.Provider>
   );
 }
@@ -58,14 +58,16 @@ export function FootnoteLink({ id }: { id: number }) {
 
   return (
     <span>
-      <Link
-        id={`fnref${id}`}
-        href={`#fn${id}`}
-        className="text-2xs align-top tabular-nums transition-colors hover:text-black"
-      >
-        [{id}]
-      </Link>
-      <span className="absolute left-full ml-12 hidden w-64 -translate-y-5 text-xs text-neutral-500 xl:block">
+      <sup>
+        <Link
+          id={`fnref${id}`}
+          href={`#fn${id}`}
+          className="tabular-nums transition-colors hover:text-black"
+        >
+          [{id}]
+        </Link>
+      </sup>
+      <span className="absolute left-full ml-12 hidden w-64 -translate-y-5 text-left text-xs text-neutral-500 xl:block">
         <span className="absolute top-0 -translate-x-full pr-1 tabular-nums select-none">
           {footnote.id}.
         </span>{" "}

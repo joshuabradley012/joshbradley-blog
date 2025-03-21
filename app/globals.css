@@ -83,7 +83,7 @@
   }
 
   [data-rehype-pretty-code-caption] {
-    @apply mt-2 font-serif text-neutral-500;
+    @apply mt-2 text-neutral-500;
   }
 
   [data-rmiz-content="found"] img,

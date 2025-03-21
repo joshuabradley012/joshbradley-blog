@@ -26,7 +26,7 @@ export default function Figure({
     <figure className={cn("my-8", className)}>
       {disableZoom ? image : <Zoom>{image}</Zoom>}
       {caption && (
-        <figcaption className="mt-2 font-serif text-xs text-neutral-500">
+        <figcaption className="mt-2 text-xs text-neutral-500">
           {caption}
         </figcaption>
       )}
