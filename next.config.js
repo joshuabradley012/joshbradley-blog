@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Add this to generate RSS feed during build
-  async rewrites() {
+  async redirects() {
     return [
       {
-        source: "/feed",
-        destination: "/rss.xml",
+        source: "/understanding-the-power-of-lisp",
+        destination: "/thoughts/understanding-the-power-of-lisp",
+        permanent: true,
       },
     ];
   },

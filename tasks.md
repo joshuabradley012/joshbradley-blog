@@ -1,4 +1,3 @@
-- [ ] Add foot notes component
 - [ ] Migrate the old blog posts to the new format
 - [ ] Add projects from the old site, include static projects
 - [ ] Consider adding reading list, listening log, quotes, big ideas, etc

@@ -1,10 +1,11 @@
 import LoadWrapper from "@/components/LoadWrapper";
 import InlineLink from "@/components/ui/InlineLink";
+import { H1 } from "@/components/ui/Headings";
 
 export default function Home() {
   return (
     <LoadWrapper>
-      <h1 className="mb-8 font-medium text-black">Josh Bradley</h1>
+      <H1>Josh Bradley</H1>
       <div className="space-y-4">
         <p>
           I seek the wisdom needed to live a great life. I write about

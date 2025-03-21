@@ -25,7 +25,7 @@ const data = [
 
 const footnotes = [
   {
-    id: 123,
+    id: 1,
     content: (
       <>
         This is a footnote with a link to{" "}
@@ -40,7 +40,7 @@ const footnotes = [
   },
 ];
 
-export default function InteractiveChartDemo() {
+export default function PostOne() {
   return (
     <FootnotesProvider footnotes={footnotes}>
       <LoadWrapper>
@@ -67,16 +67,13 @@ export default function InteractiveChartDemo() {
             components directly within our blog posts. The chart below is built
             with Recharts and has interactive state managed within the component
             with some more text to test the layout and just a bit more.
-            <FootnoteLink id={123} />
+            <FootnoteLink id={1} />
           </p>
 
           <Ol>
             <Li>This is a list item</Li>
             <Li>This is another list item</Li>
-            <Li>
-              This is yet another list item
-              <FootnoteLink id={2} />
-            </Li>
+            <Li>This is yet another list item</Li>
           </Ol>
 
           <Ul>
@@ -166,9 +163,9 @@ export default function InteractiveChartDemo() {
           <p>
             Now, let's see how we can use the math renderer. I want to ensure it
             works inline with text, like so:{" "}
-            <InlineMath math="\int_0^\infty x^2 dx" />. And also works in block
-            quotes. And I need to make sure it works with multiple lines. Just a
-            little longer like this.
+            <InlineMath math="\int_0^\infty x^2 dx" />.<FootnoteLink id={2} />{" "}
+            And also works in block quotes. And I need to make sure it works
+            with multiple lines. Just a little longer like this.
           </p>
 
           <BlockMath

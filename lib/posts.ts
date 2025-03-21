@@ -10,21 +10,21 @@ export type Post = {
 export function getAllPosts(): Post[] {
   return [
     {
-      slug: "interactive-chart-demo",
-      title: "Interactive Chart Demo",
-      description:
-        "A demonstration of interactive charts built directly in React components.",
-      date: "March 16, 2025",
+      slug: "rebuilding-this-website",
+      title: "Rebuilding This Website",
+      description: "The design choices behind building a custom React blog.",
+      date: "March 20, 2025",
       component: () =>
-        import("../components/posts/PostOne").then((mod) => mod.default),
+        import("../components/posts/Rebuild").then((mod) => mod.default),
     },
     {
-      slug: "ai-tools-overview",
-      title: "AI Tools Overview",
-      description: "Exploring the best AI tools for developers in 2025.",
-      date: "March 10, 2025",
+      slug: "understanding-the-power-of-lisp",
+      title: "Understanding the Power of LISP",
+      description:
+        "Notable programmers describe understanding and coding in LISP as a semi-religious experience. What gives the language this power?",
+      date: "April 3, 2020",
       component: () =>
-        import("../components/posts/PostTwo").then((mod) => mod.default),
+        import("../components/posts/Lisp").then((mod) => mod.default),
     },
     // Add more posts here
   ];
