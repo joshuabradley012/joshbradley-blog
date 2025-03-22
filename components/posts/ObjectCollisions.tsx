@@ -108,7 +108,7 @@ export default function ObjectCollisions() {
                     type: 'circle',
                     position: new Vector(100, 100),
                     velocity: new Vector(5, 3),
-                    radius: 20,
+                    radius: 10,
                     color: 'red',
                     collisions: [],
                   },
@@ -918,7 +918,7 @@ class Canvas {
                   this,
                   {
                     type: "circle",
-                    position: new Vector(30, 30),
+                    position: new Vector(20, 20),
                     velocity: new Vector(5, 3),
                     radius: 10,
                     color: "red",
@@ -1068,12 +1068,13 @@ const display = new Canvas();
 const ball1 = new Ball({
   position: new Vector(40, 100),
   velocity: new Vector(1, 0),
+  radius: 20,
 });
 
 const ball2 = new Ball({
   position: new Vector(200, 100),
   velocity: new Vector(-1, 0),
-  radius: 10,
+  radius: 20,
   color: 'blue',
 });
 
@@ -1179,9 +1180,9 @@ runAnimation(time => {
                   this,
                   {
                     type: "circle",
-                    position: new Vector(40, 100),
-                    velocity: new Vector(2, 0),
-                    radius: 20,
+                    position: new Vector(30, 30),
+                    velocity: new Vector(5, 3),
+                    radius: 10,
                     color: "red",
                   },
                   config,
@@ -1240,12 +1241,16 @@ runAnimation(time => {
             };
 
             const display = new Canvas(document.getElementById("example-4"), 622, 350);
-            const ball1 = new Ball();
+            const ball1 = new Ball({
+              position: new Vector(40, 100),
+              velocity: new Vector(1, 0),
+              radius: 20,
+            });
             const ball2 = new Ball({
               position: new Vector(200, 100),
-              velocity: new Vector(-2, 0),
-              radius: 10,
-              color: "blue",
+              velocity: new Vector(-1, 0),
+              radius: 20,
+              color: 'blue',
             });
             const actors = [ball1, ball2];
             let state = new State(display, actors);
@@ -1527,197 +1532,200 @@ runAnimation(time => {
 
         <ExecuteAnimationScript id="example-5">
           {`
-    class State {
-      constructor(display, actors) {
-        this.display = display;
-        this.actors = actors;
-      }
+            class State {
+              constructor(display, actors) {
+                this.display = display;
+                this.actors = actors;
+              }
 
-      update(time) {
-        const updateId = Math.floor(Math.random() * 1000000);
-        const actors = this.actors.map((actor) => {
-          return actor.update(this, time, updateId);
-        });
-        return new State(this.display, actors);
-      }
-    }
+              update(time) {
+                const updateId = Math.floor(Math.random() * 1000000);
+                const actors = this.actors.map((actor) => {
+                  return actor.update(this, time, updateId);
+                });
+                return new State(this.display, actors);
+              }
+            }
 
-    class Canvas {
-      constructor(parent = document.body, width = 400, height = 400) {
-        this.canvas = document.createElement("canvas");
-        this.canvas.width = width;
-        this.canvas.height = height;
-        parent.appendChild(this.canvas);
-        this.ctx = this.canvas.getContext("2d");
-      }
+            class Canvas {
+              constructor(parent = document.body, width = 400, height = 400) {
+                this.canvas = document.createElement("canvas");
+                this.canvas.width = width;
+                this.canvas.height = height;
+                parent.appendChild(this.canvas);
+                this.ctx = this.canvas.getContext("2d");
+              }
 
-      sync(state) {
-        this.clearDisplay();
-        this.drawActors(state.actors);
-      }
+              sync(state) {
+                this.clearDisplay();
+                this.drawActors(state.actors);
+              }
 
-      clearDisplay() {
-        this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-      }
+              clearDisplay() {
+                this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+              }
 
-      drawActors(actors) {
-        for (let actor of actors) {
-          if (actor.type === "circle") {
-            this.drawCircle(actor);
-          }
-        }
-      }
+              drawActors(actors) {
+                for (let actor of actors) {
+                  if (actor.type === "circle") {
+                    this.drawCircle(actor);
+                  }
+                }
+              }
 
-      drawCircle(actor) {
-        this.ctx.beginPath();
-        this.ctx.arc(
-          actor.position.x,
-          actor.position.y,
-          actor.radius,
-          0,
-          Math.PI * 2,
-        );
-        this.ctx.closePath();
-        this.ctx.fillStyle = actor.color;
-        this.ctx.fill();
-      }
-    }
+              drawCircle(actor) {
+                this.ctx.beginPath();
+                this.ctx.arc(
+                  actor.position.x,
+                  actor.position.y,
+                  actor.radius,
+                  0,
+                  Math.PI * 2,
+                );
+                this.ctx.closePath();
+                this.ctx.fillStyle = actor.color;
+                this.ctx.fill();
+              }
+            }
 
-    class Vector {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-      }
+            class Vector {
+              constructor(x, y) {
+                this.x = x;
+                this.y = y;
+              }
 
-      add(vector) {
-        return new Vector(this.x + vector.x, this.y + vector.y);
-      }
+              add(vector) {
+                return new Vector(this.x + vector.x, this.y + vector.y);
+              }
 
-      subtract(vector) {
-        return new Vector(this.x - vector.x, this.y - vector.y);
-      }
+              subtract(vector) {
+                return new Vector(this.x - vector.x, this.y - vector.y);
+              }
 
-      multiply(scalar) {
-        return new Vector(this.x * scalar, this.y * scalar);
-      }
+              multiply(scalar) {
+                return new Vector(this.x * scalar, this.y * scalar);
+              }
 
-      dotProduct(vector) {
-        return this.x * vector.x + this.y * vector.y;
-      }
+              dotProduct(vector) {
+                return this.x * vector.x + this.y * vector.y;
+              }
 
-      get magnitude() {
-        return Math.sqrt(this.x ** 2 + this.y ** 2);
-      }
-    }
+              get magnitude() {
+                return Math.sqrt(this.x ** 2 + this.y ** 2);
+              }
+            }
 
-    class Ball {
-      constructor(config) {
-        Object.assign(
-          this,
-          {
-            id: Math.floor(Math.random() * 1000000),
-            type: "circle",
-            position: new Vector(40, 100),
-            velocity: new Vector(2, 0),
-            radius: 20,
-            color: "red",
-            collisions: [],
-          },
-          config,
-        );
-      }
+            class Ball {
+              constructor(config) {
+                Object.assign(
+                  this,
+                  {
+                    id: Math.floor(Math.random() * 1000000),
+                    type: "circle",
+                    position: new Vector(40, 100),
+                    velocity: new Vector(2, 0),
+                    radius: 10,
+                    color: "red",
+                    collisions: [],
+                  },
+                  config,
+                );
+              }
 
-      update(state, time, updateId) {
-        if (
-          this.position.x >= state.display.canvas.width ||
-          this.position.x <= 0
-        ) {
-          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
-        }
+              update(state, time, updateId) {
+                if (
+                  this.position.x >= state.display.canvas.width ||
+                  this.position.x <= 0
+                ) {
+                  this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+                }
 
-        if (
-          this.position.y >= state.display.canvas.height ||
-          this.position.y <= 0
-        ) {
-          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
-        }
+                if (
+                  this.position.y >= state.display.canvas.height ||
+                  this.position.y <= 0
+                ) {
+                  this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+                }
 
-        for (let actor of state.actors) {
-          if (this === actor || this.collisions.includes(actor.id + updateId)) {
-            continue;
-          }
+                for (let actor of state.actors) {
+                  if (this === actor || this.collisions.includes(actor.id + updateId)) {
+                    continue;
+                  }
 
-          const distance = this.position.subtract(actor.position).magnitude;
+                  const distance = this.position.subtract(actor.position).magnitude;
 
-          if (distance <= this.radius + actor.radius) {
-            const v1 = collisionVector(this, actor);
-            const v2 = collisionVector(actor, this);
-            this.velocity = v1;
-            actor.velocity = v2;
-            this.collisions.push(actor.id + updateId);
-            actor.collisions.push(this.id + updateId);
-          }
-        }
+                  if (distance <= this.radius + actor.radius) {
+                    const v1 = collisionVector(this, actor);
+                    const v2 = collisionVector(actor, this);
+                    this.velocity = v1;
+                    actor.velocity = v2;
+                    this.collisions.push(actor.id + updateId);
+                    actor.collisions.push(this.id + updateId);
+                  }
+                }
 
-        return new Ball({
-          ...this,
-          position: this.position.add(this.velocity),
-        });
-      }
+                return new Ball({
+                  ...this,
+                  position: this.position.add(this.velocity),
+                });
+              }
 
-      get sphereArea() {
-        return 4 * Math.PI * this.radius ** 2;
-      }
-    }
+              get sphereArea() {
+                return 4 * Math.PI * this.radius ** 2;
+              }
+            }
 
-    const collisionVector = (b1, b2) => {
-      return b1.velocity.subtract(
-        b1.position
-          .subtract(b2.position)
-          .multiply(
-            b1.velocity
-              .subtract(b2.velocity)
-              .dotProduct(b1.position.subtract(b2.position)) /
-              b1.position.subtract(b2.position).magnitude ** 2,
-          )
-          .multiply((2 * b2.sphereArea) / (b1.sphereArea + b2.sphereArea)),
-      );
-    };
+            const collisionVector = (b1, b2) => {
+              return b1.velocity.subtract(
+                b1.position
+                  .subtract(b2.position)
+                  .multiply(
+                    b1.velocity
+                      .subtract(b2.velocity)
+                      .dotProduct(b1.position.subtract(b2.position)) /
+                      b1.position.subtract(b2.position).magnitude ** 2,
+                  )
+                  .multiply((2 * b2.sphereArea) / (b1.sphereArea + b2.sphereArea)),
+              );
+            };
 
-    const runAnimation = animation => {
-      let lastTime = null;
-      const frame = time => {
-        if (lastTime !== null) {
-          const timeStep = Math.min(100, time - lastTime) / 1000;
+            const runAnimation = animation => {
+              let lastTime = null;
+              const frame = time => {
+                if (lastTime !== null) {
+                  const timeStep = Math.min(100, time - lastTime) / 1000;
 
-          // return false from animation to stop
-          if (animation(timeStep) === false) {
-            return;
-          }
-        }
-        lastTime = time;
-        requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    };
+                  // return false from animation to stop
+                  if (animation(timeStep) === false) {
+                    return;
+                  }
+                }
+                lastTime = time;
+                requestAnimationFrame(frame);
+              };
+              requestAnimationFrame(frame);
+            };
 
-    const display = new Canvas(document.getElementById("example-5"), 622, 350);
-    const ball1 = new Ball();
-    const ball2 = new Ball({
-      position: new Vector(200, 100),
-      velocity: new Vector(-2, 3),
-      color: "blue",
-      radius: 10,
-    });
-    const actors = [ball1, ball2];
-    let state = new State(display, actors);
+            const display = new Canvas(document.getElementById("example-5"), 622, 350);
+            const ball1 = new Ball({
+              position: new Vector(40, 100),
+              velocity: new Vector(2, 3),
+              radius: 20,
+            });
+            const ball2 = new Ball({
+              position: new Vector(200, 100),
+              velocity: new Vector(-1, 3),
+              color: "blue",
+            });
+            const actors = [ball1, ball2];
+            let state = new State(display, actors);
 
-    runAnimation((time) => {
-      state = state.update(time);
-      display.sync(state);
-    });
-  `}
+            runAnimation((time) => {
+              state = state.update(time);
+              display.sync(state);
+            });
+          `}
         </ExecuteAnimationScript>
 
         <p>
@@ -1755,209 +1763,211 @@ runAnimation(time => {
 
         <ExecuteAnimationScript id="example-6">
           {`
-    class State {
-      constructor(display, actors) {
-        this.display = display;
-        this.actors = actors;
-      }
+            class State {
+              constructor(display, actors) {
+                this.display = display;
+                this.actors = actors;
+              }
 
-      update(time) {
-        const updateId = Math.floor(Math.random() * 1000000);
-        const actors = this.actors.map((actor) => {
-          return actor.update(this, time, updateId);
-        });
-        return new State(this.display, actors);
-      }
-    }
+              update(time) {
+                const updateId = Math.floor(Math.random() * 1000000);
+                const actors = this.actors.map((actor) => {
+                  return actor.update(this, time, updateId);
+                });
+                return new State(this.display, actors);
+              }
+            }
 
-    class Canvas {
-      constructor(parent = document.body, width = 400, height = 400) {
-        this.canvas = document.createElement("canvas");
-        this.canvas.width = width;
-        this.canvas.height = height;
-        parent.appendChild(this.canvas);
-        this.ctx = this.canvas.getContext("2d");
-      }
+            class Canvas {
+              constructor(parent = document.body, width = 400, height = 400) {
+                this.canvas = document.createElement("canvas");
+                this.canvas.width = width;
+                this.canvas.height = height;
+                parent.appendChild(this.canvas);
+                this.ctx = this.canvas.getContext("2d");
+              }
 
-      sync(state) {
-        this.clearDisplay();
-        this.drawActors(state.actors);
-      }
+              sync(state) {
+                this.clearDisplay();
+                this.drawActors(state.actors);
+              }
 
-      clearDisplay() {
-        this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-      }
+              clearDisplay() {
+                this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+              }
 
-      drawActors(actors) {
-        for (let actor of actors) {
-          if (actor.type === "circle") {
-            this.drawCircle(actor);
-          }
-        }
-      }
+              drawActors(actors) {
+                for (let actor of actors) {
+                  if (actor.type === "circle") {
+                    this.drawCircle(actor);
+                  }
+                }
+              }
 
-      drawCircle(actor) {
-        this.ctx.beginPath();
-        this.ctx.arc(
-          actor.position.x,
-          actor.position.y,
-          actor.radius,
-          0,
-          Math.PI * 2,
-        );
-        this.ctx.closePath();
-        this.ctx.fillStyle = actor.color;
-        this.ctx.fill();
-      }
-    }
+              drawCircle(actor) {
+                this.ctx.beginPath();
+                this.ctx.arc(
+                  actor.position.x,
+                  actor.position.y,
+                  actor.radius,
+                  0,
+                  Math.PI * 2,
+                );
+                this.ctx.closePath();
+                this.ctx.fillStyle = actor.color;
+                this.ctx.fill();
+              }
+            }
 
-    class Vector {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-      }
+            class Vector {
+              constructor(x, y) {
+                this.x = x;
+                this.y = y;
+              }
 
-      add(vector) {
-        return new Vector(this.x + vector.x, this.y + vector.y);
-      }
+              add(vector) {
+                return new Vector(this.x + vector.x, this.y + vector.y);
+              }
 
-      subtract(vector) {
-        return new Vector(this.x - vector.x, this.y - vector.y);
-      }
+              subtract(vector) {
+                return new Vector(this.x - vector.x, this.y - vector.y);
+              }
 
-      multiply(scalar) {
-        return new Vector(this.x * scalar, this.y * scalar);
-      }
+              multiply(scalar) {
+                return new Vector(this.x * scalar, this.y * scalar);
+              }
 
-      dotProduct(vector) {
-        return this.x * vector.x + this.y * vector.y;
-      }
+              dotProduct(vector) {
+                return this.x * vector.x + this.y * vector.y;
+              }
 
-      get magnitude() {
-        return Math.sqrt(this.x ** 2 + this.y ** 2);
-      }
-    }
+              get magnitude() {
+                return Math.sqrt(this.x ** 2 + this.y ** 2);
+              }
+            }
 
-    class Ball {
-      constructor(config) {
-        Object.assign(
-          this,
-          {
-            id: Math.floor(Math.random() * 1000000),
-            type: "circle",
-            position: new Vector(40, 100),
-            velocity: new Vector(2, 0),
-            radius: 20,
-            color: "red",
-            collisions: [],
-          },
-          config,
-        );
-      }
+            class Ball {
+              constructor(config) {
+                Object.assign(
+                  this,
+                  {
+                    id: Math.floor(Math.random() * 1000000),
+                    type: "circle",
+                    position: new Vector(40, 100),
+                    velocity: new Vector(2, 0),
+                    radius: 10,
+                    color: "red",
+                    collisions: [],
+                  },
+                  config,
+                );
+              }
 
-      update(state, time, updateId) {
-        if (
-          this.position.x >= state.display.canvas.width ||
-          this.position.x <= 0
-        ) {
-          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
-        }
+              update(state, time, updateId) {
+                if (
+                  this.position.x >= state.display.canvas.width ||
+                  this.position.x <= 0
+                ) {
+                  this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+                }
 
-        if (
-          this.position.y >= state.display.canvas.height ||
-          this.position.y <= 0
-        ) {
-          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
-        }
+                if (
+                  this.position.y >= state.display.canvas.height ||
+                  this.position.y <= 0
+                ) {
+                  this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+                }
 
-        for (let actor of state.actors) {
-          if (this === actor || this.collisions.includes(actor.id + updateId)) {
-            continue;
-          }
+                for (let actor of state.actors) {
+                  if (this === actor || this.collisions.includes(actor.id + updateId)) {
+                    continue;
+                  }
 
-          const distance = this.position.subtract(actor.position).magnitude;
+                  const distance = this.position.subtract(actor.position).magnitude;
 
-          if (distance <= this.radius + actor.radius) {
-            const v1 = collisionVector(this, actor);
-            const v2 = collisionVector(actor, this);
-            this.velocity = v1;
-            actor.velocity = v2;
-            this.collisions.push(actor.id + updateId);
-            actor.collisions.push(this.id + updateId);
-          }
-        }
+                  if (distance <= this.radius + actor.radius) {
+                    const v1 = collisionVector(this, actor);
+                    const v2 = collisionVector(actor, this);
+                    this.velocity = v1;
+                    actor.velocity = v2;
+                    this.collisions.push(actor.id + updateId);
+                    actor.collisions.push(this.id + updateId);
+                  }
+                }
 
-        return new Ball({
-          ...this,
-          position: this.position.add(this.velocity),
-        });
-      }
+                return new Ball({
+                  ...this,
+                  position: this.position.add(this.velocity),
+                });
+              }
 
-      get sphereArea() {
-        return 4 * Math.PI * this.radius ** 2;
-      }
-    }
+              get sphereArea() {
+                return 4 * Math.PI * this.radius ** 2;
+              }
+            }
 
-    const collisionVector = (b1, b2) => {
-      return b1.velocity.subtract(
-        b1.position
-          .subtract(b2.position)
-          .multiply(
-            b1.velocity
-              .subtract(b2.velocity)
-              .dotProduct(b1.position.subtract(b2.position)) /
-              b1.position.subtract(b2.position).magnitude ** 2,
-          )
-          .multiply((2 * b2.sphereArea) / (b1.sphereArea + b2.sphereArea)),
-      );
-    };
+            const collisionVector = (b1, b2) => {
+              return b1.velocity.subtract(
+                b1.position
+                  .subtract(b2.position)
+                  .multiply(
+                    b1.velocity
+                      .subtract(b2.velocity)
+                      .dotProduct(b1.position.subtract(b2.position)) /
+                      b1.position.subtract(b2.position).magnitude ** 2,
+                  )
+                  .multiply((2 * b2.sphereArea) / (b1.sphereArea + b2.sphereArea)),
+              );
+            };
 
-    const runAnimation = animation => {
-      let lastTime = null;
-      const frame = time => {
-        if (lastTime !== null) {
-          const timeStep = Math.min(100, time - lastTime) / 1000;
+            const runAnimation = animation => {
+              let lastTime = null;
+              const frame = time => {
+                if (lastTime !== null) {
+                  const timeStep = Math.min(100, time - lastTime) / 1000;
 
-          // return false from animation to stop
-          if (animation(timeStep) === false) {
-            return;
-          }
-        }
-        lastTime = time;
-        requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    };
+                  // return false from animation to stop
+                  if (animation(timeStep) === false) {
+                    return;
+                  }
+                }
+                lastTime = time;
+                requestAnimationFrame(frame);
+              };
+              requestAnimationFrame(frame);
+            };
 
-    const display = new Canvas(document.getElementById("example-6"), 622, 350);
-    const ball1 = new Ball({
-      position: new Vector(180, 100),
-      velocity: new Vector(2, 0),
-    });
-    const ball2 = new Ball({
-      position: new Vector(200, 100),
-      velocity: new Vector(-2, 5),
-      color: "blue",
-    });
-    const actors = [ball1, ball2];
-    let state = new State(display, actors);
-    display.sync(state);
+            const display = new Canvas(document.getElementById("example-6"), 622, 350);
+            const ball1 = new Ball({
+              position: new Vector(180, 100),
+              velocity: new Vector(2, 0),
+              radius: 20,
+            });
+            const ball2 = new Ball({
+              position: new Vector(200, 100),
+              velocity: new Vector(-2, 5),
+              radius: 20,
+              color: "blue",
+            });
+            const actors = [ball1, ball2];
+            let state = new State(display, actors);
+            display.sync(state);
 
-    const startButton = document.createElement("button");
-    startButton.innerText = "Start animation";
-    startButton.className = "btn mt-2";
-    document.getElementById("example-6").appendChild(startButton);
+            const startButton = document.createElement("button");
+            startButton.innerText = "Start animation";
+            startButton.className = "btn mt-2";
+            document.getElementById("example-6").appendChild(startButton);
 
-    const animateOnClick = () => {
-      runAnimation(time => {
-        state = state.update(time);
-        display.sync(state);
-      });
-    };
+            const animateOnClick = () => {
+              runAnimation(time => {
+                state = state.update(time);
+                display.sync(state);
+              });
+            };
 
-    startButton.addEventListener("click", animateOnClick, { once: true });
-  `}
+            startButton.addEventListener("click", animateOnClick, { once: true });
+          `}
         </ExecuteAnimationScript>
         <p>
           The solution I implemented is a simple bandaid. I check for collisions
@@ -2133,209 +2143,209 @@ runAnimation(time => {
 
         <ExecuteAnimationScript id="example-7">
           {`
-    class State {
-      constructor(display, actors) {
-        this.display = display;
-        this.actors = actors;
-      }
+            class State {
+              constructor(display, actors) {
+                this.display = display;
+                this.actors = actors;
+              }
 
-      update(time) {
-        const updateId = Math.floor(Math.random() * 1000000);
-        const actors = this.actors.map(actor => {
-          return actor.update(this, time, updateId);
-        });
-        return new State(this.display, actors);
-      }
-    }
+              update(time) {
+                const updateId = Math.floor(Math.random() * 1000000);
+                const actors = this.actors.map(actor => {
+                  return actor.update(this, time, updateId);
+                });
+                return new State(this.display, actors);
+              }
+            }
 
 
-    class Vector {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-      }
+            class Vector {
+              constructor(x, y) {
+                this.x = x;
+                this.y = y;
+              }
 
-      add(vector) {
-        return new Vector(this.x + vector.x, this.y + vector.y);
-      }
+              add(vector) {
+                return new Vector(this.x + vector.x, this.y + vector.y);
+              }
 
-      subtract(vector) {
-        return new Vector(this.x - vector.x, this.y - vector.y);
-      }
+              subtract(vector) {
+                return new Vector(this.x - vector.x, this.y - vector.y);
+              }
 
-      multiply(scalar) {
-        return new Vector(this.x * scalar, this.y * scalar);
-      }
+              multiply(scalar) {
+                return new Vector(this.x * scalar, this.y * scalar);
+              }
 
-      dotProduct(vector) {
-        return this.x * vector.x + this.y * vector.y;
-      }
+              dotProduct(vector) {
+                return this.x * vector.x + this.y * vector.y;
+              }
 
-      get magnitude() {
-        return Math.sqrt(this.x ** 2 + this.y ** 2);
-      }
+              get magnitude() {
+                return Math.sqrt(this.x ** 2 + this.y ** 2);
+              }
 
-      get direction() {
-        return Math.atan2(this.x, this.y);
-      }
-    }
+              get direction() {
+                return Math.atan2(this.x, this.y);
+              }
+            }
 
-    class Canvas {
-      constructor(parent = document.body, width = 400, height = 400) {
-        this.canvas = document.createElement('canvas');
-        this.canvas.width = width;
-        this.canvas.height = height;
-        parent.appendChild(this.canvas);
-        this.ctx = this.canvas.getContext('2d');
-      }
+            class Canvas {
+              constructor(parent = document.body, width = 400, height = 400) {
+                this.canvas = document.createElement('canvas');
+                this.canvas.width = width;
+                this.canvas.height = height;
+                parent.appendChild(this.canvas);
+                this.ctx = this.canvas.getContext('2d');
+              }
 
-      sync(state) {
-        this.clearDisplay();
-        this.drawActors(state.actors);
-      }
+              sync(state) {
+                this.clearDisplay();
+                this.drawActors(state.actors);
+              }
 
-      clearDisplay() {
-        this.ctx.fillStyle = 'rgba(255, 255, 255, .4)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-      }
+              clearDisplay() {
+                this.ctx.fillStyle = 'rgba(255, 255, 255, .4)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+              }
 
-      drawActors(actors) {
-        for (let actor of actors) {
-          if (actor.type === 'circle') {
-            this.drawCircle(actor);
-          }
-        }
-      }
+              drawActors(actors) {
+                for (let actor of actors) {
+                  if (actor.type === 'circle') {
+                    this.drawCircle(actor);
+                  }
+                }
+              }
 
-      drawCircle(actor) {
-        this.ctx.beginPath();
-        this.ctx.arc(actor.position.x, actor.position.y, actor.radius, 0, Math.PI * 2);
-        this.ctx.closePath();
-        this.ctx.fillStyle = actor.color;
-        this.ctx.fill();
-      }
-    }
+              drawCircle(actor) {
+                this.ctx.beginPath();
+                this.ctx.arc(actor.position.x, actor.position.y, actor.radius, 0, Math.PI * 2);
+                this.ctx.closePath();
+                this.ctx.fillStyle = actor.color;
+                this.ctx.fill();
+              }
+            }
 
-    class Ball {
-      constructor(config) {
-        Object.assign(this,
-          {
-            id: Math.floor(Math.random() * 1000000),
-            type: 'circle',
-            position: new Vector(100, 100),
-            velocity: new Vector(5, 3),
-            radius: 20,
-            color: 'red',
-            collisions: [],
-          },
-          config
-        );
-      }
+            class Ball {
+              constructor(config) {
+                Object.assign(this,
+                  {
+                    id: Math.floor(Math.random() * 1000000),
+                    type: 'circle',
+                    position: new Vector(100, 100),
+                    velocity: new Vector(5, 3),
+                    radius: 10,
+                    color: 'red',
+                    collisions: [],
+                  },
+                  config
+                );
+              }
 
-      update(state, time, updateId) {
-        if (this.collisions.length > 10) {
-          this.collisions = this.collisions.slice(this.collisions.length - 3);
-        }
+              update(state, time, updateId) {
+                if (this.collisions.length > 10) {
+                  this.collisions = this.collisions.slice(this.collisions.length - 3);
+                }
 
-        const upperLimit = new Vector(state.display.canvas.width - this.radius, state.display.canvas.height - this.radius);
-        const lowerLimit = new Vector(0 + this.radius, 0 + this.radius);
+                const upperLimit = new Vector(state.display.canvas.width - this.radius, state.display.canvas.height - this.radius);
+                const lowerLimit = new Vector(0 + this.radius, 0 + this.radius);
 
-        if (this.position.x >= upperLimit.x || this.position.x <= lowerLimit.x) {
-          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
-        }
+                if (this.position.x >= upperLimit.x || this.position.x <= lowerLimit.x) {
+                  this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+                }
 
-        if (this.position.y >= upperLimit.y || this.position.y <= lowerLimit.y) {
-          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
-        }
+                if (this.position.y >= upperLimit.y || this.position.y <= lowerLimit.y) {
+                  this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+                }
 
-        for (let actor of state.actors) {
-          if (this === actor || this.collisions.includes(actor.id + updateId)) {
-            continue;
-          }
+                for (let actor of state.actors) {
+                  if (this === actor || this.collisions.includes(actor.id + updateId)) {
+                    continue;
+                  }
 
-          const distance = this.position.add(this.velocity).subtract(actor.position.add(actor.velocity)).magnitude;
+                  const distance = this.position.add(this.velocity).subtract(actor.position.add(actor.velocity)).magnitude;
 
-          if (distance <= this.radius + actor.radius) {
-            const v1 = collisionVector(this, actor);
-            const v2 = collisionVector(actor, this);
-            this.velocity = v1;
-            actor.velocity = v2;
-            this.collisions.push(actor.id + updateId);
-            actor.collisions.push(this.id + updateId);
-          }
-        }
+                  if (distance <= this.radius + actor.radius) {
+                    const v1 = collisionVector(this, actor);
+                    const v2 = collisionVector(actor, this);
+                    this.velocity = v1;
+                    actor.velocity = v2;
+                    this.collisions.push(actor.id + updateId);
+                    actor.collisions.push(this.id + updateId);
+                  }
+                }
 
-        const newX = Math.max(Math.min(this.position.x + this.velocity.x, upperLimit.x), lowerLimit.x);
-        const newY = Math.max(Math.min(this.position.y + this.velocity.y, upperLimit.y), lowerLimit.y);
+                const newX = Math.max(Math.min(this.position.x + this.velocity.x, upperLimit.x), lowerLimit.x);
+                const newY = Math.max(Math.min(this.position.y + this.velocity.y, upperLimit.y), lowerLimit.y);
 
-        return new Ball({
-          ...this,
-          position: new Vector(newX, newY),
-        });
-      }
+                return new Ball({
+                  ...this,
+                  position: new Vector(newX, newY),
+                });
+              }
 
-      get area() {
-        return Math.PI * this.radius ** 2;
-      }
+              get area() {
+                return Math.PI * this.radius ** 2;
+              }
 
-      get sphereArea() {
-        return 4 * Math.PI * this.radius ** 2;
-      }
-    }
+              get sphereArea() {
+                return 4 * Math.PI * this.radius ** 2;
+              }
+            }
 
-    const collisionVector = (particle1, particle2) => {
-      return particle1.velocity
-        .subtract(particle1.position
-          .subtract(particle2.position)
-          .multiply(particle1.velocity
-            .subtract(particle2.velocity)
-            .dotProduct(particle1.position.subtract(particle2.position))
-            / particle1.position.subtract(particle2.position).magnitude ** 2
-          )
-          .multiply((2 * particle2.sphereArea) / (particle1.sphereArea + particle2.sphereArea))
-        );
-    };
+            const collisionVector = (particle1, particle2) => {
+              return particle1.velocity
+                .subtract(particle1.position
+                  .subtract(particle2.position)
+                  .multiply(particle1.velocity
+                    .subtract(particle2.velocity)
+                    .dotProduct(particle1.position.subtract(particle2.position))
+                    / particle1.position.subtract(particle2.position).magnitude ** 2
+                  )
+                  .multiply((2 * particle2.sphereArea) / (particle1.sphereArea + particle2.sphereArea))
+                );
+            };
 
-    const isMovingTowards = (particle1, particle2) => {
-      return particle2.position.subtract(particle1.position).dotProduct(particle1.velocity) > 0;
-    };
+            const isMovingTowards = (particle1, particle2) => {
+              return particle2.position.subtract(particle1.position).dotProduct(particle1.velocity) > 0;
+            };
 
-    const runAnimation = animation => {
-      let lastTime = null;
-      const frame = time => {
-        if (lastTime !== null) {
-          const timeStep = Math.min(100, time - lastTime) / 1000;
+            const runAnimation = animation => {
+              let lastTime = null;
+              const frame = time => {
+                if (lastTime !== null) {
+                  const timeStep = Math.min(100, time - lastTime) / 1000;
 
-          // return false from animation to stop
-          if (animation(timeStep) === false) {
-            return;
-          }
-        }
-        lastTime = time;
-        requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    };
+                  // return false from animation to stop
+                  if (animation(timeStep) === false) {
+                    return;
+                  }
+                }
+                lastTime = time;
+                requestAnimationFrame(frame);
+              };
+              requestAnimationFrame(frame);
+            };
 
-    const display = new Canvas(document.getElementById("example-7"), 622, 350);
-    const ball1 = new Ball({
-      position: new Vector(30, 100),
-      velocity: new Vector(2, 3),
-    });
-    const ball2 = new Ball({
-      position: new Vector(200, 100),
-      velocity: new Vector(-1, 3),
-      color: "blue",
-      radius: 10,
-    });
-    const actors = [ball1, ball2];
-    let state = new State(display, actors);
+            const display = new Canvas(document.getElementById("example-7"), 622, 350);
+            const ball1 = new Ball({
+              position: new Vector(40, 100),
+              velocity: new Vector(2, 3),
+              radius: 20,
+            });
+            const ball2 = new Ball({
+              position: new Vector(200, 100),
+              velocity: new Vector(-1, 3),
+              color: "blue",
+            });
+            const actors = [ball1, ball2];
+            let state = new State(display, actors);
 
-    runAnimation((time) => {
-      state = state.update(time);
-      display.sync(state);
-    });
-  `}
+            runAnimation((time) => {
+              state = state.update(time);
+              display.sync(state);
+            });
+          `}
         </ExecuteAnimationScript>
 
         <H2>Final notes</H2>
