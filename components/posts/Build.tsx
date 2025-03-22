@@ -160,6 +160,7 @@ export default function Build() {
         </p>
 
         <BlockCode
+          meta={`javascript title="Array in ServiceWorker"`}
           code={`
 const pagesToCache = [
   {{ with .Site.Pages }}
@@ -184,8 +185,8 @@ self.addEventListener('install', (event) => {
       cache.addAll(pagesToCache);
     })
   );
-});`}
-          meta={`javascript title="Array in ServiceWorker"`}
+});
+          `}
         />
 
         <p>
@@ -243,6 +244,7 @@ self.addEventListener('install', (event) => {
         <p>The entire theme is configurable with a few variables.</p>
 
         <BlockCode
+          meta={`scss title="Theme SCSS"`}
           code={`
 $default-color: #333;
 
@@ -266,8 +268,8 @@ $main-font: Georgia, serif;
 $sub-font: Helvetica, Arial, sans-serif;
 $mono-font: Courier, monospace;
 
-$content-width: 46rem;`}
-          meta={`scss title="Theme SCSS"`}
+$content-width: 46rem;
+          `}
         />
 
         <p>In total, the CSS is 6.4KB (2.3KB after GZIP).</p>
@@ -280,15 +282,16 @@ $content-width: 46rem;`}
         </p>
 
         <BlockCode
+          meta={`javascript title="Navigation Toggle"`}
           code={`
 var navToggle = document.getElementById('nav-toggle');
 navToggle.addEventListener('click', function() {
   document.body.classList.toggle('nav-open');
 });`}
-          meta={`javascript title="Navigation Toggle"`}
         />
 
         <BlockCode
+          meta={`javascript title="Lazyload"`}
           code={`
 window.addEventListener('DOMContentLoaded', lazyload, false);
 function lazyload() {
@@ -303,8 +306,8 @@ function lazyload() {
       img.dataset.src ? img.style.backgroundImage = 'url(' + img.dataset.src + ')' : null;
     }
   }
-}`}
-          meta={`javascript title="Lazyload"`}
+}
+          `}
         />
 
         <H3>A ServiceWorker</H3>
@@ -336,6 +339,7 @@ function lazyload() {
         </p>
 
         <BlockCode
+          meta={`javascript title="Cache with network fallback"`}
           code={`
 self.addEventListener('fetch', (event) => {
   event.respondWith(
@@ -343,8 +347,8 @@ self.addEventListener('fetch', (event) => {
       return response || fetch(event.request);
     })
   );
-});`}
-          meta={`javascript title="Cache with network fallback"`}
+});
+          `}
         />
 
         <p>
@@ -354,6 +358,7 @@ self.addEventListener('fetch', (event) => {
         </p>
 
         <BlockCode
+          meta={`javascript title="Stale-while-revalidate"`}
           code={`
 self.addEventListener('fetch', (event) => {
   const normalizedUrl = new URL(event.request.url);
@@ -369,8 +374,8 @@ self.addEventListener('fetch', (event) => {
       });
     })
   );
-});`}
-          meta={`javascript title="Stale-while-revalidate"`}
+});
+          `}
         />
 
         <p>

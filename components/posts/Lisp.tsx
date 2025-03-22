@@ -86,12 +86,14 @@ export default function Lisp() {
           </p>
 
           <BlockCode
-            code={`; S-expression
+            meta="lisp"
+            code={`
+; S-expression
 ((ab . c) d . nil)
 
 ; M-expression
-eq[x x]`}
-            meta="lisp"
+eq[x x]
+            `}
           />
 
           <p>
@@ -153,12 +155,14 @@ eq[x x]`}
           <p>Checks if an element is a single symbol.</p>
 
           <BlockCode
-            code={`(atom 'x)
+            meta="lisp"
+            code={`
+(atom 'x)
 ; returns t
 
 (atom '(a b))
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <H3 className="font-mono">eq</H3>
@@ -168,7 +172,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(eq 'x 'x)
+            meta="lisp"
+            code={`
+(eq 'x 'x)
 ; returns t
 
 (eq 'x 'y)
@@ -176,8 +182,8 @@ eq[x x]`}
 
 (eq '(a b) '(a b))
 ; (a b) is a list and cannot be evaluated by eq
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <H3 className="font-mono">car</H3>
@@ -187,12 +193,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(car '(x a))
+            meta="lisp"
+            code={`
+(car '(x a))
 ; returns x
 
 (car '((x a) y))
-; returns (x a)`}
-            meta="lisp"
+; returns (x a)
+            `}
           />
 
           <H3 className="font-mono">cdr</H3>
@@ -202,22 +210,26 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(cdr '(x a))
+            meta="lisp"
+            code={`
+(cdr '(x a))
 ; returns (a)
 
 (cdr '((x a) y))
 ; returns (y)
 
 (cdr '((x a) (y b)))
-; returns ((y b))`}
-            meta="lisp"
+; returns ((y b))
+            `}
           />
 
           <H3 className="font-mono">cons</H3>
           <p>Is used to construct a list from atoms or other lists.</p>
 
           <BlockCode
-            code={`(cons 'x 'a)
+            meta="lisp"
+            code={`
+(cons 'x 'a)
 ; returns (x . a)
 ; lists should typically end in nil
 ; so it is better to write (cons x (cons a nil))
@@ -228,8 +240,8 @@ eq[x x]`}
 ; returns ((x a) . y)
 
 (cons '(x a) '(y b))
-; returns ((x a) y b)`}
-            meta="lisp"
+; returns ((x a) y b)
+            `}
           />
 
           <H2>Foundational functions</H2>
@@ -268,15 +280,17 @@ eq[x x]`}
           <p>Evaluates if the expression is empty.</p>
 
           <BlockCode
-            code={`(def _null (x)
+            meta="lisp"
+            code={`
+(def _null (x)
   (is x nil))
 
 (_null nil)
 ; returns t
 
 (_null '(x a))
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <H3 className="font-mono">_and</H3>
@@ -287,15 +301,17 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _and (x y)
+            meta="lisp"
+            code={`
+(def _and (x y)
   (if (is x t) (is y t) t nil))
 
 (_and 'x 'y)
 ; returns t
 
 (_and 'x nil)
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <H3 className="font-mono">_not</H3>
@@ -304,15 +320,17 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _not (x)
+            meta="lisp"
+            code={`
+(def _not (x)
   (if (is x nil) t))
 
 (_not nil)
 ; returns t
 
 (_not 'x)
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <H3 className="font-mono">
@@ -327,7 +345,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _caar (x)
+            meta="lisp"
+            code={`
+(def _caar (x)
   (car (car x)))
 
 (def _cadr (x)
@@ -352,20 +372,22 @@ eq[x x]`}
 ; returns b
 
 (_caddar '((a b c d) (e f g)))
-; returns c`}
-            meta="lisp"
+; returns c
+            `}
           />
 
           <H3 className="font-mono">_append</H3>
           <p>Allows you to join lists.</p>
 
           <BlockCode
-            code={`(def _append (x y)
+            meta="lisp"
+            code={`
+(def _append (x y)
   (if (_null x) y (cons (car x) (_append (cdr x) y))))
 
 (_append '(a b) '(c d))
-; returns (a b c d)`}
-            meta="lisp"
+; returns (a b c d)
+            `}
           />
 
           <H3 className="font-mono">_list</H3>
@@ -383,15 +405,17 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _list (x y)
+            meta="lisp"
+            code={`
+(def _list (x y)
   (cons x (cons y nil)))
 
 (_list 'a 'b)
 ; returns (a b)
 
 (_list '(a b) '(c d))
-; returns ((a b) (c d))`}
-            meta="lisp"
+; returns ((a b) (c d))
+            `}
           />
 
           <H3 className="font-mono">_pair</H3>
@@ -401,15 +425,17 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _pair (x y)
+            meta="lisp"
+            code={`
+(def _pair (x y)
   (if (_and (_null x) (_null y)) nil
       (_and (_not (atom x)) (_not (atom y)))
       (cons (_list (car x) (car y))
             (_pair (cdr x) (cdr y)))))
 
 (_pair '(x y z) '(a b c))
-; returns ((x a) (y b) (z c))`}
-            meta="lisp"
+; returns ((x a) (y b) (z c))
+            `}
           />
 
           <H3 className="font-mono">_assoc</H3>
@@ -419,7 +445,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _assoc (x y)
+            meta="lisp"
+            code={`
+(def _assoc (x y)
   (if (is (caar y) x) (_cadar y)
     (_assoc x (cdr y))))
 
@@ -427,8 +455,8 @@ eq[x x]`}
 ; returns b
 
 (_assoc 'x '((w (a b)) (x (c d)) (y (e f))))
-; returns (c d)`}
-            meta="lisp"
+; returns (c d)
+            `}
           />
 
           <H2>The universal function</H2>
@@ -446,7 +474,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _eval (e a)
+            meta="lisp"
+            code={`
+(def _eval (e a)
   (if
     (atom e) (_assoc e a)
     (atom (car e)) (if
@@ -478,8 +508,8 @@ eq[x x]`}
 (def _evlis (m a)
   (if (_null m) nil
       (cons (_eval  (car m) a)
-            (_evlis (cdr m) a))))`}
-            meta="lisp"
+            (_evlis (cdr m) a))))
+            `}
           />
 
           <p>
@@ -510,12 +540,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval 'x '((x a) (y b)))
+            meta="lisp"
+            code={`
+(_eval 'x '((x a) (y b)))
 ; returns a
 
 (_eval 'y '((x a) (y b)))
-; returns b`}
-            meta="lisp"
+; returns b
+            `}
           />
 
           <p>
@@ -532,13 +564,15 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(quote x) nil)
+            meta="lisp"
+            code={`
+(_eval '(quote x) nil)
 ; nil is needed because _eval requires two arguments
 ; returns x
 
 (_eval '(quote (x a)) nil)
-; returns (x a)`}
-            meta="lisp"
+; returns (x a)
+            `}
           />
 
           <p>
@@ -560,12 +594,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(atom x) '((x y)))
+            meta="lisp"
+            code={`
+(_eval '(atom x) '((x y)))
 ; returns t
 
 (_eval '(atom x) '((x (a b))))
-; returns nil`}
-            meta="lisp"
+; returns nil
+            `}
           />
 
           <p>
@@ -582,13 +618,15 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(atom x) '((x y)))
+            meta="lisp"
+            code={`
+(_eval '(atom x) '((x y)))
 ; (atom (_eval (_cadr e) a))
 ; (atom (_eval  x ((x y))))
 ; (atom (_assoc x ((x y))))
 ; (atom y)
-; returns t`}
-            meta="lisp"
+; returns t
+            `}
           />
 
           <p>
@@ -599,12 +637,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(car x) '((x (a b c))))
+            meta="lisp"
+            code={`
+(_eval '(car x) '((x (a b c))))
 ; returns a
 
 (_eval '(cdr x) '((x (a b c))))
-; returns (b c)`}
-            meta="lisp"
+; returns (b c)
+            `}
           />
 
           <p>
@@ -615,12 +655,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(eq x y) '((x a) (y a)))
+            meta="lisp"
+            code={`
+(_eval '(eq x y) '((x a) (y a)))
 ; returns t
 
 (_eval '(cons x y) '((x a) (y b)))
-; returns (a . b)`}
-            meta="lisp"
+; returns (a . b)
+            `}
           />
 
           <p>
@@ -632,7 +674,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _evcon (c a)
+            meta="lisp"
+            code={`
+(def _evcon (c a)
   (if (_eval (_caar c) a)
       (_eval (_cadar c) a)
       (_evcon (cdr c) a)))
@@ -641,8 +685,8 @@ eq[x x]`}
         '((c1 (a b)) (a1 not_atom)
           (c2 (c d)) (a2 still_not_atom)
           (c3 e)     (a3 is_atom)))
-; returns is_atom`}
-            meta="lisp"
+; returns is_atom
+            `}
           />
 
           <p>
@@ -651,12 +695,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(cond ((atom c1) a1) ((atom c2) a2) ((atom c3) a3))
+            meta="lisp"
+            code={`
+(_eval '(cond ((atom c1) a1) ((atom c2) a2) ((atom c3) a3))
        '((c1 (a b)) (a1 not_atom)
          (c2 (c d)) (a2 still_not_atom)
          (c3 e)     (a3 is_atom)))
-; returns is_atom`}
-            meta="lisp"
+; returns is_atom
+            `}
           />
 
           <H3>
@@ -681,13 +727,15 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '((lambda (param)
+            meta="lisp"
+            code={`
+(_eval '((lambda (param)
            (cond ((atom param) (quote is_atom))
                  ((quote t)    (quote not_atom))))
           arg)
        '((arg (a b))))
-; returns not_atom`}
-            meta="lisp"
+; returns not_atom
+           `}
           />
 
           <p>
@@ -703,10 +751,13 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '(cond ((atom param) (quote is_atom))
+            meta="lisp"
+            code={`
+(_eval '(cond ((atom param) (quote is_atom))
               ((quote t)    (quote not_atom)))
        '((param (a b)) (arg (a b))))
-; returns not_atom`}
+; returns not_atom
+            `}
           />
 
           <p>
@@ -742,13 +793,15 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '((label ff (lambda (x)
+            meta="lisp"
+            code={`
+(_eval '((label ff (lambda (x)
                      (cond ((atom x) x)
                            ((quote t) (ff (car x))))))
          y)
        '((y ((a b) c))))
-; returns a`}
-            meta="lisp"
+; returns a
+            `}
           />
 
           <p>
@@ -761,7 +814,9 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '((lambda (x)
+            meta="lisp"
+            code={`
+(_eval '((lambda (x)
            (cond ((atom x) x)
                  ((quote t) (ff (car x)))))
          y)
@@ -769,8 +824,8 @@ eq[x x]`}
                (cond ((atom x) x)
                      ((quote t) (ff (car x)))))))
          (y ((a b) c))))
-; returns a`}
-            meta="lisp"
+; returns a
+            `}
           />
 
           <p>
@@ -799,13 +854,15 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(def _appq (m)
+            meta="lisp"
+            code={`
+(def _appq (m)
   (if (_null m) nil (cons (_list 'quote (car m))
                           (_appq (cdr m)))))
 
 (def _apply (f args)
-  (_eval (cons f (_appq args)) nil))`}
-            meta="lisp"
+  (_eval (cons f (_appq args)) nil))
+            `}
           />
 
           <p>
@@ -814,11 +871,13 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_apply '(label ff (lambda (x)
-                     (cond ((atom x) x)
-                           ((quote t) (ff (car x))))))
-        '(a b))`}
             meta="lisp"
+            code={`
+(_apply '(label ff (lambda (x)
+                    (cond ((atom x) x)
+                          ((quote t) (ff (car x))))))
+ '(a b))
+            `}
           />
 
           <p>
@@ -826,12 +885,14 @@ eq[x x]`}
           </p>
 
           <BlockCode
-            code={`(_eval '((label ff (lambda (x)
+            meta="lisp"
+            code={`
+(_eval '((label ff (lambda (x)
                      (cond ((atom x) x)
                            ((quote t) (ff (car x))))))
           (quote a) (quote b))
-       'nil)`}
-            meta="lisp"
+       'nil)
+            `}
           />
 
           <p>

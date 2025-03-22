@@ -29,7 +29,9 @@ export async function BlockCode({
   meta?: string;
   className?: string;
 }) {
-  const cleanCode = code.replace(/^(\r\n|\r|\n)/, "");
+  const cleanCode = code
+    .replace(/^(\r\n|\r|\n)/, "")
+    .replace(/(\r\n|\r|\n)\s*$/, "");
   const highlightedCode = await highlightCode(
     `\`\`\`${meta}\n${cleanCode}\n\`\`\``,
   );

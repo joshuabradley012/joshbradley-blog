@@ -103,6 +103,20 @@
   [data-rmiz-content="found"] [data-zoom] {
     @apply !cursor-pointer;
   }
+
+  .katex-display {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-200) var(--color-neutral-50);
+    @apply overflow-x-auto overflow-y-hidden;
+  }
+
+  .katex-display::-webkit-scrollbar {
+    @apply h-1 bg-transparent;
+  }
+
+  .katex-display::-webkit-scrollbar-thumb {
+    @apply rounded-none bg-neutral-200;
+  }
 }
 
 @layer components {

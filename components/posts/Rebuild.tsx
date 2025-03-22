@@ -154,7 +154,8 @@ export async function InlineCode({
       }}
     />
   );
-}`}
+}
+            `}
           />
 
           <p>

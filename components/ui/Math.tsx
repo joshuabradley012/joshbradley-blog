@@ -1,24 +1,23 @@
 import React, { useMemo } from "react";
 import KaTeX from "katex";
 import { cn } from "@/lib/utils";
+
 const createMathComponent = (
   Component: React.ComponentType<{ html: string }>,
   { displayMode }: { displayMode: boolean },
 ) => {
   const MathComponent = ({
-    children,
     errorColor,
     math,
     renderError = (error: Error) => (
       <span className="text-red-500">{error.message}</span>
     ),
   }: {
-    children?: string;
     errorColor?: string;
     math?: string;
     renderError?: (error: Error) => React.ReactNode;
   }) => {
-    const formula = math ?? children;
+    const formula = math;
 
     const { html, error } = useMemo(() => {
       try {
