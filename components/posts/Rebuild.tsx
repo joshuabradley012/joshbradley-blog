@@ -7,7 +7,7 @@ import BlockQuote from "@/components/ui/BlockQuote";
 import Figure from "@/components/ui/Figure";
 import { Ul, Ol, Li } from "@/components/ui/List";
 import InlineLink from "@/components/ui/InlineLink";
-import OGImage from "@/public/og-image.png";
+import ogImage from "@/public/og-image.png";
 import {
   FootnotesProvider,
   FootnoteLink,
@@ -179,7 +179,7 @@ export async function InlineCode({
             we need.
           </p>
 
-          <Figure src={OGImage} alt="OG Image" caption="This is a caption" />
+          <Figure src={ogImage} alt="OG Image" caption="This is a caption" />
 
           <h2 className="mt-8 font-medium text-black">
             Adding Custom Interactions

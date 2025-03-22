@@ -12,10 +12,10 @@ export default function Home() {
           philosophy, technology, spirituality, business, and politics.
         </p>
         <p>
-          Currently I am building{" "}
-          <InlineLink href="https://celest.tech">Celest</InlineLink>, a
-          marketing tool for AI. I hope to dedicate my time towards gaining and
-          sharing knowledge to create value for others.
+          Currently, I am building{" "}
+          <InlineLink href="https://celest.tech">Celest</InlineLink>, an
+          AI-driven software for modeling content. I hope to dedicate my time
+          towards gaining and sharing knowledge to create value for others.
         </p>
         <p>
           I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO employee,

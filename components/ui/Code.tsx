@@ -29,7 +29,10 @@ export async function BlockCode({
   meta?: string;
   className?: string;
 }) {
-  const highlightedCode = await highlightCode(`\`\`\`${meta}\n${code}\n\`\`\``);
+  const cleanCode = code.replace(/^(\r\n|\r|\n)/, "");
+  const highlightedCode = await highlightCode(
+    `\`\`\`${meta}\n${cleanCode}\n\`\`\``,
+  );
   return (
     <div
       className={cn("my-8 text-xs", className)}

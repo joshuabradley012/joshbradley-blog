@@ -6,7 +6,7 @@ export function Ul({
   ...props
 }: React.HTMLAttributes<HTMLUListElement>) {
   return (
-    <ul className={cn("list-disc pl-4", className)} {...props}>
+    <ul className={cn("list-disc space-y-1 pl-4", className)} {...props}>
       {children}
     </ul>
   );
@@ -18,7 +18,7 @@ export function Ol({
   ...props
 }: React.HTMLAttributes<HTMLOListElement>) {
   return (
-    <ol className={cn("list-decimal pl-4", className)} {...props}>
+    <ol className={cn("list-decimal space-y-1 pl-4", className)} {...props}>
       {children}
     </ol>
   );

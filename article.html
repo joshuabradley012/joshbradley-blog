@@ -1,524 +1,511 @@
-<article class="single" itemscope="" itemtype="https://schema.org/CreativeWork">
-  <div itemprop="text">
-    <p>
-      This website is <em>fast</em>. The homepage loads in 50ms and is only 9KB
-      (after GZIP and caching).
-    </p>
-    <p>
-      Google Analytics is 17.7KB, this
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://abs.twimg.com/responsive-web/web/heart_animation.5c9f8e84.png"
-        >PNG</a
-      >
-      Twitter uses is 10KB, and blinking takes 100-400ms.
-    </p>
-    <p>
-      There were sacrifices. But it is an example of what websites could be in
-      stark contrast with what they have become.
-    </p>
-    <h2 id="why-speed-matters">Why speed matters</h2>
-    <p>
-      Reality has no latency. Things <em>feel</em> wrong when there is a delay
-      between our actions and their response. Speed is the most important aspect
-      of user experience.
-    </p>
-    <p>
-      But as computers have become more powerful, they haven’t gotten faster.
-      They’re bloated.
-    </p>
-    <p>
-      In a
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://tonsky.me/blog/disenchantment/"
-        >magnificent rant</a
-      >, Nikkita Tonsky wrote:
-    </p>
-    <blockquote>
-      <p>
-        Windows 95 was 30MB. Today we have web pages heavier than that! Windows
-        10 is 4GB, which is 133 times as big. But is it 133 times as superior?
-      </p>
-    </blockquote>
-    <p>
-      Frameworks like React address speed by controlling the DOM. At the cost of
-      100KB of JavaScript, wasted CPU cycles, and complexity.
-    </p>
-    <p>
-      Static HTML is the soul of the internet. It is ubiquitous, easy to
-      understand, and easy for search engines to crawl. It is the ideal format
-      for any website. Look at
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://motherfuckingwebsite.com/"
-        >this motherfucking website</a
-      >.
-    </p>
-    <p>
-      While I wasn’t as extreme, this website is pretty close. And I love it.
-    </p>
-    <h2 id="design-choices">Design choices</h2>
-    <p>
-      There are no frameworks, web fonts, or libraries on this website.
-      Everything was handwritten. If it didn’t improve the user experience, it
-      wasn’t included.
-    </p>
-    <p>
-      In particular, there aren’t any analytics on this page. If I want to know
-      traffic metrics and snoop IP addresses, I can check the server logs. I’m
-      not going to invade your privacy with an inconvenient script. Or feed more
-      data to our Google overlord.
-    </p>
-    <p>
-      I’m inspired by
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="http://www.paulgraham.com/articles.html"
-        >Paul Graham</a
-      >
-      and
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://daringfireball.net/"
-        >John Gruber's</a
-      >
-      simplicity. I learned typography from
-      <a rel="noopener noreferrer" target="_blank" href="https://seths.blog/"
-        >Seth Godin</a
-      >,
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://practicaltypography.com/"
-        >Butterick's Practical Typography</a
-      >, and
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://www.nytimes.com/"
-        >The New York Times</a
-      >. I hoped to capture their mastery.
-    </p>
-    <p>This design intends to last.</p>
-    <h2 id="the-stack">The stack</h2>
-    <ol>
-      <li><a href="#hugo">Hugo</a></li>
-      <li><a href="#static-assets">Static assets</a></li>
-      <li><a href="#custom-scss">Custom SCSS</a></li>
-      <li><a href="#minimal-javascript">Minimal JavaScript</a></li>
-      <li><a href="#a-serviceworker">A ServiceWorker</a></li>
-      <li><a href="#aws-hosting">AWS hosting</a></li>
-    </ol>
-    <p>
-      Check out the
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://github.com/joshuabradley012/joshbradley-hugo"
-        >repo</a
-      >
-      (I’ll turn it into a theme at some point).
-    </p>
-    <h3 id="hugo">Hugo</h3>
-    <p>
-      I chose Hugo because of the control and productivity it provides. I was
-      able to create a minimal, semantic structure laden with
-      <a rel="noopener noreferrer" target="_blank" href="https://schema.org/"
-        >schema markup</a
-      >.
-    </p>
-    <p>
-      Hugo’s ability to generate and minify assets in any language removed my
-      need for build tools. Keeping my codebase uniform, simple, and fast.
-    </p>
-    <p>
-      In this case, I used it to build an array of cacheable pages for a
-      ServiceWorker.
-    </p>
-    <h6 id="array-in-serviceworker">Array in ServiceWorker</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-javascript" data-lang="javascript"><span style="display:flex"><span><span style="color:#000;font-weight:700">const</span> pagesToCache <span style="color:#000;font-weight:700">=</span> [
-</span></span><span style="display:flex"><span>  {{ <span style="color:#000;font-weight:700">with</span> .Site.Pages }}
-</span></span><span style="display:flex"><span>    {{ range  (where . <span style="color:#d14">"Type"</span> <span style="color:#d14">"page"</span>) }}
-</span></span><span style="display:flex"><span>      <span style="color:#d14">'{{ .RelPermalink }}'</span>,
-</span></span><span style="display:flex"><span>    {{ end }}
-</span></span><span style="display:flex"><span>    {{ range (where . <span style="color:#d14">"Kind"</span> <span style="color:#d14">"taxonomyTerm"</span>) }}
-</span></span><span style="display:flex"><span>      <span style="color:#d14">'{{ .RelPermalink }}'</span>,
-</span></span><span style="display:flex"><span>    {{ end }}
-</span></span><span style="display:flex"><span>    {{ range (where . <span style="color:#d14">"Kind"</span> <span style="color:#d14">"taxonomy"</span>) }}
-</span></span><span style="display:flex"><span>      <span style="color:#d14">'{{ .RelPermalink }}'</span>,
-</span></span><span style="display:flex"><span>    {{ end }}
-</span></span><span style="display:flex"><span>    {{ range (where . <span style="color:#d14">"Type"</span> <span style="color:#d14">"post"</span>) }}
-</span></span><span style="display:flex"><span>      <span style="color:#d14">'{{ .RelPermalink }}'</span>,
-</span></span><span style="display:flex"><span>    {{ end }}
-</span></span><span style="display:flex"><span>  {{ end }}
-</span></span><span style="display:flex"><span>];
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span>self.addEventListener(<span style="color:#d14">'install'</span>, (event) =&gt; {
-</span></span><span style="display:flex"><span>  event.waitUntil(
-</span></span><span style="display:flex"><span>    caches.open(<span style="color:#d14">'cacheName'</span>).then(<span style="color:#000;font-weight:700">function</span>(cache) {
-</span></span><span style="display:flex"><span>      cache.addAll(pagesToCache);
-</span></span><span style="display:flex"><span>    })
-</span></span><span style="display:flex"><span>  );
-</span></span><span style="display:flex"><span>});</span></span></code></pre>
-    </div>
-    <p>
-      With Hugo’s power and shallow learning curve, I was able to complete the
-      base of this website in one week.
-    </p>
-    <h3 id="static-assets">Static assets</h3>
-    <p>
-      I mentioned that I didn’t use any web fonts. I lied. I created one with
-      <a rel="noopener noreferrer" target="_blank" href="http://fontello.com/"
-        >Fontello</a
-      >
-      for social media icons. Using <code>woff2</code> was only 1KB larger than
-      SVG icons with better extensibility.
-    </p>
-    <p>
-      Because I handpicked icons, the entire font is only 3.1KB. Compare that to
-      FontAwesome’s 161KB. Plus another 70-120KB for every font-weight you
-      include.
-    </p>
-    <p>
-      The logo is a single path SVG, made on a 16pt grid and minified with one
-      decimal precision. The result is 399B.
-    </p>
-    <p>
-      I used Georgia for the body, Helvetica for headings and navigation, and
-      Courier for code. These are all
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://www.cssfontstack.com/"
-        >websafe fonts</a
-      >.
-    </p>
-    <h3 id="custom-scss">Custom SCSS</h3>
-    <p>
-      The layout is very simple, two containers one fixed one relative. I didn’t
-      need Bootstrap, only a few lines of CSS. I converted my code to SCSS while
-      avoiding nested selector hell.
-    </p>
-    <p>
-      I gave special attention to the typography. Using many shades of grey to
-      create a subtle balance of contrast. It strives to be easy on the eyes
-      while drawing attention to important sections.
-    </p>
-    <p>
-      Everything uses <code>rem</code> and <code>em</code> units for a
-      responsive, accessible design. Vision impaired users can adjust this site
-      without disrupting the typography.
-    </p>
-    <p>The entire theme is configurable with a few variables.</p>
-    <h6 id="theme-scss">Theme SCSS</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-scss" data-lang="scss"><span style="display:flex"><span><span style="color:teal">$default-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#333</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$dark-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#121212</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$darker-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#000</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$slightly-light-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#555</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$light-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#666</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$lighter-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#777</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$lightest-color</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#999</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$nav-active-background</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#f7f7f7</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$code-background</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#f0f0f0</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$light-border</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#ddd</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$dark-border</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#ccc</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$white</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">#fff</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$main-font</span><span style="color:#000;font-weight:700">:</span> Georgia<span style="color:#000;font-weight:700">,</span> <span style="color:purple">serif</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$sub-font</span><span style="color:#000;font-weight:700">:</span> Helvetica<span style="color:#000;font-weight:700">,</span> Arial<span style="color:#000;font-weight:700">,</span> <span style="color:purple">sans-serif</span>;
-</span></span><span style="display:flex"><span><span style="color:teal">$mono-font</span><span style="color:#000;font-weight:700">:</span> Courier<span style="color:#000;font-weight:700">,</span> <span style="color:purple">monospace</span>;
-</span></span><span style="display:flex"><span>
-</span></span><span style="display:flex"><span><span style="color:teal">$content-width</span><span style="color:#000;font-weight:700">:</span> <span style="color:#099">46</span><span style="color:#458;font-weight:700">rem</span>;</span></span></code></pre>
-    </div>
-    <p>In total, the CSS is 6.4KB (2.3KB after GZIP).</p>
-    <h3 id="minimal-javascript">Minimal JavaScript</h3>
-    <p>
-      Aside from the ServiceWorker, this is all I used. A simple click listener
-      to toggle the <code>nav-open</code> class, and a function to lazyload
-      images.
-    </p>
-    <h6 id="navigation-toggle">Navigation Toggle</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-javascript" data-lang="javascript"><span style="display:flex"><span><span style="color:#000;font-weight:700">var</span> navToggle <span style="color:#000;font-weight:700">=</span> <span style="color:#0086b3">document</span>.getElementById(<span style="color:#d14">'nav-toggle'</span>);
-</span></span><span style="display:flex"><span>navToggle.addEventListener(<span style="color:#d14">'click'</span>, <span style="color:#000;font-weight:700">function</span>() {
-</span></span><span style="display:flex"><span>  <span style="color:#0086b3">document</span>.body.classList.toggle(<span style="color:#d14">'nav-open'</span>);
-</span></span><span style="display:flex"><span>});</span></span></code></pre>
-    </div>
-    <h6 id="lazyload">Lazyload</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-javascript" data-lang="javascript"><span style="display:flex"><span><span style="color:#0086b3">window</span>.addEventListener(<span style="color:#d14">'DOMContentLoaded'</span>, lazyload, <span style="color:#000;font-weight:700">false</span>);
-</span></span><span style="display:flex"><span><span style="color:#000;font-weight:700">function</span> lazyload() {
-</span></span><span style="display:flex"><span>  <span style="color:#000;font-weight:700">var</span> imgs <span style="color:#000;font-weight:700">=</span> <span style="color:#0086b3">document</span>.getElementsByClassName(<span style="color:#d14">'lazyload'</span>);
-</span></span><span style="display:flex"><span>  <span style="color:#000;font-weight:700">for</span> (<span style="color:#000;font-weight:700">var</span> i <span style="color:#000;font-weight:700">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:700">&lt;</span> imgs.length; i<span style="color:#000;font-weight:700">++</span>) {
-</span></span><span style="display:flex"><span>    <span style="color:#000;font-weight:700">var</span> img <span style="color:#000;font-weight:700">=</span> imgs[i];
-</span></span><span style="display:flex"><span>    <span style="color:#000;font-weight:700">if</span> (img.nodeName <span style="color:#000;font-weight:700">===</span> <span style="color:#d14">'IMG'</span>) {
-</span></span><span style="display:flex"><span>      img.addEventListener(<span style="color:#d14">'load'</span>, <span style="color:#000;font-weight:700">function</span>() { <span style="color:#000;font-weight:700">this</span>.className <span style="color:#000;font-weight:700">+=</span> <span style="color:#d14">' loaded'</span> });
-</span></span><span style="display:flex"><span>      img.dataset.src <span style="color:#000;font-weight:700">?</span> img.src <span style="color:#000;font-weight:700">=</span> img.dataset.src <span style="color:#000;font-weight:700">:</span> <span style="color:#000;font-weight:700">null</span>;
-</span></span><span style="display:flex"><span>      img.dataset.srcset <span style="color:#000;font-weight:700">?</span> img.srcset <span style="color:#000;font-weight:700">=</span> img.dataset.srcset <span style="color:#000;font-weight:700">:</span> <span style="color:#000;font-weight:700">null</span>;
-</span></span><span style="display:flex"><span>    } <span style="color:#000;font-weight:700">else</span> {
-</span></span><span style="display:flex"><span>      img.dataset.src <span style="color:#000;font-weight:700">?</span> img.style.backgroundImage <span style="color:#000;font-weight:700">=</span> <span style="color:#d14">'url('</span> <span style="color:#000;font-weight:700">+</span> img.dataset.src <span style="color:#000;font-weight:700">+</span> <span style="color:#d14">')'</span> <span style="color:#000;font-weight:700">:</span> <span style="color:#000;font-weight:700">null</span>;
-</span></span><span style="display:flex"><span>    }
-</span></span><span style="display:flex"><span>  }
-</span></span><span style="display:flex"><span>}</span></span></code></pre>
-    </div>
-    <h3 id="a-serviceworker">A ServiceWorker</h3>
-    <p>
-      Creating a ServiceWorker was the most complex piece of this website. It
-      took me about 1/3<sup>rd</sup> of the total development time, but it was
-      worth learning.
-    </p>
-    <p>
-      I could have kept it simple. The “stale-while-revalidate” pattern outlined
-      in
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook"
-        >Google's Offline Cookbook</a
-      >
-      would have been enough. You might have picked up, I rarely do things the
-      easy way.
-    </p>
-    <p>
-      Instead, there are three different cache patterns. The first load imports
-      all assets. Then the ServiceWorker takes control.
-    </p>
-    <p>
-      Static assets are the simplest, they respond from the cache with a
-      fallback to the network. That way the network isn’t called until the cache
-      is invalid.
-    </p>
-    <h6 id="cache-with-network-fallback">Cache with network fallback</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-javascript" data-lang="javascript"><span style="display:flex"><span>self.addEventListener(<span style="color:#d14">'fetch'</span>, (event) =&gt; {
-</span></span><span style="display:flex"><span>  event.respondWith(
-</span></span><span style="display:flex"><span>    caches.match(normalizedUrl).then(<span style="color:#000;font-weight:700">function</span>(response) {
-</span></span><span style="display:flex"><span>      <span style="color:#000;font-weight:700">return</span> response <span style="color:#000;font-weight:700">||</span> fetch(event.request);
-</span></span><span style="display:flex"><span>    })
-</span></span><span style="display:flex"><span>  );
-</span></span><span style="display:flex"><span>});</span></span></code></pre>
-    </div>
-    <p>
-      Pages have a more complex pattern, imitating HTTP’s
-      “stale-while-revalidate” policy. The user experiences an instant load
-      while the resource updates for the next visit.
-    </p>
-    <h6 id="stale-while-revalidate">Stale-while-revalidate</h6>
-    <div class="highlight">
-      <pre
-        tabindex="0"
-        style="
-          background-color: #fff;
-          -moz-tab-size: 2;
-          -o-tab-size: 2;
-          tab-size: 2;
-        "
-      ><code class="language-javascript" data-lang="javascript"><span style="display:flex"><span>self.addEventListener(<span style="color:#d14">'fetch'</span>, (event) =&gt; {
-</span></span><span style="display:flex"><span>  <span style="color:#000;font-weight:700">const</span> normalizedUrl <span style="color:#000;font-weight:700">=</span> <span style="color:#000;font-weight:700">new</span> URL(event.request.url);
-</span></span><span style="display:flex"><span>  normalizedUrl.search <span style="color:#000;font-weight:700">=</span> <span style="color:#d14">''</span>;
-</span></span><span style="display:flex"><span>  event.respondWith(
-</span></span><span style="display:flex"><span>    caches.open(cacheName).then((cache) =&gt; {
-</span></span><span style="display:flex"><span>      <span style="color:#000;font-weight:700">return</span> cache.match(normalizedUrl).then((response) =&gt; {
-</span></span><span style="display:flex"><span>        <span style="color:#000;font-weight:700">let</span> fetchPromise <span style="color:#000;font-weight:700">=</span> fetch(normalizedUrl).then((networkResponse) =&gt; {
-</span></span><span style="display:flex"><span>          cache.put(normalizedUrl, networkResponse.clone());
-</span></span><span style="display:flex"><span>          <span style="color:#000;font-weight:700">return</span> networkResponse;
-</span></span><span style="display:flex"><span>        });
-</span></span><span style="display:flex"><span>        <span style="color:#000;font-weight:700">return</span> response <span style="color:#000;font-weight:700">||</span> fetchPromise;
-</span></span><span style="display:flex"><span>      });
-</span></span><span style="display:flex"><span>    })
-</span></span><span style="display:flex"><span>  );
-</span></span><span style="display:flex"><span>});</span></span></code></pre>
-    </div>
-    <p>
-      The pièce de résistance, a cache then update with network policy within
-      static HTML. Keeping the homepage fresh.
-    </p>
-    <p>The pattern goes like this.</p>
-    <figure>
-      <a
-        href="https://joshbradley.me/images/cache-then-network.svg"
-        target="blank"
-        title="Cache then network diagram"
-      >
-        <img
-          data-src="https://joshbradley.me/images/cache-then-network.svg"
-          class="lazyload loaded"
-          alt="Cache then network diagram"
-          src="https://joshbradley.me/images/cache-then-network.svg"
-        />
-      </a>
-      <figcaption><h4>Cache then network diagram</h4></figcaption>
-    </figure>
-    <p>
-      You can find the source code in the
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="https://github.com/joshuabradley012/joshbradley-hugo/tree/master/assets/js"
-        >repo</a
-      >.
-    </p>
-    <h3 id="aws-hosting">AWS hosting</h3>
-    <p>
-      This is an S3 bucket served through Cloudfront routed through a Route53
-      domain. It sounds simple but learning AWS is intimidating. Their platform
-      is dense and prickly.
-    </p>
-    <p>Here is some helpful documentation:</p>
-    <ol>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html"
-          >Domain names you can register with Route53</a
-        >
-      </li>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html"
-          >Routing Route53 to Cloudfront</a
-        >
-      </li>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/"
-          >Serving a static S3 website with Cloudfront</a
-        >
-      </li>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://stevepapa.com/how-to-specify-a-default-root-object-for-static-website-subdirectories-on-aws-cloudfront/"
-        >
-          Allowing directory paths with S3 and Cloudfront (without a Lambda)
-        </a>
-      </li>
-      <li>
-        Setting up the AWS CLI (for Hugo deployments)
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html"
-          >install</a
-        >
-        and
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html"
-          >credentials</a
-        >
-      </li>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html"
-          >Invalidating Cloudfront</a
-        >
-      </li>
-      <li>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://stackoverflow.com/questions/10435334/set-cache-control-for-entire-s3-bucket-automatically-using-bucket-policies"
-          >Setting cache control on all S3 items</a
-        >
-      </li>
-    </ol>
-    <p>
-      I also created an email with
-      <abbr title="Simple Email Service">SES</abbr> that routes messages to my
-      Gmail. An S3 bucket stores emails and a Lambda function sends them.
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href="http://www.daniloaz.com/en/use-gmail-with-your-own-domain-for-free-thanks-to-amazon-ses-lambda/"
-        >Daniel Lopez</a
-      >
-      has a useful guide.
-    </p>
-    <p>
-      The only expense is my domain name. When I start to get traffic, I can
-      scale for cheap.
-    </p>
-    <h2 id="the-result">The result</h2>
-    <p>This page gets a perfect 100 for performance in Chrome Lighthouse.</p>
-    <p>
-      SEO and best practices are at 100, and it’s a PWA. Accessibility scored a
-      93 because of the light grey used in meta data. If I were to add a
-      contrast option, it would be a “perfect” website.
-    </p>
-    <p>
-      Chasing arbitrary numbers is pointless without purpose. This wasn’t
-      pointless. This website achieves everything I need and does it cleanly.
-      The user experience is pristine. The typography is delightful. The
-      structure is meaningful.
-    </p>
-    <p>Good design is less design.</p>
-  </div>
-  <small class="meta tags" itemprop="keywords">
-    <a rel="bookmark" href="https://joshbradley.me/tags/hugo/"
-      ><span itemprop="name">Hugo</span></a
+<p>
+  This website is <em>fast</em>. The homepage loads in 50ms and is only 9KB
+  (after GZIP and caching).
+</p>
+<p>
+  Google Analytics is 17.7KB, this
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://abs.twimg.com/responsive-web/web/heart_animation.5c9f8e84.png"
+    >PNG</a
+  >
+  Twitter uses is 10KB, and blinking takes 100-400ms.
+</p>
+<p>
+  There were sacrifices. But it is an example of what websites could be in stark
+  contrast with what they have become.
+</p>
+<h2 id="why-speed-matters">Why speed matters</h2>
+<p>
+  Reality has no latency. Things <em>feel</em> wrong when there is a delay
+  between our actions and their response. Speed is the most important aspect of
+  user experience.
+</p>
+<p>
+  But as computers have become more powerful, they haven’t gotten faster.
+  They’re bloated.
+</p>
+<p>
+  In a
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://tonsky.me/blog/disenchantment/"
+    >magnificent rant</a
+  >, Nikkita Tonsky wrote:
+</p>
+<blockquote>
+  <p>
+    Windows 95 was 30MB. Today we have web pages heavier than that! Windows 10
+    is 4GB, which is 133 times as big. But is it 133 times as superior?
+  </p>
+</blockquote>
+<p>
+  Frameworks like React address speed by controlling the DOM. At the cost of
+  100KB of JavaScript, wasted CPU cycles, and complexity.
+</p>
+<p>
+  Static HTML is the soul of the internet. It is ubiquitous, easy to understand,
+  and easy for search engines to crawl. It is the ideal format for any website.
+  Look at
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://motherfuckingwebsite.com/"
+    >this motherfucking website</a
+  >.
+</p>
+<p>While I wasn’t as extreme, this website is pretty close. And I love it.</p>
+<h2 id="design-choices">Design choices</h2>
+<p>
+  There are no frameworks, web fonts, or libraries on this website. Everything
+  was handwritten. If it didn’t improve the user experience, it wasn’t included.
+</p>
+<p>
+  In particular, there aren’t any analytics on this page. If I want to know
+  traffic metrics and snoop IP addresses, I can check the server logs. I’m not
+  going to invade your privacy with an inconvenient script. Or feed more data to
+  our Google overlord.
+</p>
+<p>
+  I’m inspired by
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="http://www.paulgraham.com/articles.html"
+    >Paul Graham</a
+  >
+  and
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://daringfireball.net/"
+    >John Gruber's</a
+  >
+  simplicity. I learned typography from
+  <a rel="noopener noreferrer" target="_blank" href="https://seths.blog/"
+    >Seth Godin</a
+  >,
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://practicaltypography.com/"
+    >Butterick's Practical Typography</a
+  >, and
+  <a rel="noopener noreferrer" target="_blank" href="https://www.nytimes.com/"
+    >The New York Times</a
+  >. I hoped to capture their mastery.
+</p>
+<p>This design intends to last.</p>
+<h2 id="the-stack">The stack</h2>
+<ol>
+  <li><a href="#hugo">Hugo</a></li>
+  <li><a href="#static-assets">Static assets</a></li>
+  <li><a href="#custom-scss">Custom SCSS</a></li>
+  <li><a href="#minimal-javascript">Minimal JavaScript</a></li>
+  <li><a href="#a-serviceworker">A ServiceWorker</a></li>
+  <li><a href="#aws-hosting">AWS hosting</a></li>
+</ol>
+<p>
+  Check out the
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://github.com/joshuabradley012/joshbradley-hugo"
+    >repo</a
+  >
+  (I’ll turn it into a theme at some point).
+</p>
+<h3 id="hugo">Hugo</h3>
+<p>
+  I chose Hugo because of the control and productivity it provides. I was able
+  to create a minimal, semantic structure laden with
+  <a rel="noopener noreferrer" target="_blank" href="https://schema.org/"
+    >schema markup</a
+  >.
+</p>
+<p>
+  Hugo’s ability to generate and minify assets in any language removed my need
+  for build tools. Keeping my codebase uniform, simple, and fast.
+</p>
+<p>
+  In this case, I used it to build an array of cacheable pages for a
+  ServiceWorker.
+</p>
+<h6 id="array-in-serviceworker">Array in ServiceWorker</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+const pagesToCache = [
+  {{ with .Site.Pages }}
+    {{ range  (where . "Type" "page") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Kind" "taxonomyTerm") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Kind" "taxonomy") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Type" "post") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+  {{ end }}
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('cacheName').then(function(cache) {
+      cache.addAll(pagesToCache);
+    })
+  );
+});
+      </code></pre>
+</div>
+<p>
+  With Hugo’s power and shallow learning curve, I was able to complete the base
+  of this website in one week.
+</p>
+<h3 id="static-assets">Static assets</h3>
+<p>
+  I mentioned that I didn’t use any web fonts. I lied. I created one with
+  <a rel="noopener noreferrer" target="_blank" href="http://fontello.com/"
+    >Fontello</a
+  >
+  for social media icons. Using <code>woff2</code> was only 1KB larger than SVG
+  icons with better extensibility.
+</p>
+<p>
+  Because I handpicked icons, the entire font is only 3.1KB. Compare that to
+  FontAwesome’s 161KB. Plus another 70-120KB for every font-weight you include.
+</p>
+<p>
+  The logo is a single path SVG, made on a 16pt grid and minified with one
+  decimal precision. The result is 399B.
+</p>
+<p>
+  I used Georgia for the body, Helvetica for headings and navigation, and
+  Courier for code. These are all
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://www.cssfontstack.com/"
+    >websafe fonts</a
+  >.
+</p>
+<h3 id="custom-scss">Custom SCSS</h3>
+<p>
+  The layout is very simple, two containers one fixed one relative. I didn’t
+  need Bootstrap, only a few lines of CSS. I converted my code to SCSS while
+  avoiding nested selector hell.
+</p>
+<p>
+  I gave special attention to the typography. Using many shades of grey to
+  create a subtle balance of contrast. It strives to be easy on the eyes while
+  drawing attention to important sections.
+</p>
+<p>
+  Everything uses <code>rem</code> and <code>em</code> units for a responsive,
+  accessible design. Vision impaired users can adjust this site without
+  disrupting the typography.
+</p>
+<p>The entire theme is configurable with a few variables.</p>
+<h6 id="theme-scss">Theme SCSS</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-scss" data-lang="scss">
+$default-color: #333;
+
+$dark-color: #121212;
+$darker-color: #000;
+
+$slightly-light-color: #555;
+$light-color: #666;
+$lighter-color: #777;
+$lightest-color: #999;
+
+$nav-active-background: #f7f7f7;
+$code-background: #f0f0f0;
+
+$light-border: #ddd;
+$dark-border: #ccc;
+
+$white: #fff;
+
+$main-font: Georgia, serif;
+$sub-font: Helvetica, Arial, sans-serif;
+$mono-font: Courier, monospace;
+
+$content-width: 46rem;
+      </code></pre>
+</div>
+<p>In total, the CSS is 6.4KB (2.3KB after GZIP).</p>
+<h3 id="minimal-javascript">Minimal JavaScript</h3>
+<p>
+  Aside from the ServiceWorker, this is all I used. A simple click listener to
+  toggle the <code>nav-open</code> class, and a function to lazyload images.
+</p>
+<h6 id="navigation-toggle">Navigation Toggle</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+var navToggle = document.getElementById('nav-toggle');
+navToggle.addEventListener('click', function() {
+  document.body.classList.toggle('nav-open');
+});
+      </code></pre>
+</div>
+<h6 id="lazyload">Lazyload</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+window.addEventListener('DOMContentLoaded', lazyload, false);
+function lazyload() {
+  var imgs = document.getElementsByClassName('lazyload');
+  for (var i = 0; i < imgs.length; i++) {
+    var img = imgs[i];
+    if (img.nodeName === 'IMG') {
+      img.addEventListener('load', function() { this.className += ' loaded' });
+      img.dataset.src ? img.src = img.dataset.src : null;
+      img.dataset.srcset ? img.srcset = img.dataset.srcset : null;
+    } else {
+      img.dataset.src ? img.style.backgroundImage = 'url(' + img.dataset.src + ')' : null;
+    }
+  }
+}
+      </code></pre>
+</div>
+<h3 id="a-serviceworker">A ServiceWorker</h3>
+<p>
+  Creating a ServiceWorker was the most complex piece of this website. It took
+  me about 1/3<sup>rd</sup> of the total development time, but it was worth
+  learning.
+</p>
+<p>
+  I could have kept it simple. The “stale-while-revalidate” pattern outlined in
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook"
+    >Google's Offline Cookbook</a
+  >
+  would have been enough. You might have picked up, I rarely do things the easy
+  way.
+</p>
+<p>
+  Instead, there are three different cache patterns. The first load imports all
+  assets. Then the ServiceWorker takes control.
+</p>
+<p>
+  Static assets are the simplest, they respond from the cache with a fallback to
+  the network. That way the network isn’t called until the cache is invalid.
+</p>
+<h6 id="cache-with-network-fallback">Cache with network fallback</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(normalizedUrl).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
+});
+      </code></pre>
+</div>
+<p>
+  Pages have a more complex pattern, imitating HTTP’s “stale-while-revalidate”
+  policy. The user experiences an instant load while the resource updates for
+  the next visit.
+</p>
+<h6 id="stale-while-revalidate">Stale-while-revalidate</h6>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+self.addEventListener('fetch', (event) => {
+  const normalizedUrl = new URL(event.request.url);
+  normalizedUrl.search = '';
+  event.respondWith(
+    caches.open(cacheName).then((cache) => {
+      return cache.match(normalizedUrl).then((response) => {
+        let fetchPromise = fetch(normalizedUrl).then((networkResponse) => {
+          cache.put(normalizedUrl, networkResponse.clone());
+          return networkResponse;
+        });
+        return response || fetchPromise;
+      });
+    })
+  );
+});
+      </code></pre>
+</div>
+<p>
+  The pièce de résistance, a cache then update with network policy within static
+  HTML. Keeping the homepage fresh.
+</p>
+<p>The pattern goes like this.</p>
+<figure>
+  <img
+    data-src="https://joshbradley.me/images/cache-then-network.svg"
+    class="lazyload loaded"
+    alt="Cache then network diagram"
+    src="https://joshbradley.me/images/cache-then-network.svg"
+  />
+  <figcaption><h4>Cache then network diagram</h4></figcaption>
+</figure>
+<p>
+  You can find the source code in the
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://github.com/joshuabradley012/joshbradley-hugo/tree/master/assets/js"
+    >repo</a
+  >.
+</p>
+<h3 id="aws-hosting">AWS hosting</h3>
+<p>
+  This is an S3 bucket served through Cloudfront routed through a Route53
+  domain. It sounds simple but learning AWS is intimidating. Their platform is
+  dense and prickly.
+</p>
+<p>Here is some helpful documentation:</p>
+<ol>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html"
+      >Domain names you can register with Route53</a
     >
-  </small>
-</article>
+  </li>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html"
+      >Routing Route53 to Cloudfront</a
+    >
+  </li>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/"
+      >Serving a static S3 website with Cloudfront</a
+    >
+  </li>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://stevepapa.com/how-to-specify-a-default-root-object-for-static-website-subdirectories-on-aws-cloudfront/"
+    >
+      Allowing directory paths with S3 and Cloudfront (without a Lambda)
+    </a>
+  </li>
+  <li>
+    Setting up the AWS CLI (for Hugo deployments)
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html"
+      >install</a
+    >
+    and
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html"
+      >credentials</a
+    >
+  </li>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html"
+      >Invalidating Cloudfront</a
+    >
+  </li>
+  <li>
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://stackoverflow.com/questions/10435334/set-cache-control-for-entire-s3-bucket-automatically-using-bucket-policies"
+      >Setting cache control on all S3 items</a
+    >
+  </li>
+</ol>
+<p>
+  I also created an email with
+  <abbr title="Simple Email Service">SES</abbr> that routes messages to my
+  Gmail. An S3 bucket stores emails and a Lambda function sends them.
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="http://www.daniloaz.com/en/use-gmail-with-your-own-domain-for-free-thanks-to-amazon-ses-lambda/"
+    >Daniel Lopez</a
+  >
+  has a useful guide.
+</p>
+<p>
+  The only expense is my domain name. When I start to get traffic, I can scale
+  for cheap.
+</p>
+<h2 id="the-result">The result</h2>
+<p>This page gets a perfect 100 for performance in Chrome Lighthouse.</p>
+<p>
+  SEO and best practices are at 100, and it’s a PWA. Accessibility scored a 93
+  because of the light grey used in meta data. If I were to add a contrast
+  option, it would be a “perfect” website.
+</p>
+<p>
+  Chasing arbitrary numbers is pointless without purpose. This wasn’t pointless.
+  This website achieves everything I need and does it cleanly. The user
+  experience is pristine. The typography is delightful. The structure is
+  meaningful.
+</p>
+<p>Good design is less design.</p>
