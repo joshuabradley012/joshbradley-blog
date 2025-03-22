@@ -1,511 +1,1960 @@
-<p>
-  This website is <em>fast</em>. The homepage loads in 50ms and is only 9KB
-  (after GZIP and caching).
-</p>
-<p>
-  Google Analytics is 17.7KB, this
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://abs.twimg.com/responsive-web/web/heart_animation.5c9f8e84.png"
-    >PNG</a
-  >
-  Twitter uses is 10KB, and blinking takes 100-400ms.
-</p>
-<p>
-  There were sacrifices. But it is an example of what websites could be in stark
-  contrast with what they have become.
-</p>
-<h2 id="why-speed-matters">Why speed matters</h2>
-<p>
-  Reality has no latency. Things <em>feel</em> wrong when there is a delay
-  between our actions and their response. Speed is the most important aspect of
-  user experience.
-</p>
-<p>
-  But as computers have become more powerful, they haven’t gotten faster.
-  They’re bloated.
-</p>
-<p>
-  In a
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://tonsky.me/blog/disenchantment/"
-    >magnificent rant</a
-  >, Nikkita Tonsky wrote:
-</p>
-<blockquote>
-  <p>
-    Windows 95 was 30MB. Today we have web pages heavier than that! Windows 10
-    is 4GB, which is 133 times as big. But is it 133 times as superior?
-  </p>
-</blockquote>
-<p>
-  Frameworks like React address speed by controlling the DOM. At the cost of
-  100KB of JavaScript, wasted CPU cycles, and complexity.
-</p>
-<p>
-  Static HTML is the soul of the internet. It is ubiquitous, easy to understand,
-  and easy for search engines to crawl. It is the ideal format for any website.
-  Look at
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://motherfuckingwebsite.com/"
-    >this motherfucking website</a
-  >.
-</p>
-<p>While I wasn’t as extreme, this website is pretty close. And I love it.</p>
-<h2 id="design-choices">Design choices</h2>
-<p>
-  There are no frameworks, web fonts, or libraries on this website. Everything
-  was handwritten. If it didn’t improve the user experience, it wasn’t included.
-</p>
-<p>
-  In particular, there aren’t any analytics on this page. If I want to know
-  traffic metrics and snoop IP addresses, I can check the server logs. I’m not
-  going to invade your privacy with an inconvenient script. Or feed more data to
-  our Google overlord.
-</p>
-<p>
-  I’m inspired by
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="http://www.paulgraham.com/articles.html"
-    >Paul Graham</a
-  >
-  and
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://daringfireball.net/"
-    >John Gruber's</a
-  >
-  simplicity. I learned typography from
-  <a rel="noopener noreferrer" target="_blank" href="https://seths.blog/"
-    >Seth Godin</a
-  >,
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://practicaltypography.com/"
-    >Butterick's Practical Typography</a
-  >, and
-  <a rel="noopener noreferrer" target="_blank" href="https://www.nytimes.com/"
-    >The New York Times</a
-  >. I hoped to capture their mastery.
-</p>
-<p>This design intends to last.</p>
-<h2 id="the-stack">The stack</h2>
-<ol>
-  <li><a href="#hugo">Hugo</a></li>
-  <li><a href="#static-assets">Static assets</a></li>
-  <li><a href="#custom-scss">Custom SCSS</a></li>
-  <li><a href="#minimal-javascript">Minimal JavaScript</a></li>
-  <li><a href="#a-serviceworker">A ServiceWorker</a></li>
-  <li><a href="#aws-hosting">AWS hosting</a></li>
-</ol>
-<p>
-  Check out the
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://github.com/joshuabradley012/joshbradley-hugo"
-    >repo</a
-  >
-  (I’ll turn it into a theme at some point).
-</p>
-<h3 id="hugo">Hugo</h3>
-<p>
-  I chose Hugo because of the control and productivity it provides. I was able
-  to create a minimal, semantic structure laden with
-  <a rel="noopener noreferrer" target="_blank" href="https://schema.org/"
-    >schema markup</a
-  >.
-</p>
-<p>
-  Hugo’s ability to generate and minify assets in any language removed my need
-  for build tools. Keeping my codebase uniform, simple, and fast.
-</p>
-<p>
-  In this case, I used it to build an array of cacheable pages for a
-  ServiceWorker.
-</p>
-<h6 id="array-in-serviceworker">Array in ServiceWorker</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-javascript" data-lang="javascript">
-const pagesToCache = [
-  {{ with .Site.Pages }}
-    {{ range  (where . "Type" "page") }}
-      '{{ .RelPermalink }}',
-    {{ end }}
-    {{ range (where . "Kind" "taxonomyTerm") }}
-      '{{ .RelPermalink }}',
-    {{ end }}
-    {{ range (where . "Kind" "taxonomy") }}
-      '{{ .RelPermalink }}',
-    {{ end }}
-    {{ range (where . "Type" "post") }}
-      '{{ .RelPermalink }}',
-    {{ end }}
-  {{ end }}
-];
+<div id="hero"></div>
+<script>
+  class State {
+    constructor(display, actors) {
+      this.display = display;
+      this.actors = actors;
+    }
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open('cacheName').then(function(cache) {
-      cache.addAll(pagesToCache);
-    })
-  );
-});
-      </code></pre>
-</div>
-<p>
-  With Hugo’s power and shallow learning curve, I was able to complete the base
-  of this website in one week.
-</p>
-<h3 id="static-assets">Static assets</h3>
-<p>
-  I mentioned that I didn’t use any web fonts. I lied. I created one with
-  <a rel="noopener noreferrer" target="_blank" href="http://fontello.com/"
-    >Fontello</a
-  >
-  for social media icons. Using <code>woff2</code> was only 1KB larger than SVG
-  icons with better extensibility.
-</p>
-<p>
-  Because I handpicked icons, the entire font is only 3.1KB. Compare that to
-  FontAwesome’s 161KB. Plus another 70-120KB for every font-weight you include.
-</p>
-<p>
-  The logo is a single path SVG, made on a 16pt grid and minified with one
-  decimal precision. The result is 399B.
-</p>
-<p>
-  I used Georgia for the body, Helvetica for headings and navigation, and
-  Courier for code. These are all
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://www.cssfontstack.com/"
-    >websafe fonts</a
-  >.
-</p>
-<h3 id="custom-scss">Custom SCSS</h3>
-<p>
-  The layout is very simple, two containers one fixed one relative. I didn’t
-  need Bootstrap, only a few lines of CSS. I converted my code to SCSS while
-  avoiding nested selector hell.
-</p>
-<p>
-  I gave special attention to the typography. Using many shades of grey to
-  create a subtle balance of contrast. It strives to be easy on the eyes while
-  drawing attention to important sections.
-</p>
-<p>
-  Everything uses <code>rem</code> and <code>em</code> units for a responsive,
-  accessible design. Vision impaired users can adjust this site without
-  disrupting the typography.
-</p>
-<p>The entire theme is configurable with a few variables.</p>
-<h6 id="theme-scss">Theme SCSS</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-scss" data-lang="scss">
-$default-color: #333;
-
-$dark-color: #121212;
-$darker-color: #000;
-
-$slightly-light-color: #555;
-$light-color: #666;
-$lighter-color: #777;
-$lightest-color: #999;
-
-$nav-active-background: #f7f7f7;
-$code-background: #f0f0f0;
-
-$light-border: #ddd;
-$dark-border: #ccc;
-
-$white: #fff;
-
-$main-font: Georgia, serif;
-$sub-font: Helvetica, Arial, sans-serif;
-$mono-font: Courier, monospace;
-
-$content-width: 46rem;
-      </code></pre>
-</div>
-<p>In total, the CSS is 6.4KB (2.3KB after GZIP).</p>
-<h3 id="minimal-javascript">Minimal JavaScript</h3>
-<p>
-  Aside from the ServiceWorker, this is all I used. A simple click listener to
-  toggle the <code>nav-open</code> class, and a function to lazyload images.
-</p>
-<h6 id="navigation-toggle">Navigation Toggle</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-javascript" data-lang="javascript">
-var navToggle = document.getElementById('nav-toggle');
-navToggle.addEventListener('click', function() {
-  document.body.classList.toggle('nav-open');
-});
-      </code></pre>
-</div>
-<h6 id="lazyload">Lazyload</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-javascript" data-lang="javascript">
-window.addEventListener('DOMContentLoaded', lazyload, false);
-function lazyload() {
-  var imgs = document.getElementsByClassName('lazyload');
-  for (var i = 0; i < imgs.length; i++) {
-    var img = imgs[i];
-    if (img.nodeName === 'IMG') {
-      img.addEventListener('load', function() { this.className += ' loaded' });
-      img.dataset.src ? img.src = img.dataset.src : null;
-      img.dataset.srcset ? img.srcset = img.dataset.srcset : null;
-    } else {
-      img.dataset.src ? img.style.backgroundImage = 'url(' + img.dataset.src + ')' : null;
+    update(time) {
+      /**
+       * provide an update ID to let actors update other actors only once
+       * used with collision detection
+       */
+      const updateId = Math.floor(Math.random() * 1000000);
+      const actors = this.actors.map((actor) => {
+        return actor.update(this, time, updateId);
+      });
+      return new State(this.display, actors);
     }
   }
-}
-      </code></pre>
-</div>
-<h3 id="a-serviceworker">A ServiceWorker</h3>
-<p>
-  Creating a ServiceWorker was the most complex piece of this website. It took
-  me about 1/3<sup>rd</sup> of the total development time, but it was worth
-  learning.
-</p>
-<p>
-  I could have kept it simple. The “stale-while-revalidate” pattern outlined in
-  <a
-    rel="noopener noreferrer"
-    target="_blank"
-    href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook"
-    >Google's Offline Cookbook</a
-  >
-  would have been enough. You might have picked up, I rarely do things the easy
-  way.
-</p>
-<p>
-  Instead, there are three different cache patterns. The first load imports all
-  assets. Then the ServiceWorker takes control.
-</p>
-<p>
-  Static assets are the simplest, they respond from the cache with a fallback to
-  the network. That way the network isn’t called until the cache is invalid.
-</p>
-<h6 id="cache-with-network-fallback">Cache with network fallback</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-javascript" data-lang="javascript">
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(normalizedUrl).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
-});
-      </code></pre>
-</div>
-<p>
-  Pages have a more complex pattern, imitating HTTP’s “stale-while-revalidate”
-  policy. The user experiences an instant load while the resource updates for
-  the next visit.
-</p>
-<h6 id="stale-while-revalidate">Stale-while-revalidate</h6>
-<div class="highlight">
-  <pre
-    tabindex="0"
-    style="
-      background-color: #fff;
-      -moz-tab-size: 2;
-      -o-tab-size: 2;
-      tab-size: 2;
-    "
-  ><code class="language-javascript" data-lang="javascript">
-self.addEventListener('fetch', (event) => {
-  const normalizedUrl = new URL(event.request.url);
-  normalizedUrl.search = '';
-  event.respondWith(
-    caches.open(cacheName).then((cache) => {
-      return cache.match(normalizedUrl).then((response) => {
-        let fetchPromise = fetch(normalizedUrl).then((networkResponse) => {
-          cache.put(normalizedUrl, networkResponse.clone());
-          return networkResponse;
-        });
-        return response || fetchPromise;
+
+  class Vector {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    add(vector) {
+      return new Vector(this.x + vector.x, this.y + vector.y);
+    }
+
+    subtract(vector) {
+      return new Vector(this.x - vector.x, this.y - vector.y);
+    }
+
+    multiply(scalar) {
+      return new Vector(this.x * scalar, this.y * scalar);
+    }
+
+    dotProduct(vector) {
+      return this.x * vector.x + this.y * vector.y;
+    }
+
+    get magnitude() {
+      return Math.sqrt(this.x ** 2 + this.y ** 2);
+    }
+
+    get direction() {
+      return Math.atan2(this.x, this.y);
+    }
+  }
+
+  class Canvas {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    sync(state) {
+      this.clearDisplay();
+      this.drawActors(state.actors);
+    }
+
+    clearDisplay() {
+      // opacity controls the trail effect set to 1 to remove
+      this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawActors(actors) {
+      for (let actor of actors) {
+        if (actor.type === "circle") {
+          this.drawCircle(actor);
+        }
+      }
+    }
+
+    drawCircle(actor) {
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball {
+    constructor(config) {
+      Object.assign(
+        this,
+        {
+          id: Math.floor(Math.random() * 1000000),
+          type: "circle",
+          position: new Vector(100, 100),
+          velocity: new Vector(5, 3),
+          radius: 25,
+          color: "blue",
+          collisions: [],
+        },
+        config,
+      );
+    }
+
+    update(state, time, updateId) {
+      /**
+       * if slice occurs on too many elements, it starts to lag
+       * collisions is an array to allow multiple collisions at once
+       */
+      if (this.collisions.length > 10) {
+        this.collisions = this.collisions.slice(this.collisions.length - 3);
+      }
+
+      // setting bounds on the canvas prevents balls from overlapping on update
+      const upperLimit = new Vector(
+        state.display.canvas.width - this.radius,
+        state.display.canvas.height - this.radius,
+      );
+      const lowerLimit = new Vector(0 + this.radius, 0 + this.radius);
+
+      // check if hitting left or right of container
+      if (this.position.x >= upperLimit.x || this.position.x <= lowerLimit.x) {
+        this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+      }
+
+      // check if hitting top or bottom of container
+      if (this.position.y >= upperLimit.y || this.position.y <= lowerLimit.y) {
+        this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+      }
+
+      /**
+       * this is the most stable solution to avoid overlap
+       * but it is slightly inaccurate
+       */
+      for (let actor of state.actors) {
+        if (this === actor || this.collisions.includes(actor.id + updateId)) {
+          continue;
+        }
+
+        /**
+         * check if actors collide in the next frame and update now if they do
+         * innaccurate, but it is the easiest solution to the sticky collision bug
+         */
+        const distance = this.position
+          .add(this.velocity)
+          .subtract(actor.position.add(actor.velocity)).magnitude;
+
+        if (distance <= this.radius + actor.radius) {
+          const v1 = collisionVector(this, actor);
+          const v2 = collisionVector(actor, this);
+          this.velocity = v1;
+          actor.velocity = v2;
+          this.collisions.push(actor.id + updateId);
+          actor.collisions.push(this.id + updateId);
+        }
+      }
+
+      const newX = Math.max(
+        Math.min(this.position.x + this.velocity.x, upperLimit.x),
+        lowerLimit.x,
+      );
+      const newY = Math.max(
+        Math.min(this.position.y + this.velocity.y, upperLimit.y),
+        lowerLimit.y,
+      );
+
+      return new Ball({
+        ...this,
+        position: new Vector(newX, newY),
       });
-    })
-  );
-});
-      </code></pre>
-</div>
+    }
+
+    get area() {
+      return Math.PI * this.radius ** 2;
+    }
+
+    get sphereArea() {
+      return 4 * Math.PI * this.radius ** 2;
+    }
+  }
+
+  // see elastic collision: https://en.wikipedia.org/wiki/Elastic_collision
+  const collisionVector = (particle1, particle2) => {
+    return particle1.velocity.subtract(
+      particle1.position
+        .subtract(particle2.position)
+        .multiply(
+          particle1.velocity
+            .subtract(particle2.velocity)
+            .dotProduct(particle1.position.subtract(particle2.position)) /
+            particle1.position.subtract(particle2.position).magnitude ** 2,
+        )
+
+        // add mass to the system
+        .multiply(
+          (2 * particle2.sphereArea) /
+            (particle1.sphereArea + particle2.sphereArea),
+        ),
+    );
+  };
+
+  const isMovingTowards = (particle1, particle2) => {
+    return (
+      particle2.position
+        .subtract(particle1.position)
+        .dotProduct(particle1.velocity) > 0
+    );
+  };
+
+  const runAnimation = (animation) => {
+    let lastTime = null;
+    const frame = (time) => {
+      if (lastTime !== null) {
+        const timeStep = Math.min(100, time - lastTime) / 1000;
+
+        // return false from animation to stop
+        if (animation(timeStep) === false) {
+          return;
+        }
+      }
+      lastTime = time;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  };
+
+  const random = (max = 9, min = 0) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  const colors = ["red", "green", "blue", "purple", "orange"];
+
+  const collidingBalls = ({
+    width = 400,
+    height = 400,
+    parent = document.body,
+    count = 50,
+  }) => {
+    const display = new Canvas(parent, width, height);
+    const balls = [];
+    for (let i = 0; i < count; i++) {
+      balls.push(
+        new Ball({
+          radius: random(8, 3) + Math.random(),
+          color: colors[random(colors.length - 1)],
+          position: new Vector(random(width - 10, 10), random(height - 10, 10)),
+          velocity: new Vector(random(3, -3), random(3, -3)),
+        }),
+      );
+    }
+    let state = new State(display, balls);
+    runAnimation((time) => {
+      state = state.update(time);
+      display.sync(state);
+    });
+  };
+
+  collidingBalls({
+    count: 40,
+    height: 260,
+    width: 460,
+    parent: document.getElementById("hero"),
+  });
+</script>
+<p><em>Satisfying, isn’t it?</em></p>
 <p>
-  The pièce de résistance, a cache then update with network policy within static
-  HTML. Keeping the homepage fresh.
+  I used this project as my introduction to JavaScript’s canvas and creating a
+  physics simulation. It took me an embarrassingly long time to perfect so I
+  figured it would be worth sharing.
 </p>
-<p>The pattern goes like this.</p>
-<figure>
-  <img
-    data-src="https://joshbradley.me/images/cache-then-network.svg"
-    class="lazyload loaded"
-    alt="Cache then network diagram"
-    src="https://joshbradley.me/images/cache-then-network.svg"
-  />
-  <figcaption><h4>Cache then network diagram</h4></figcaption>
-</figure>
 <p>
-  You can find the source code in the
+  The source code can be found
   <a
     rel="noopener noreferrer"
     target="_blank"
-    href="https://github.com/joshuabradley012/joshbradley-hugo/tree/master/assets/js"
-    >repo</a
+    href="https://gist.github.com/joshuabradley012/bd2bc96bbe1909ca8555a792d6a36e04"
+    >here</a
   >.
 </p>
-<h3 id="aws-hosting">AWS hosting</h3>
+<h2 id="getting-started-with-canvas">Getting started with canvas</h2>
 <p>
-  This is an S3 bucket served through Cloudfront routed through a Route53
-  domain. It sounds simple but learning AWS is intimidating. Their platform is
-  dense and prickly.
-</p>
-<p>Here is some helpful documentation:</p>
-<ol>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html"
-      >Domain names you can register with Route53</a
-    >
-  </li>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html"
-      >Routing Route53 to Cloudfront</a
-    >
-  </li>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/"
-      >Serving a static S3 website with Cloudfront</a
-    >
-  </li>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://stevepapa.com/how-to-specify-a-default-root-object-for-static-website-subdirectories-on-aws-cloudfront/"
-    >
-      Allowing directory paths with S3 and Cloudfront (without a Lambda)
-    </a>
-  </li>
-  <li>
-    Setting up the AWS CLI (for Hugo deployments)
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html"
-      >install</a
-    >
-    and
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html"
-      >credentials</a
-    >
-  </li>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html"
-      >Invalidating Cloudfront</a
-    >
-  </li>
-  <li>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href="https://stackoverflow.com/questions/10435334/set-cache-control-for-entire-s3-bucket-automatically-using-bucket-policies"
-      >Setting cache control on all S3 items</a
-    >
-  </li>
-</ol>
-<p>
-  I also created an email with
-  <abbr title="Simple Email Service">SES</abbr> that routes messages to my
-  Gmail. An S3 bucket stores emails and a Lambda function sends them.
+  If you have never used HTML5’s <code>&lt;canvas&gt;</code> element,
   <a
     rel="noopener noreferrer"
     target="_blank"
-    href="http://www.daniloaz.com/en/use-gmail-with-your-own-domain-for-free-thanks-to-amazon-ses-lambda/"
-    >Daniel Lopez</a
+    href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial"
+    >MDN</a
   >
-  has a useful guide.
+  has a fantastic beginner’s guide. Otherwise, let’s dive right in.
 </p>
 <p>
-  The only expense is my domain name. When I start to get traffic, I can scale
-  for cheap.
+  Using an ES6 class will let us manage state and create immutability later on,
+  so let’s get started with a constructor. To initialize the canvas we need to
+  define the parent, width, and height. Most importantly, we need to assign it’s
+  context to a property that we can use later for drawing.
 </p>
-<h2 id="the-result">The result</h2>
-<p>This page gets a perfect 100 for performance in Chrome Lighthouse.</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Canvas {
+      constructor(parent = document.body, width = 400, height = 400) {
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = width;
+        this.canvas.height = height;
+        parent.appendChild(this.canvas);
+        this.ctx = this.canvas.getContext('2d');
+      }
+    }
+  </code></pre>
+</div>
 <p>
-  SEO and best practices are at 100, and it’s a PWA. Accessibility scored a 93
-  because of the light grey used in meta data. If I were to add a contrast
-  option, it would be a “perfect” website.
+  With this, we can add methods to draw specific shapes. In this case, we’ll
+  only be drawing circles.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Canvas {
+      ...
+      drawCircle(actor) {
+        this.ctx.beginPath();
+        this.ctx.arc(actor.position.x, actor.position.y, actor.radius, 0, Math.PI * 2);
+        this.ctx.closePath();
+        this.ctx.fillStyle = actor.color;
+        this.ctx.fill();
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  Notice that <code>drawCircle</code> expects an <code>actor</code> with a
+  position and radius property. Let’s implement a basic class that we will build
+  on later.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      constructor(x = 20, y = 20, color = 'red', radius = 10) {
+        this.color = color;
+        this.position = { x: x, y: y };
+        this.radius = radius;
+      }
+    }
+  </code></pre>
+</div>
+<p>Now for a test…</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const canvas = new Canvas();
+    const ball = new Ball();
+    canvas.drawCircle(ball);
+  </code></pre>
+</div>
+<div id="example-1"></div>
+<script>
+  class Canvas1 {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    drawCircle(actor) {
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball1 {
+    constructor(x = 20, y = 20, color = "red", radius = 10) {
+      this.color = color;
+      this.position = { x: x, y: y };
+      this.radius = radius;
+    }
+  }
+
+  const canvas1 = new Canvas1(document.getElementById("example-1"), 460, 200);
+  const ball1 = new Ball1();
+  canvas1.drawCircle(ball1);
+</script>
+<p><em>Marvelous!</em></p>
+<p>
+  The next step is to add some motion to our canvas using an animation loop.
+</p>
+<h2 id="adding-animation">Adding animation</h2>
+<p>
+  Before we get ahead of ourselves, let’s create a <code>Vector</code> class
+  with some useful linear algebra methods so we can work easily in a coordinate
+  plane.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Vector {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+    
+      /**
+       * Returning a new Vector creates immutability
+       * and allows chaining. These properties are
+       * extremely useful with the complex formulas
+       * we'll be using.
+       **/
+      add(vector) {
+        return new Vector(this.x + vector.x, this.y + vector.y);
+      }
+    
+      subtract(vector) {
+        return new Vector(this.x - vector.x, this.y - vector.y);
+      }
+    
+      multiply(scalar) {
+        return new Vector(this.x * scalar, this.y * scalar);
+      }
+    
+      dotProduct(vector) {
+        return this.x * vector.x + this.y * vector.y;
+      }
+    
+      get magnitude() {
+        return Math.sqrt(this.x ** 2 + this.y ** 2);
+      }
+    
+      get direction() {
+        return Math.atan2(this.x, this.y);
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  And let’s update <code>Ball</code> to use an instance of
+  <code>Vector</code> for its position.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      constructor(x = 20, y = 20, color = 'red', radius = 10) {
+        this.color = color;
+        this.position = new Vector(x, y);
+        this.radius = radius;
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  That will make adding motion, collisions, and mass a lot simpler. So about
+  that animation loop, this is going to get complex. MDN’s guide uses a very
+  straightforward animation loop to achieve this. But I’m going to take a page
+  out of
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://eloquentjavascript.net/16_game.html"
+    >Eloquent JavaScript</a
+  >
+  and implement a <code>State</code> class that provides some level of
+  encapsulation. This makes it easier to add new shapes or swap out the display
+  with something like WebGL if needed.
 </p>
 <p>
-  Chasing arbitrary numbers is pointless without purpose. This wasn’t pointless.
-  This website achieves everything I need and does it cleanly. The user
-  experience is pristine. The typography is delightful. The structure is
-  meaningful.
+  <code>State</code> should keep track of which display is being used as well as
+  which objects are present in the animation. Finally, there needs to be a
+  method that will update the position of each actor within each frame.
 </p>
-<p>Good design is less design.</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class State {
+      constructor(display, actors) {
+        this.display = display;
+        this.actors = actors;
+      }
+    
+      update(time) {
+    
+        /**
+         * Provide an update ID to let actors
+         * update other actors only once.
+         **/
+        const updateId = Math.floor(Math.random() * 1000000);
+        const actors = this.actors.map(actor => {
+          return actor.update(this, time, updateId);
+        });
+        return new State(this.display, actors);
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  Now each <code>actor</code> within <code>State</code> should have an
+  <code>update</code> method to increment the position within each frame. For
+  <code>Ball</code> we need to add <code>update</code> as well as a
+  <code>velocity</code> property. Because <code>Ball</code> is gaining a lot or
+  properties we might want control of, we will provide a config object to the
+  constructor using <code>Object.assign</code> as outlined in
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://github.com/ryanmcdermott/clean-code-javascript#set-default-objects-with-objectassign"
+    >clean JavaScript</a
+  >.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      constructor(config) {
+        Object.assign(this,
+          {
+            type: 'circle',
+            position: new Vector(20, 20),
+            velocity: new Vector(5, 3),
+            radius: 10,
+            color: 'red',
+          },
+          config
+        );
+      }
+    
+      update(state, time, updateId) {
+    
+        // Check if hitting left or right of display
+        if (this.position.x >= state.display.canvas.width || this.position.x <= 0) {
+          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+        }
+    
+        // Check if hitting top or bottom of display
+        if (this.position.y >= state.display.canvas.height || this.position.y <= 0) {
+          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+        }
+    
+        return new Ball({
+          ...this,
+          position: this.position.add(this.velocity),
+        });
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  To keep <code>Canvas</code> up to date, we need to add a
+  <code>sync</code> method to be called with each frame. It should redraw every
+  <code>actor</code> in <code>State</code>.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Canvas() {
+      ...
+      sync(state) {
+        this.drawActors(state.actors);
+      }
+    
+      drawActors(actors) {
+        for (let actor of actors) {
+          if (actor.type === 'circle') {
+            this.drawCircle(actor);
+          }
+        }
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  Finally we need a function that will recursively call
+  <code>requestAnimationFrame</code> to create our animation loop.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const runAnimation = animation => {
+      let lastTime = null;
+      const frame = time => {
+        if (lastTime !== null) {
+          const timeStep = Math.min(100, time - lastTime) / 1000;
+    
+          // return false from animation to stop
+          if (animation(timeStep) === false) {
+            return;
+          }
+        }
+        lastTime = time;
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    };
+  </code></pre>
+</div>
+<p>
+  With that we could technically run the animation. However, canvas keeps track
+  of each frame drawn on it and the resulting animation would look like a
+  paintbrush being dragged across a canvas. Here is what it looks like.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const display = new Canvas();
+    const ball = new Ball();
+    const actors = [ball];
+    let state = new State(display, actors);
+    runAnimation(time => {
+      state = state.update(time);
+      display.sync(state);
+    });
+  </code></pre>
+</div>
+<div id="example-2"></div>
+<script>
+  class State2 {
+    constructor(display, actors) {
+      this.display = display;
+      this.actors = actors;
+    }
+
+    update(time) {
+      const updateId = Math.floor(Math.random() * 1000000);
+      const actors = this.actors.map((actor) => {
+        return actor.update(this, time, updateId);
+      });
+      return new State(this.display, actors);
+    }
+  }
+
+  class Canvas2 {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    sync(state) {
+      this.drawActors(state.actors);
+    }
+
+    drawActors(actors) {
+      for (let actor of actors) {
+        if (actor.type === "circle") {
+          this.drawCircle(actor);
+        }
+      }
+    }
+
+    drawCircle(actor) {
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball2 {
+    constructor(config) {
+      Object.assign(
+        this,
+        {
+          type: "circle",
+          position: new Vector(20, 20),
+          velocity: new Vector(5, 3),
+          radius: 10,
+          color: "red",
+        },
+        config,
+      );
+    }
+
+    update(state, time, updateId) {
+      // Check if hitting left or right of display
+      if (
+        this.position.x >= state.display.canvas.width ||
+        this.position.x <= 0
+      ) {
+        this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+      }
+
+      // Check if hitting top or bottom of display
+      if (
+        this.position.y >= state.display.canvas.height ||
+        this.position.y <= 0
+      ) {
+        this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+      }
+
+      return new Ball2({
+        ...this,
+        position: this.position.add(this.velocity),
+      });
+    }
+  }
+
+  const example2 = document.getElementById("example-2");
+  const display2 = new Canvas2(example2, 460, 200);
+  const ball2 = new Ball2();
+  const actors2 = [ball2];
+  let state2 = new State2(display2, actors2);
+  display2.sync(state2);
+
+  const startButton2 = document.createElement("button");
+  startButton2.innerText = "Start animation";
+  example2.appendChild(startButton2);
+
+  const animateOnClick2 = () => {
+    runAnimation((time) => {
+      state2 = state2.update(time);
+      display2.sync(state2);
+    });
+  };
+
+  startButton2.addEventListener("click", animateOnClick2, { once: true });
+</script>
+<p>
+  To change this we can modify <code>sync</code> to clear <code>Canvas</code> on
+  each update. We can achieve this by drawing a white rectangle over the entire
+  <code>Canvas</code>. And we can take advantage of the fact that previous
+  frames are not destroyed. If the rectangle is opaque it will create a trail
+  effect due to the previously drawn circles bleeding through.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Canvas() {
+      ...
+      sync(state) {
+        this.clearDisplay();
+        this.drawActors(state.actors);
+      }
+    
+      clearDisplay() {
+    
+        /**
+         * If the rgba opacity is set to 1, there
+         * will be no trail. The lower the opacity,
+         * the longer the trail.
+         **/
+        this.ctx.fillStyle = 'rgba(255, 255, 255, .4)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+      ...
+    }
+  </code></pre>
+</div>
+<p>Now we have motion!</p>
+<div id="example-3"></div>
+<script>
+  class State3 {
+    constructor(display, actors) {
+      this.display = display;
+      this.actors = actors;
+    }
+
+    update(time) {
+      const updateId = Math.floor(Math.random() * 1000000);
+      const actors = this.actors.map((actor) => {
+        return actor.update(this, time, updateId);
+      });
+      return new State(this.display, actors);
+    }
+  }
+
+  class Canvas3 {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    sync(state) {
+      this.clearDisplay();
+      this.drawActors(state.actors);
+    }
+
+    clearDisplay() {
+      this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawActors(actors) {
+      for (let actor of actors) {
+        if (actor.type === "circle") {
+          this.drawCircle(actor);
+        }
+      }
+    }
+
+    drawCircle(actor) {
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball3 {
+    constructor(config) {
+      Object.assign(
+        this,
+        {
+          type: "circle",
+          position: new Vector(30, 30),
+          velocity: new Vector(5, 3),
+          radius: 10,
+          color: "red",
+        },
+        config,
+      );
+    }
+
+    update(state, time, updateId) {
+      // Check if hitting left or right of display
+      if (
+        this.position.x >= state.display.canvas.width ||
+        this.position.x <= 0
+      ) {
+        this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+      }
+
+      // Check if hitting top or bottom of display
+      if (
+        this.position.y >= state.display.canvas.height ||
+        this.position.y <= 0
+      ) {
+        this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+      }
+
+      return new Ball3({
+        ...this,
+        position: this.position.add(this.velocity),
+      });
+    }
+  }
+
+  const example3 = document.getElementById("example-3");
+  const display3 = new Canvas3(example3, 460, 200);
+  const ball3 = new Ball3();
+  const actors3 = [ball3];
+  let state3 = new State3(display3, actors3);
+  display3.sync(state3);
+
+  runAnimation((time) => {
+    state3 = state3.update(time);
+    display3.sync(state3);
+  });
+</script>
+<p>
+  <strong><em>Deep breath</em></strong> it’s time for the final hurdle, adding
+  collisions.
+</p>
+<h2 id="detecting-collisions">Detecting collisions</h2>
+<p>
+  You’ve already seen a bit of collision detection in the last update we made to
+  <code>Ball</code> where we are checking if the ball is hitting the walls of
+  the canvas, and updating the velocity accordingly.
+</p>
+<p>
+  However, to find if a ball is colliding with another ball, we have to check
+  <em>every ball</em> against <em>every ball</em>. This is very inefficient with
+  an O(n<sup>2</sup>) runtime but is the best solution outside of creating an
+  elaborate matrix to represent coordinates. And it works well for less than
+  1000 objects.
+</p>
+<p>
+  This can be achieved with a <code>for</code> loop on each
+  <code>update</code> of <code>Ball</code>.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      ...
+      update(state, time, updateId) {
+        ...
+        for (let actor of state.actors) {
+    
+          // A ball can't collide with itself
+          if (this === actor) {
+            continue;
+          }
+    
+          const distance = this.position.subtract(actor.position).magnitude;
+    
+          if (distance <= this.radius + actor.radius) {
+            this.color = 'grey';
+            actor.color = 'grey';
+          }
+        }
+    
+        return new Ball({
+          ...this,
+          position: this.position.add(this.velocity),
+        });
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  Because we are using a <code>Vector</code> to track the position of the ball,
+  we can measure the distance between two objects using the
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://en.wikipedia.org/wiki/Euclidean_vector#Length"
+    >magnitude</a
+  >
+  of the
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://en.wikipedia.org/wiki/Euclidean_vector#Addition_and_subtraction"
+    >difference</a
+  >
+  between both object’s position. Remember position is measured at the object’s
+  center, so to detect when the edges collide, we need to check if that distance
+  is less than both object’s radius combined.
+</p>
+<p>
+  For now, nothing very interesting happens when the balls collide, they just
+  change color. But it’s a start!
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const display = new Canvas();
+
+    const ball1 = new Ball({
+      position: new Vector(40, 100),
+      velocity: new Vector(1, 0),
+      radius: 20,
+    });
+
+    const ball2 = new Ball({
+      position: new Vector(200, 100),
+      velocity: new Vector(-1, 0),
+      color: 'blue',
+    });
+
+    const actors = [ball1, ball2];
+    let state = new State(display, actors);
+
+    runAnimation(time => {
+      state = state.update(time);
+      display.sync(state);
+    });
+  </code></pre>
+</div>
+<div id="example-4"></div>
+<script>
+  class State4 {
+    constructor(display, actors) {
+      this.display = display;
+      this.actors = actors;
+    }
+
+    update(time) {
+      const updateId = Math.floor(Math.random() * 1000000);
+      const actors = this.actors.map((actor) => {
+        return actor.update(this, time, updateId);
+      });
+      return new State(this.display, actors);
+    }
+  }
+
+  class Canvas4 {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    sync(state) {
+      this.clearDisplay();
+      this.drawActors(state.actors);
+    }
+
+    clearDisplay() {
+      this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawActors(actors) {
+      for (let actor of actors) {
+        if (actor.type === "circle") {
+          this.drawCircle(actor);
+        }
+      }
+    }
+
+    drawCircle(actor) {
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball4 {
+    constructor(config) {
+      Object.assign(
+        this,
+        {
+          type: "circle",
+          position: new Vector(40, 40),
+          velocity: new Vector(5, 3),
+          radius: 10,
+          color: "red",
+        },
+        config,
+      );
+    }
+
+    update(state, time, updateId) {
+      // Check if hitting left or right of display
+      if (
+        this.position.x >= state.display.canvas.width ||
+        this.position.x <= 0
+      ) {
+        this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+      }
+
+      // Check if hitting top or bottom of display
+      if (
+        this.position.y >= state.display.canvas.height ||
+        this.position.y <= 0
+      ) {
+        this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+      }
+
+      for (let actor of state.actors) {
+        // A ball can't collide with itself
+        if (this === actor) {
+          continue;
+        }
+
+        const distance = this.position.subtract(actor.position).magnitude;
+
+        if (distance <= this.radius + actor.radius) {
+          this.color = "grey";
+          actor.color = "grey";
+        }
+      }
+
+      return new Ball4({
+        ...this,
+        position: this.position.add(this.velocity),
+      });
+    }
+  }
+
+  const example4 = document.getElementById("example-4");
+  const display4 = new Canvas4(example4, 460, 200);
+
+  const ball4a = new Ball4({
+    position: new Vector(40, 100),
+    velocity: new Vector(1, 0),
+    radius: 20,
+  });
+
+  const ball4b = new Ball4({
+    position: new Vector(200, 100),
+    velocity: new Vector(-1, 0),
+    color: "blue",
+  });
+
+  const actors4 = [ball4a, ball4b];
+  let state4 = new State4(display4, actors4);
+  display4.sync(state4);
+
+  const startButton4 = document.createElement("button");
+  startButton4.innerText = "Start animation";
+  example4.appendChild(startButton4);
+
+  const animateOnClick4 = () => {
+    runAnimation((time) => {
+      state4 = state4.update(time);
+      display4.sync(state4);
+    });
+  };
+
+  startButton4.addEventListener("click", animateOnClick4, { once: true });
+</script>
+<h2 id="calculating-two-dimensional-elastic-collisions">
+  Calculating two-dimensional elastic collisions
+</h2>
+<p>
+  It’s math time! We’re going to be using elastic collisions because I found it
+  to be a fun animation without getting too complex with gravity and friction.
+  But if that’s what you’re after, give it a shot.
+</p>
+<p>
+  Wikipedia has a fantastic animation showing what happens in a 2D collision on
+  their
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional"
+    >elastic collision</a
+  >
+  page.
+</p>
+<figure>
+  <img
+    data-src="https://joshbradley.me/images/Elastischer_sto%c3%9f_2D.gif"
+    class="lazyload loaded"
+    alt="Two-dimensional elastic collision"
+    src="https://joshbradley.me/images/Elastischer_sto%c3%9f_2D.gif"
+  />
+  <figcaption>
+    <h4>Two-dimensional elastic collision</h4>
+  </figcaption>
+</figure>
+<p>
+  Mathematically this can be defined as the following. Keep in mind there is an
+  alternate formula that uses angles, but because we are using vectors, this is
+  an easier formula to implement.
+</p>
+<p>
+  $$ \textbf v^{\prime}_1 = \textbf v_1 - \frac{2m_2}{m_1 + m_2} \frac{\langle
+  \textbf v_1 - \textbf v_2, \textbf x_1 - \textbf x_2 \rangle}{\lVert \textbf
+  x_1 - \textbf x_2 \rVert^2} (\textbf x_1 - \textbf x_2) $$ $$ \textbf
+  v^{\prime}_2 = \textbf v_2 - \frac{2m_1}{m_1 + m_2} \frac{\langle \textbf v_2
+  - \textbf v_1, \textbf x_2 - \textbf x_1 \rangle}{\lVert \textbf x_2 - \textbf
+  x_1 \rVert^2} (\textbf x_2 - \textbf x_1) $$
+</p>
+<p>
+  Where \\( \textbf v^{\prime} \\) is the resulting velocity vector, \\( \textbf
+  v \\) is the current velocity, \\( m \\) is mass, and \\( \textbf x \\) is the
+  position. Angle brackets \\( \langle \ldots \rangle \\) denote the
+  <a
+    href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length"
+    >dot product</a
+  >
+  of the vector and double vertical bars \\( \lVert \ldots \rVert \\) denote the
+  <a
+    href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length"
+    >magnitude or length</a
+  >
+  of the vector.
+</p>
+<p>
+  Currently, <code>Ball</code> doesn’t have a representation of its mass.
+  Assuming a constant density, we can use the spherical area of the circle as
+  our mass.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      ...
+      get sphereArea() {
+        return 4 * Math.PI * this.radius ** 2;
+      }
+    }
+  </code></pre>
+</div>
+<p>
+  Using the methods we added to the <code>Vector</code> class we can write this
+  in JavaScript. It’s not a nice formula, but it is compact and accurate.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const collisionVector = (b1, b2) => {
+      return b1.velocity
+    
+        // Take away from the starting velocity
+        .subtract(
+    
+          // Subtract the positions
+          b1.position
+          .subtract(b2.position)
+    
+          /**
+           * Multiply by the dot product of
+           * the difference between the velocity
+           * and position of both vectors
+           **/
+          .multiply(
+            b1.velocity
+            .subtract(b2.velocity)
+            .dotProduct(
+              b1.position
+              .subtract(b2.position)
+            )
+            / b1.position
+            .subtract(b2.position)
+            .magnitude ** 2
+          )
+    
+          /**
+           * Multiply by the amount of mass the
+           * object represents in the collision.
+           **/
+          .multiply(
+            (2 * b2.sphereArea)
+            / (b1.sphereArea + b2.sphereArea)
+          )
+        );
+    };
+  </code></pre>
+</div>
+<p>
+  It’s worth bringing attention to how immutability makes this possible. We can
+  perform multiple operations on the same vector without changing it’s
+  properties while returning new vectors that can be used for chaining.
+</p>
+<p>
+  Now we can use this in the <code>update</code> method of <code>Ball</code>.
+  However, there is another issue we need to resolve. We can’t update velocities
+  one at a time because the current velocity of both actors is necessary to
+  determine their new velocities. And if we update both actor’s velocity now,
+  the velocity will be updated twice because every actor checks every actor.
+</p>
+<p>
+  So we need a way to update both actors together but only update them once.
+  There is likely a better way, but what I came up with is creating an ID for
+  each collision and keeping track of those IDs in an array so we can skip them
+  in the current update. The collision ID is composed of the object ID and
+  update ID.
+</p>
+<p>
+  We already added an update ID to <code>State</code> so let’s add an object ID
+  to <code>Ball</code> as well as a collisions array. These are the pieces we
+  need to calculate collisions in <code>Ball.update</code> so let’s update that
+  as well.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      constructor(config) {
+        Object.assign(this,
+          {
+            id: Math.floor(Math.random() * 1000000),
+            type: 'circle',
+            position: new Vector(40, 40),
+            velocity: new Vector(5, 3),
+            radius: 10,
+            color: 'red',
+            collisions: [],
+          },
+          config
+        );
+      }
+    
+      update(state, time, updateId) {
+    
+        // Check if hitting left or right of display
+        if (this.position.x >= state.display.canvas.width || this.position.x <= 0) {
+          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+        }
+    
+        // Check if hitting top or bottom of display
+        if (this.position.y >= state.display.canvas.height || this.position.y <= 0) {
+          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+        }
+    
+        for (let actor of state.actors) {
+    
+          /**
+           * A ball can't collide with itself and
+           * skip balls that have already collided.
+           **/
+          if (this === actor || this.collisions.includes(actor.id + updateId)) {
+            continue;
+          }
+    
+          const distance = this.position.subtract(actor.position).magnitude;
+    
+          if (distance <= this.radius + actor.radius) {
+            const v1 = collisionVector(this, actor);
+            const v2 = collisionVector(actor, this);
+            this.velocity = v1;
+            actor.velocity = v2;
+            this.collisions.push(actor.id + updateId);
+            actor.collisions.push(this.id + updateId);
+          }
+        }
+    
+        return new Ball({
+          ...this,
+          position: this.position.add(this.velocity),
+        });
+      }
+      ...
+    }
+  </code></pre>
+</div>
+<p>
+  <strong><em>Phew</em></strong
+  >, that was a big update. Time to kick the tires.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const display = new Canvas();
+
+    const ball1 = new Ball({
+      position: new Vector(40, 100),
+      velocity: new Vector(1, 0),
+      radius: 20,
+    });
+
+    const ball2 = new Ball({
+      position: new Vector(200, 100),
+      velocity: new Vector(-1, 0),
+      color: 'blue',
+    });
+
+    const actors = [ball1, ball2];
+    let state = new State(display, actors);
+
+    runAnimation(time => {
+      state = state.update(time);
+      display.sync(state);
+    });
+  </code></pre>
+</div>
+<div id="example-5"></div>
+<script>
+  class State5 {
+    constructor(display, actors) {
+      this.display = display;
+      this.actors = actors;
+    }
+
+    update(time) {
+      const updateId = Math.floor(Math.random() * 1000000);
+      const actors = this.actors.map((actor) => {
+        return actor.update(this, time, updateId);
+      });
+      return new State(this.display, actors);
+    }
+  }
+
+  class Canvas5 {
+    constructor(parent = document.body, width = 400, height = 400) {
+      this.canvas = document.createElement("canvas");
+      this.canvas.width = width;
+      this.canvas.height = height;
+      parent.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext("2d");
+    }
+
+    sync(state) {
+      this.clearDisplay();
+      this.drawActors(state.actors);
+    }
+
+    clearDisplay() {
+      this.ctx.fillStyle = "rgba(255, 255, 255, .5)";
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.strokeStyle = "black";
+      this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawActors(actors) {
+      for (let actor of actors) {
+        if (actor.type === "circle") {
+          this.drawCircle(actor);
+        }
+      }
+    }
+
+    drawCircle(actor) {
+      this.ctx.beginPath();
+      this.ctx.arc(
+        actor.position.x,
+        actor.position.y,
+        actor.radius,
+        0,
+        Math.PI * 2,
+      );
+      this.ctx.closePath();
+      this.ctx.fillStyle = actor.color;
+      this.ctx.fill();
+    }
+  }
+
+  class Ball5 {
+    constructor(config) {
+      Object.assign(
+        this,
+        {
+          id: Math.floor(Math.random() * 1000000),
+          type: "circle",
+          position: new Vector(40, 40),
+          velocity: new Vector(5, 3),
+          radius: 10,
+          color: "red",
+          collisions: [],
+        },
+        config,
+      );
+    }
+
+    update(state, time, updateId) {
+      // Check if hitting left or right of display
+      if (
+        this.position.x >= state.display.canvas.width ||
+        this.position.x <= 0
+      ) {
+        this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+      }
+
+      // Check if hitting top or bottom of display
+      if (
+        this.position.y >= state.display.canvas.height ||
+        this.position.y <= 0
+      ) {
+        this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+      }
+
+      for (let actor of state.actors) {
+        /**
+         * A ball can't collide with itself
+         * and skip balls that have already collided.
+         **/
+        if (this === actor || this.collisions.includes(actor.id + updateId)) {
+          continue;
+        }
+
+        const distance = this.position.subtract(actor.position).magnitude;
+
+        if (distance <= this.radius + actor.radius) {
+          const v1 = collisionVector(this, actor);
+          const v2 = collisionVector(actor, this);
+          this.velocity = v1;
+          actor.velocity = v2;
+          this.collisions.push(actor.id + updateId);
+          actor.collisions.push(this.id + updateId);
+        }
+      }
+
+      return new Ball5({
+        ...this,
+        position: this.position.add(this.velocity),
+      });
+    }
+
+    get sphereArea() {
+      return 4 * Math.PI * this.radius ** 2;
+    }
+  }
+
+  const example5 = document.getElementById("example-5");
+  const display5 = new Canvas5(example5, 460, 200);
+
+  const ball5a = new Ball5({
+    position: new Vector(40, 100),
+    velocity: new Vector(2, 0),
+    radius: 20,
+  });
+
+  const ball5b = new Ball5({
+    position: new Vector(200, 100),
+    velocity: new Vector(-2, 0),
+    color: "blue",
+  });
+
+  const actors5 = [ball5a, ball5b];
+  let state5 = new State5(display5, actors5);
+
+  runAnimation((time) => {
+    state5 = state5.update(time);
+    display5.sync(state5);
+  });
+</script>
+<p>
+  Now that is <em>awesome</em>. But unfortunately, we’re not quite done. There
+  are some edge cases we need to deal with.
+</p>
+<h2 id="resolve-bugs">Resolve bugs</h2>
+<p>Here’s our TODO list:</p>
+<ol>
+  <li>Update wall collisions so only the edge touches</li>
+  <li>Fix “sticky” collisions</li>
+  <li>Fix wall squeeze collisions</li>
+  <li>Prevent excessive memory usage</li>
+</ol>
+<p>
+  The first issue of wall collisions is relatively simple. We just need to give
+  the position update an upper and lower bound based on the canvas walls.
+</p>
+<p>
+  For the second issue, you’re likely wondering what a sticky collision is. As
+  the description suggests, there are moments when two objects overlap and stick
+  to each other. This leads to a continuous collision update that normally
+  results in a frantic spiraling. It’s an issue that only arises in very
+  specific conditions, but becomes quite common with 10+ balls in the frame.
+</p>
+<p>
+  Here is an example of a sticky collision (if you don’t see it try refreshing
+  the page, they separate over time).
+</p>
+<div id="example-6"></div>
+<script>
+  const example6 = document.getElementById("example-6");
+  const display6 = new Canvas5(example6, 460, 200);
+
+  const ball6a = new Ball5({
+    position: new Vector(180, 100),
+    velocity: new Vector(2, 0),
+    radius: 20,
+  });
+
+  const ball6b = new Ball5({
+    position: new Vector(200, 100),
+    velocity: new Vector(-2, 5),
+    color: "blue",
+  });
+
+  const actors6 = [ball6a, ball6b];
+  let state6 = new State5(display6, actors6);
+
+  runAnimation((time) => {
+    state6 = state6.update(time);
+    display6.sync(state6);
+  });
+</script>
+<p>
+  The solution I implemented is a simple bandaid. I check for collisions in the
+  next frame and update the current frame as if they had collided. This way the
+  objects never get a chance to overlap. However, they never get a chance to
+  collide either. Thankfully, the effect is barely noticeable.
+</p>
+<p>
+  In pursuit of a better solution, I looked into calculating the amount of
+  overlap and removing that distance from the current position before adding the
+  new velocity. And it worked in a small environment, but once again issue arose
+  when there were 10+ balls in the simulation. I’m not sure if this is due to
+  float precision, or balls backing up into another.
+</p>
+<p>
+  Wall squeezes occur when a ball hits the wall and another ball at the same
+  time. I don’t have a perfect solution for this. If wall collisions are
+  calculated first, velocity is lost. If they are calculated after, velocity is
+  gained. This is due to the bounding condition we created for wall collisions
+  where the position is stopped exactly when the edge touches the wall. However,
+  if I remove this bounding condition, objects can get stuck against the wall.
+</p>
+<p>
+  I decided to go with the solution that loses velocity because it looks the
+  best with animations that run for a long time.
+</p>
+<p>
+  Finally, because we are keeping track of each collision in each ball, it can
+  quickly overwhelm memory. An easy fix is to trim down the size of the array at
+  a certain limit. I chose 10 as the limit because I have a hard time thinking
+  of a situation where a ball will simultaneously collide with 10 other balls.
+  However, this could be adjusted depending on the needs.
+</p>
+<p>Here is a stable solution to these bugs.</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    class Ball {
+      ...
+      update(state, time, updateId) {
+    
+        /**
+         * Limit the size of the collisions array to
+         * prevent memory issues. If slice occurs on
+         * too many elements, it starts to lag.
+         **/
+        if (this.collisions.length > 10) {
+          this.collisions = this.collisions.slice(this.collisions.length - 3);
+        }
+    
+        /**
+         * Set the upper and lower bounds based on the
+         * size of the canvas and size of the ball.
+         **/
+        const upperLimit = new Vector(
+          state.display.canvas.width - this.radius,
+          state.display.canvas.height - this.radius
+        );
+        const lowerLimit = new Vector(0 + this.radius, 0 + this.radius);
+    
+        // Check if hitting left or right of display
+        if (this.position.x >= upperLimit.x || this.position.x <= lowerLimit.x) {
+          this.velocity = new Vector(-this.velocity.x, this.velocity.y);
+        }
+    
+        // Check if hitting top or bottom of display
+        if (this.position.y >= upperLimit.y || this.position.y <= lowerLimit.y) {
+          this.velocity = new Vector(this.velocity.x, -this.velocity.y);
+        }
+    
+        for (let actor of state.actors) {
+    
+          /**
+           * A ball can't collide with itself and
+           * skip balls that have already collided.
+           **/
+          if (this === actor || this.collisions.includes(actor.id + updateId)) {
+            continue;
+          }
+    
+          /**
+           * Check if actors collide in the next frame
+           * by adding the current velocity and updating
+           * now if they do.
+           */
+          const distance = this.position.add(this.velocity)
+            .subtract(actor.position.add(actor.velocity))
+            .magnitude;
+    
+          if (distance <= this.radius + actor.radius) {
+            const v1 = collisionVector(this, actor);
+            const v2 = collisionVector(actor, this);
+            this.velocity = v1;
+            actor.velocity = v2;
+            this.collisions.push(actor.id + updateId);
+            actor.collisions.push(this.id + updateId);
+          }
+        }
+    
+        /**
+         * Use the bounds to limit the position
+         * update.
+         **/
+        const newX = Math.max(
+          Math.min(this.position.x + this.velocity.x, upperLimit.x),
+          lowerLimit.x
+        );
+    
+        const newY = Math.max(
+          Math.min(this.position.y + this.velocity.y, upperLimit.y),
+          lowerLimit.y
+        );
+    
+        return new Ball({
+          ...this,
+          position: new Vector(newX, newY),
+        });
+      }
+      ...
+    }
+  </code></pre>
+</div>
+<p>
+  Now stickiness can only occur if two objects spawn on top of each other. Which
+  can happen using a random generator like I did for the intro animation in this
+  article.
+</p>
+<p>
+  <strong><em>And we’re done!</em></strong> Let’s give it a final whirl.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const display = new Canvas();
+
+    const ball1 = new Ball({
+      position: new Vector(40, 100),
+      velocity: new Vector(2, 3),
+      radius: 20,
+    });
+
+    const ball2 = new Ball({
+      position: new Vector(200, 100),
+      velocity: new Vector(-1, 3),
+      color: 'blue',
+    });
+
+    const actors = [ball1, ball2];
+    let state = new State(display, actors);
+
+    runAnimation(time => {
+      state = state.update(time);
+      display.sync(state);
+    });
+  </code></pre>
+</div>
+<div id="example-7"></div>
+<script>
+  const example7 = document.getElementById("example-7");
+  const display7 = new Canvas(example7, 460, 200);
+
+  const ball7a = new Ball({
+    position: new Vector(30, 100),
+    velocity: new Vector(2, 3),
+    radius: 20,
+    color: "red",
+  });
+
+  const ball7b = new Ball({
+    position: new Vector(200, 100),
+    velocity: new Vector(-1, 3),
+    radius: 10,
+  });
+
+  const actors7 = [ball7a, ball7b];
+  let state7 = new State(display7, actors7);
+
+  runAnimation((time) => {
+    state7 = state7.update(time);
+    display7.sync(state7);
+  });
+</script>
+<h2 id="final-notes">Final notes</h2>
+<p>
+  I wrapped all of this in a function with a loop to generate balls of random
+  size, color, at different positions and speeds. You can see all of this in the
+  source code
+  <a
+    rel="noopener noreferrer"
+    target="_blank"
+    href="https://gist.github.com/joshuabradley012/bd2bc96bbe1909ca8555a792d6a36e04"
+    >here</a
+  >. But to wrap up the article, here is the script I used to generate the intro
+  animation in this article.
+</p>
+<div class="highlight">
+  <pre
+    tabindex="0"
+    style="
+      background-color: #fff;
+      -moz-tab-size: 2;
+      -o-tab-size: 2;
+      tab-size: 2;
+    "
+  ><code class="language-javascript" data-lang="javascript">
+    const random = (max = 9, min = 0) => {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    
+    const colors = ['red', 'green', 'blue', 'purple', 'orange'];
+    
+    const collidingBalls = ({ width = 400, height = 400, parent = document.body, count = 50 }) => {
+      const display = new Canvas(parent, width, height);
+      const balls = [];
+      for (let i = 0; i < count; i++) {
+        balls.push(new Ball({
+          radius: random(8, 3) + Math.random(),
+          color: colors[random(colors.length - 1)],
+          position: new Vector(random(width - 10, 10), random(height - 10, 10)),
+          velocity: new Vector(random(3, -3), random(3, -3)),
+        }));
+      }
+      let state = new State(display, balls);
+      runAnimation(time => {
+        state = state.update(time);
+        display.sync(state);
+      });
+    };
+    
+    collidingBalls({
+      count: 40,
+      height: 260,
+      width: 460,
+      parent: document.getElementById('hero'),
+    });
+  </code></pre>
+</div>
+<p>
+  This was a lot of fun. But it’s not perfect. There are still issues with
+  imperfect collisions (because the balls do not touch), wall squeezes, and
+  balls that are spawned on top of each other. If you come with a solution for
+  any of these things, please let me know!
+</p>

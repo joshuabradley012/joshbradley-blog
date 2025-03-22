@@ -8,6 +8,16 @@ const nextConfig = {
         destination: "/thoughts/understanding-the-power-of-lisp",
         permanent: true,
       },
+      {
+        source: "/building-this-website",
+        destination: "/thoughts/building-this-website",
+        permanent: true,
+      },
+      {
+        source: "/object-collisions-with-canvas",
+        destination: "/thoughts/object-collisions-with-canvas",
+        permanent: true,
+      },
     ];
   },
   webpack: (config) => {

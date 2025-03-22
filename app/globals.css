@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
-  --font-serif: "Source Serif 4", "Source Serif 4 Fallback", Georgia, serif;
+  --font-serif: "Lora", "Lora Fallback", Georgia, serif;
   --font-mono:
     "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace;
 

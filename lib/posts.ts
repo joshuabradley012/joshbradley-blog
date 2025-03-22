@@ -18,6 +18,17 @@ export function getAllPosts(): Post[] {
         import("../components/posts/Rebuild").then((mod) => mod.default),
     },
     {
+      slug: "object-collisions-with-canvas",
+      title: "Simulating Object Collisions With Canvas",
+      description:
+        "Simulating object collisions is a rewarding way to learn the basics of HTML canvas and physics simulation.",
+      date: "Jul 25, 2020",
+      component: () =>
+        import("../components/posts/ObjectCollisions").then(
+          (mod) => mod.default,
+        ),
+    },
+    {
       slug: "understanding-the-power-of-lisp",
       title: "Understanding the Power of LISP",
       description:

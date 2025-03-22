@@ -8,8 +8,9 @@ export default function Home() {
       <H1>Josh Bradley</H1>
       <div className="space-y-4">
         <p>
-          I seek the wisdom needed to live a great life. I write about
-          philosophy, technology, spirituality, business, and politics.
+          I seek the wisdom needed to live a great life. I think about how the
+          world works and where the future is heading. I write about philosophy,
+          technology, business, and politics.
         </p>
         <p>
           Currently, I am building{" "}

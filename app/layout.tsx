@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
+import { Lora, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { feedConfig } from "@/lib/feedConfig";
 import JotaiProvider from "@/components/JotaiProvider";
@@ -8,14 +8,17 @@ import Nav from "@/components/ui/Nav";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  style: ["normal", "italic"],
 });
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  style: ["normal", "italic"],
 });
-const ebGaramond = Source_Serif_4({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-source-serif-4",
+  variable: "--font-lora",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -105,7 +108,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`text-sm text-neutral-700 antialiased ${inter.variable} ${ebGaramond.variable} ${jetbrainsMono.variable}`}
+        className={`text-sm text-neutral-700 antialiased ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}
       >
         <JotaiProvider>
           <div className="xs:flex-row xs:p-6 flex flex-col p-4 pb-12 sm:p-12 md:p-24 md:pb-24">

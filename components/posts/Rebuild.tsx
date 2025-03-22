@@ -7,13 +7,13 @@ import BlockQuote from "@/components/ui/BlockQuote";
 import Figure from "@/components/ui/Figure";
 import { Ul, Ol, Li } from "@/components/ui/List";
 import InlineLink from "@/components/ui/InlineLink";
-import ogImage from "@/public/og-image.png";
 import {
   FootnotesProvider,
   FootnoteLink,
   Footnotes,
 } from "@/components/ui/Footnotes";
 
+import ogImage from "@/public/og-image.png";
 const data = [
   { name: "Jan", value: 400 },
   { name: "Feb", value: 300 },
@@ -40,7 +40,7 @@ const footnotes = [
   },
 ];
 
-export default function PostOne() {
+export default function Rebuilding() {
   return (
     <FootnotesProvider footnotes={footnotes}>
       <LoadWrapper>
