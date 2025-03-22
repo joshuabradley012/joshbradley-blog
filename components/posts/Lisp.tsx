@@ -37,8 +37,8 @@ export default function Lisp() {
           </p>
           <p>
             Others tout LISP as necessary to becoming a better programmer. Eric
-            Raymond went so far as to say that understanding LISP is a "profound
-            enlightenment experience."
+            Raymond went so far as to say that understanding LISP is a{" "}
+            <q>profound enlightenment experience.</q>
           </p>
           <p>
             In search of this understanding, I went to the source. John

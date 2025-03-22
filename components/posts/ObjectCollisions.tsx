@@ -789,7 +789,7 @@ runAnimation(time => {
 
             const startButton = document.createElement("button");
             startButton.innerText = "Start animation";
-            startButton.className = "mt-2 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors";
+            startButton.className = "btn mt-2";
             document.getElementById("example-2").appendChild(startButton);
 
             const animateOnClick = () => {

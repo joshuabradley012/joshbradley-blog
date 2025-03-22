@@ -30,7 +30,7 @@ export function H3({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("my-4 text-left font-medium text-black", className)}
+      className={cn("mt-8 mb-4 text-left font-medium text-black", className)}
       {...props}
     />
   );

@@ -29,9 +29,9 @@ export default function Nav() {
             <Link
               href={link.href}
               data-active={isActive(pathname, link.href)}
-              className="font-serif text-neutral-400 italic transition-colors hover:text-black data-[active=true]:text-black"
+              className="text-neutral-400 transition-colors hover:text-black data-[active=true]:text-black"
             >
-              {link.text}
+              <em>{link.text}</em>
             </Link>
           </li>
         ))}

@@ -17,6 +17,17 @@
     background-color: oklch(0.371 0 0 / 0.1);
   }
 
+  em,
+  q,
+  i {
+    @apply font-serif text-base leading-none italic;
+  }
+
+  strong,
+  b {
+    @apply font-semibold;
+  }
+
   figure[data-rehype-pretty-code-figure] pre {
     scrollbar-width: thin;
     scrollbar-color: var(--color-neutral-200) var(--color-neutral-50);
@@ -91,5 +102,11 @@
   [data-rmiz-content="found"] [role="img"],
   [data-rmiz-content="found"] [data-zoom] {
     @apply !cursor-pointer;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply cursor-pointer rounded border border-neutral-400 px-2 py-1 text-xs transition-colors hover:border-black hover:text-black;
   }
 }
