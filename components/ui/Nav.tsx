@@ -12,6 +12,10 @@ const links = [
     href: "/thoughts",
     text: "thoughts",
   },
+  {
+    href: "/quotes",
+    text: "quotes",
+  },
 ];
 
 function isActive(pathname: string, href: string) {

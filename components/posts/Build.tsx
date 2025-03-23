@@ -61,9 +61,11 @@ export default function Build() {
         </p>
 
         <BlockQuote>
-          Windows 95 was 30MB. Today we have web pages heavier than that!
-          Windows 10 is 4GB, which is 133 times as big. But is it 133 times as
-          superior?
+          <p>
+            Windows 95 was 30MB. Today we have web pages heavier than that!
+            Windows 10 is 4GB, which is 133 times as big. But is it 133 times as
+            superior?
+          </p>
         </BlockQuote>
 
         <p>

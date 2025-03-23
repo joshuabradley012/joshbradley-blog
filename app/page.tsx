@@ -5,8 +5,9 @@ import { H1 } from "@/components/ui/Headings";
 export default function Home() {
   return (
     <LoadWrapper>
-      <H1>Josh Bradley</H1>
       <div className="space-y-4">
+        <H1>Josh Bradley</H1>
+
         <p>
           I seek the wisdom needed to live a great life. I think about how the
           world works and where the future is heading. I write about philosophy,

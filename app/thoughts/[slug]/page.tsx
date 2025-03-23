@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import { feedConfig } from "@/lib/feedConfig";
 import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { H1 } from "@/components/ui/Headings";
 
 interface PageProps {
   params: Promise<{
@@ -40,7 +41,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-// Use the simplest form for the page component
 export default async function Post(props: PageProps) {
   const { slug } = await props.params;
   const post = getPostBySlug(slug);
@@ -49,7 +49,6 @@ export default async function Post(props: PageProps) {
     notFound();
   }
 
-  // Dynamically import the post component
   const PostComponent = dynamic(post.component);
 
   return (
@@ -57,7 +56,7 @@ export default async function Post(props: PageProps) {
       <BlogJsonLd post={post} />
       <article>
         <header className="mb-8 flex justify-between">
-          <h1 className="text-left font-medium text-black">{post.title}</h1>
+          <H1 className="mb-0">{post.title}</H1>
           <time className="ml-2 whitespace-nowrap text-neutral-500">
             {post.date}
           </time>

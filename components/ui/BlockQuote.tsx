@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
+import InlineLink from "@/components/ui/InlineLink";
 
 interface BlockQuoteProps extends React.HTMLAttributes<HTMLQuoteElement> {
   author?: string;
   source?: string;
+  href?: string;
 }
 
 export default function BlockQuote({
@@ -10,6 +12,7 @@ export default function BlockQuote({
   className,
   author,
   source,
+  href,
   ...props
 }: BlockQuoteProps) {
   return (
@@ -25,7 +28,12 @@ export default function BlockQuote({
         <footer className="font-sans text-xs text-neutral-500 not-italic">
           &mdash; {author && <span>{author}</span>}
           {author && source && <span>,</span>}{" "}
-          {source && <cite className="not-italic">{source}</cite>}
+          {source && !href && <cite className="not-italic">{source}</cite>}
+          {source && href && (
+            <cite className="not-italic">
+              <InlineLink href={href}>{source}</InlineLink>
+            </cite>
+          )}
         </footer>
       )}
     </blockquote>

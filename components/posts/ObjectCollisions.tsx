@@ -1,13 +1,10 @@
 import { BlockCode, InlineCode } from "@/components/ui/Code";
 import { BlockMath, InlineMath } from "@/components/ui/Math";
-import LineChart from "@/components/ui/LineChart";
-import CounterDemo from "@/components/demos/CounterDemo";
 import LoadWrapper from "@/components/LoadWrapper";
-import BlockQuote from "@/components/ui/BlockQuote";
 import Figure from "@/components/ui/Figure";
-import { Ul, Ol, Li } from "@/components/ui/List";
+import { Ol, Li } from "@/components/ui/List";
 import InlineLink from "@/components/ui/InlineLink";
-import { H2, H3 } from "@/components/ui/Headings";
+import { H2 } from "@/components/ui/Headings";
 import ExecuteAnimationScript from "@/components/ui/ExecuteAnimationScript";
 import elasticCollision from "@/public/images/elastic-2d.gif";
 
