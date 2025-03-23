@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import LoadWrapper from "@/components/LoadWrapper";
 import BlockQuote from "@/components/ui/BlockQuote";
+
+export const metadata: Metadata = {
+  title: "Quotes",
+  description: "A collection of my favorite quotes, gathered over time.",
+};
 
 export default function Quotes() {
   return (
@@ -33,6 +39,12 @@ export default function Quotes() {
             architecture, navigation, commerce and agriculture in order to give
             their children a right to study painting, poetry, music,
             architecture, statuary, tapestry and porcelain.
+          </p>
+        </BlockQuote>
+        <BlockQuote author="Nick Cave">
+          <p>
+            Conservatism is an aspiration, it is something we should strive
+            for—a society that works well enough that it is worth conserving.
           </p>
         </BlockQuote>
         <BlockQuote author="Stephen Jay Gould">
@@ -97,6 +109,28 @@ Very well then I contradict myself,
             if something is not one, it is more than one; if it is not singular,
             it is plural. But in actual experience, our life is not only plural,
             but also singular.
+          </p>
+        </BlockQuote>
+        <BlockQuote
+          author="Kevin Kelley"
+          source="God, the Superposition"
+          href="https://kk.org/thetechnium/god-the-superposition/"
+        >
+          <p className="text-left">
+            This superposition of beginning/no-beginning, nothing/something,
+            freewill/determinism, God/not-God is the essence of all being; it is
+            paradox itself that generates the unlikely arrangements of all that
+            we consider real and good.
+          </p>
+        </BlockQuote>
+        <BlockQuote author="Helen Keller" source="Before the Soul Dawn">
+          <p>
+            Before my teacher came to me, I did not know that I am. ... My inner
+            life, then, was a blank without past, present, or future, without
+            hope or anticipation, without wonder or joy or faith. ... When I
+            learned the meaning of "I" and "me" and found that I was something,
+            I began to think. ... Thought made me conscious of love, joy, and
+            all the emotions.
           </p>
         </BlockQuote>
         <BlockQuote author="Timothy Leary">
@@ -209,18 +243,6 @@ Must give us pause.`}
             the vast and endless sea.
           </p>
         </BlockQuote>
-        <BlockQuote
-          author="Kevin Kelley"
-          source="God, the Superposition"
-          href="https://kk.org/thetechnium/god-the-superposition/"
-        >
-          <p className="text-left">
-            This superposition of beginning/no-beginning, nothing/something,
-            freewill/determinism, God/not-God is the essence of all being; it is
-            paradox itself that generates the unlikely arrangements of all that
-            we consider real and good.
-          </p>
-        </BlockQuote>
         <BlockQuote author="C.S Lewis" source="The Four Loves">
           <p>
             There is no safe investment. To love at all is to be vulnerable.
@@ -241,22 +263,6 @@ Must give us pause.`}
           <p>
             When you want something, all the universe conspires in helping you
             to achieve it.
-          </p>
-        </BlockQuote>
-        <BlockQuote author="Helen Keller" source="Before the Soul Dawn">
-          <p>
-            Before my teacher came to me, I did not know that I am. ... My inner
-            life, then, was a blank without past, present, or future, without
-            hope or anticipation, without wonder or joy or faith. ... When I
-            learned the meaning of "I" and "me" and found that I was something,
-            I began to think. ... Thought made me conscious of love, joy, and
-            all the emotions.
-          </p>
-        </BlockQuote>
-        <BlockQuote author="Nick Cave">
-          <p>
-            Conservatism is an aspiration, it is something we should strive
-            for—a society that works well enough that it is worth conserving.
           </p>
         </BlockQuote>
         <BlockQuote author="Dylan Thomas" className="mb-0">

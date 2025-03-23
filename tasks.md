@@ -1,5 +1,5 @@
 - [ ] Add projects from the old site, include static projects
-- [ ] Add quotes, people, books, etc
+- [ ] Add mental models, problems/questions, people, books, etc
 - [ ] Add an embed tweet component, can use Vercel's react-tweet
 - [ ] Add a video component
 - [ ] Add a mermaid renderer component

@@ -13,6 +13,10 @@ const links = [
     text: "thoughts",
   },
   {
+    href: "/projects",
+    text: "projects",
+  },
+  {
     href: "/quotes",
     text: "quotes",
   },

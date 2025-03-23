@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="mb-4">
         The page you're looking for doesn't exist or has been moved.
       </p>
-      <hr className="my-8 border-neutral-200" />
+      <hr />
       <div className="space-y-4 text-xs">
         <InlineLink href="/">Return Home</InlineLink>
       </div>

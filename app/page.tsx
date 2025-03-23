@@ -28,7 +28,7 @@ export default function Home() {
           . I grew up in Bakersfield and currently reside in LA.
         </p>
       </div>
-      <hr className="my-8 border-neutral-200" />
+      <hr />
       <div className="flex flex-wrap gap-4 text-xs">
         <InlineLink href="mailto:hello@joshbradley.me">Email</InlineLink>
         <InlineLink href="https://x.com/josh_b_rad">Twitter</InlineLink>

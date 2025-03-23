@@ -124,3 +124,9 @@
     @apply cursor-pointer rounded border border-neutral-400 px-2 py-1 text-xs transition-colors hover:border-black hover:text-black;
   }
 }
+
+@layer utilities {
+  hr {
+    @apply my-8 border-gray-200;
+  }
+}

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(feedConfig.siteUrl),
   title: {
     default: feedConfig.siteTitle,
-    template: `%s - ${feedConfig.siteTitle}`,
+    template: `%s · ${feedConfig.siteTitle}`,
   },
   description: feedConfig.siteDescription,
   openGraph: {

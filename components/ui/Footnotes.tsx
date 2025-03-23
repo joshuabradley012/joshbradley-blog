@@ -90,7 +90,7 @@ export function Footnotes() {
 
   return (
     <>
-      <hr className="my-8 border-neutral-200" />
+      <hr />
       <Ol className="space-y-2 text-xs text-neutral-500">
         {footnotes
           .sort((a, b) => a.id - b.id)

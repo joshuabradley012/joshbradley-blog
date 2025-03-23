@@ -1,1 +1,9 @@
+export { default as Assignar } from "@/icons/assignar.svg";
+export { default as Celest } from "@/icons/celest.svg";
 export { default as Close } from "@/icons/close.svg";
+export { default as Elcap } from "@/icons/elcap.svg";
+export { default as Jobsite } from "@/icons/jobsite.svg";
+export { default as Jordyhelps } from "@/icons/jordyhelps.svg";
+export { default as Kojo } from "@/icons/kojo.svg";
+export { default as Procore } from "@/icons/procore.svg";
+export { default as Silo } from "@/icons/silo.svg";
