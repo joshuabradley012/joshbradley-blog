@@ -1,4 +1,4 @@
-- Write best notes into articles, and do rebuilding page
+- Write best notes into articles, and write rebuild article
 - Add mental models, problems/questions, people, books, etc
 - Add an embed tweet component, can use Vercel's react-tweet
 - Add a video component

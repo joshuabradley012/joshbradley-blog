@@ -4,6 +4,7 @@ import LineChart from "@/components/ui/LineChart";
 import CounterDemo from "@/components/demos/CounterDemo";
 import BlockQuote from "@/components/ui/BlockQuote";
 import Figure from "@/components/ui/Figure";
+import { H2 } from "@/components/ui/Headings";
 import { Ul, Ol, Li } from "@/components/ui/List";
 import InlineLink from "@/components/ui/InlineLink";
 import {
@@ -12,7 +13,7 @@ import {
   Footnotes,
 } from "@/components/ui/Footnotes";
 
-import ogImage from "@/public/og-image.png";
+import ogImage from "@/public/images/cd5.png";
 const data = [
   { name: "Jan", value: 400 },
   { name: "Feb", value: 300 },
@@ -170,7 +171,7 @@ return (
           \,d\xi"
         />
 
-        <h2 className="mt-8 font-medium text-black">How It Works</h2>
+        <H2>How It Works</H2>
         <p>
           This entire blog post is a React component, giving us the power to
           include any interactive elements we want. We're using useState hooks
@@ -180,9 +181,7 @@ return (
 
         <Figure src={ogImage} alt="OG Image" caption="This is a caption" />
 
-        <h2 className="mt-8 font-medium text-black">
-          Adding Custom Interactions
-        </h2>
+        <H2>Adding Custom Interactions</H2>
         <CounterDemo />
 
         <p>

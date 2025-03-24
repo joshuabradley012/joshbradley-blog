@@ -7,8 +7,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { Ol, Li } from "@/components/ui/List";
 import { cn } from "@/lib/utils";
 
@@ -59,13 +57,13 @@ export function FootnoteLink({ id }: { id: number }) {
   return (
     <span>
       <sup>
-        <Link
+        <a
           id={`fnref${id}`}
           href={`#fn${id}`}
           className="tabular-nums transition-colors hover:text-black"
         >
           [{id}]
-        </Link>
+        </a>
       </sup>
       <span className="absolute left-full ml-12 hidden w-64 -translate-y-5 text-left text-xs text-neutral-500 xl:block">
         <span className="absolute top-0 -translate-x-full pr-1 tabular-nums select-none">
@@ -81,12 +79,20 @@ export function FootnoteLink({ id }: { id: number }) {
 export function Footnotes() {
   const { footnotes } = useFootnotes();
   const [activeFootnote, setActiveFootnote] = useState<string | null>(null);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     const hash = window.location.hash;
     setActiveFootnote(hash);
-  }, [searchParams]);
+
+    const handleHashChange = () => {
+      setActiveFootnote(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   return (
     <>
@@ -107,12 +113,12 @@ export function Footnotes() {
               )}
             >
               {footnote.content}
-              <Link
+              <a
                 href={`#fnref${footnote.id}`}
                 className="ml-1 transition-colors hover:text-black"
               >
                 ^
-              </Link>
+              </a>
             </Li>
           ))}
       </Ol>
