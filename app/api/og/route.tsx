@@ -9,7 +9,9 @@ export async function GET(request: NextRequest) {
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
-    const title = hasTitle ? searchParams.get("title")?.slice(0, 100) : "JB";
+    const title = hasTitle
+      ? searchParams.get("title")?.slice(0, 100)
+      : "Josh Bradley";
 
     return new ImageResponse(
       (
@@ -37,10 +39,10 @@ export async function GET(request: NextRequest) {
             }}
           >
             <img
-              alt="Josh Bradley"
-              height={100}
+              alt={title}
+              height={84}
               src="data:image/svg+xml,%3Csvg width='100' height='100' fill='#5F46BA' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' /%3E%3C/svg%3E"
-              width={100}
+              width={84}
             />
             <div
               style={{

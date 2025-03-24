@@ -42,15 +42,17 @@ function useHeading() {
 
 function HeadingLink({
   id,
+  active,
   children,
 }: {
   id?: string;
+  active: boolean;
   children: React.ReactNode;
 }) {
   return (
     <a href={`#${id}`} className="group">
       <span
-        data-active={window.location.hash === `#${id}`}
+        data-active={active}
         className="xs:pr-2 absolute -top-px -translate-x-full pr-1 font-serif text-neutral-400 opacity-0 transition-colors transition-opacity group-hover:opacity-100 hover:text-black data-[active=true]:text-black data-[active=true]:opacity-100"
         aria-label="Copy link to section"
       >
@@ -82,7 +84,7 @@ export function H2({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
-  const { headingRef } = useHeading();
+  const { headingRef, activeHeading } = useHeading();
 
   return (
     <h2
@@ -93,7 +95,12 @@ export function H2({
       )}
       {...props}
     >
-      <HeadingLink id={headingRef.current?.id}>{props.children}</HeadingLink>
+      <HeadingLink
+        id={headingRef.current?.id}
+        active={activeHeading === `#${headingRef.current?.id}`}
+      >
+        {props.children}
+      </HeadingLink>
     </h2>
   );
 }
@@ -102,7 +109,7 @@ export function H3({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
-  const { headingRef } = useHeading();
+  const { headingRef, activeHeading } = useHeading();
 
   return (
     <h3
@@ -113,7 +120,12 @@ export function H3({
       )}
       {...props}
     >
-      <HeadingLink id={headingRef.current?.id}>{props.children}</HeadingLink>
+      <HeadingLink
+        id={headingRef.current?.id}
+        active={activeHeading === `#${headingRef.current?.id}`}
+      >
+        {props.children}
+      </HeadingLink>
     </h3>
   );
 }

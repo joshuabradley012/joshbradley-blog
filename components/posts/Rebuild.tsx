@@ -179,7 +179,13 @@ return (
           need.
         </p>
 
-        <Figure src={ogImage} alt="OG Image" caption="This is a caption" />
+        <Figure
+          src="/api/og"
+          alt="OG Image"
+          caption="This is a caption"
+          width={1200}
+          height={630}
+        />
 
         <H2>Adding Custom Interactions</H2>
         <CounterDemo />
