@@ -18,19 +18,23 @@ export default function ExecuteAnimationScript({
   const framesRef = useRef(new Set<number>());
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    // Capture current values at the start of the effect
+    const frames = framesRef.current;
+    const container = containerRef.current;
+
+    if (!container) return;
 
     // Clean up any existing content first
-    containerRef.current.innerHTML = "";
-    framesRef.current.forEach((frameId) => cancelAnimationFrame(frameId));
-    framesRef.current.clear();
+    container.innerHTML = "";
+    frames.forEach((frameId) => cancelAnimationFrame(frameId));
+    frames.clear();
 
     // Create a scoped requestAnimationFrame tracker
     const scopedRequestAnimationFrame = (
       callback: FrameRequestCallback,
     ): number => {
       const frameId = requestAnimationFrame(callback);
-      framesRef.current.add(frameId);
+      frames.add(frameId);
       return frameId;
     };
 
@@ -40,16 +44,16 @@ export default function ExecuteAnimationScript({
         "requestAnimationFrame",
         children,
       );
-      executeCode(containerRef.current, scopedRequestAnimationFrame);
+      executeCode(container, scopedRequestAnimationFrame);
     } catch (error) {
       console.error("Error executing script:", error);
     }
 
     return () => {
-      framesRef.current.forEach((frameId) => cancelAnimationFrame(frameId));
-      framesRef.current.clear();
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
+      frames.forEach((frameId) => cancelAnimationFrame(frameId));
+      frames.clear();
+      if (container) {
+        container.innerHTML = "";
       }
     };
   }, [children]);
