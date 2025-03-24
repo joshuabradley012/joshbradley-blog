@@ -1,10 +1,9 @@
-import LoadWrapper from "@/components/LoadWrapper";
 import InlineLink from "@/components/ui/InlineLink";
 import { H1 } from "@/components/ui/Headings";
 
 export default function Home() {
   return (
-    <LoadWrapper>
+    <>
       <div className="space-y-4">
         <H1>Josh Bradley</H1>
 
@@ -42,6 +41,6 @@ export default function Home() {
           Instagram
         </InlineLink>
       </div>
-    </LoadWrapper>
+    </>
   );
 }

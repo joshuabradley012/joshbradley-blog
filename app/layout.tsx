@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Lora, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { unstable_ViewTransition as ViewTransition } from "react";
+
 import { feedConfig } from "@/lib/feedConfig";
-import JotaiProvider from "@/components/JotaiProvider";
 import Nav from "@/components/ui/Nav";
 
 const inter = Inter({
@@ -110,15 +111,15 @@ export default function RootLayout({
       <body
         className={`text-sm text-neutral-700 antialiased ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}
       >
-        <JotaiProvider>
-          <div className="xs:flex-row xs:p-6 flex flex-col p-4 pb-12 sm:p-12 md:p-24 md:pb-24">
-            <Nav />
-            <main className="xs:pl-6 relative w-full min-w-0 text-justify hyphens-auto sm:max-w-2xl sm:pl-8 md:pl-12">
-              <div className="xs:block absolute top-0 left-0 hidden h-full border-l border-neutral-200" />
-              <div className="relative">{children}</div>
-            </main>
-          </div>
-        </JotaiProvider>
+        <div className="xs:flex-row xs:p-6 flex flex-col p-4 pb-12 sm:p-12 md:p-24 md:pb-24">
+          <Nav />
+          <main className="xs:pl-6 relative w-full min-w-0 text-justify hyphens-auto sm:max-w-2xl sm:pl-8 md:pl-12">
+            <div className="xs:block absolute top-0 left-0 hidden h-full border-l border-neutral-200" />
+            <ViewTransition name="crossfade">
+              <article className="relative">{children}</article>
+            </ViewTransition>
+          </main>
+        </div>
       </body>
     </html>
   );

@@ -54,15 +54,13 @@ export default async function Post(props: PageProps) {
   return (
     <>
       <BlogJsonLd post={post} />
-      <article>
-        <header className="mb-8 flex justify-between">
-          <H1 className="mb-0">{post.title}</H1>
-          <time className="ml-2 whitespace-nowrap text-neutral-500">
-            {post.date}
-          </time>
-        </header>
-        <PostComponent />
-      </article>
+      <header className="mb-8 flex justify-between">
+        <H1 className="mb-0">{post.title}</H1>
+        <time className="ml-2 whitespace-nowrap text-neutral-500">
+          {post.date}
+        </time>
+      </header>
+      <PostComponent />
     </>
   );
 }
