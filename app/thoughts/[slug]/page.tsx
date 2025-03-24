@@ -31,7 +31,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       url: `${feedConfig.siteUrl}/thoughts/${post.slug}`,
       images: [
         {
-          url: post.coverImage || feedConfig.ogImage,
+          url: post.coverImage || `/api/og?title=${post.title}`,
           width: 1200,
           height: 630,
           alt: post.title,
