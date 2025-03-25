@@ -29,6 +29,12 @@ export default function Quotes() {
           stars.
         </p>
       </BlockQuote>
+      <BlockQuote source="Albert Einstein">
+        <p>
+          If you can't explain it to a six year old, you don't understand it
+          yourself.
+        </p>
+      </BlockQuote>
       <BlockQuote author="John Adams">
         <p>
           I must study politics and war, that our sons may have liberty to study
@@ -62,6 +68,13 @@ export default function Quotes() {
           have for fifty years, they'd be crying out for tractors and fertilizer
           and irrigation canals and be outraged that fashionable elitists back
           home were trying to deny them these things.
+        </p>
+      </BlockQuote>
+      <BlockQuote author="Christopher Hitchens">
+        <p>
+          The totalitarian, to me, is the enemy—the one that's absolute, the one
+          that wants control over the inside of your head, not just your actions
+          and your taxes.
         </p>
       </BlockQuote>
       <BlockQuote author="C.S Lewis" source="Learning in Wartime">
@@ -113,9 +126,9 @@ Very well then I contradict myself,
         source="God, the Superposition"
         href="https://kk.org/thetechnium/god-the-superposition/"
       >
-        <p className="text-left">
-          This superposition of beginning/no-beginning, nothing/something,
-          freewill/determinism, God/not-God is the essence of all being; it is
+        <p>
+          This superposition of beginning-no-beginning, nothing-something,
+          freewill-determinism, God-not-God is the essence of all being; it is
           paradox itself that generates the unlikely arrangements of all that we
           consider real and good.
         </p>
@@ -162,6 +175,12 @@ Very well then I contradict myself,
           Your new self is not like that. Your new self is the Great Chicago
           Fire—overwhelming, overpowering, and destroying everything that isn't
           necessary.
+        </p>
+      </BlockQuote>
+      <BlockQuote author="David Foster Wallace" source="Infinite Jest">
+        <p>
+          Everybody is identical in their secret unspoken belief that way deep
+          down they are different from everyone else.
         </p>
       </BlockQuote>
       <BlockQuote author="Bret Weinstein">

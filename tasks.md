@@ -1,11 +1,8 @@
 - Write best notes into articles, and write rebuild article
-- Add mental models, problems/questions, people, books, etc
 - Add an embed tweet component, can use Vercel's react-tweet
 - Add a video component
 - Add a mermaid renderer component
 - Add a newsletter signup form
 - Add premium subscriptions
 - Related posts?
-- For long articles, add a table of contents
-- Consider ISR for performance
-
+- Add a table of contents for long articles

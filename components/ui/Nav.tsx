@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+// media? questions? links?
 const links = [
   {
     href: "/",
@@ -11,6 +12,14 @@ const links = [
   {
     href: "/thoughts",
     text: "thoughts",
+  },
+  {
+    href: "/people",
+    text: "people",
+  },
+  {
+    href: "/principles",
+    text: "principles",
   },
   {
     href: "/projects",

@@ -171,7 +171,7 @@ return (
           \,d\xi"
         />
 
-        <H2>How It Works</H2>
+        <H2>How it works</H2>
         <p>
           This entire blog post is a React component, giving us the power to
           include any interactive elements we want. We're using useState hooks
@@ -187,7 +187,7 @@ return (
           height={630}
         />
 
-        <H2>Adding Custom Interactions</H2>
+        <H2>Adding custom interactions</H2>
         <CounterDemo />
 
         <p>

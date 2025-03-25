@@ -43,9 +43,9 @@ export default function Projects() {
         <InlineLink href="https://www.linkedin.com/in/marco-malacara-b89612152/">
           Marco Malacara
         </InlineLink>
-        . We are rebuilding the foundation of Martech on an AI-driven datalayer
-        that will enable smart, personalized content throughout the customer
-        journey.
+        . We are rebuilding the foundation of marketing technology on an
+        AI-driven datalayer that will enable smart, personalized content
+        throughout the customer journey.
       </p>
       <p>
         My focus is on engineering the core product, tackling the challenge of
@@ -67,7 +67,7 @@ export default function Projects() {
       <p>
         I wore many hats, doing web development, conversion rate optimization,
         analytics, reporting, paid ads, and SEO. It helped me refine my
-        understanding of the edges of Martech.
+        understanding of elite marketing teams.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -103,7 +103,7 @@ export default function Projects() {
         I assisted{" "}
         <InlineLink href="https://assignar.com/">Assignar</InlineLink> through
         three years of growth, modernizing their WordPress theme to suit their
-        quickly growing product and content needs.
+        growing product and content needs.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -113,9 +113,9 @@ export default function Projects() {
       </div>
       <p>
         <InlineLink href="https://www.pacifica.edu/">Pacifica</InlineLink> was
-        the first big website I worked on. I built key sections, including the
-        navigation, the faculty page, and article page in a custom WordPress
-        theme.
+        the first big website I worked on back in 2017. I built key sections,
+        including the navigation, the faculty page, and article page in a custom
+        WordPress theme.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -142,7 +142,7 @@ export default function Projects() {
         <InlineLink href="https://www.andrewantone.com/">
           Andrew Antone
         </InlineLink>{" "}
-        to design her brand and then built her a Next.js website.
+        to design her brand and then build her a Next.js website.
       </p>
 
       <div className="mt-16 mb-8 flex">

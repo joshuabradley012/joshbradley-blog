@@ -11,11 +11,11 @@ export default function Build() {
       <div className="my-8 border border-blue-200 bg-blue-50 px-6 py-4 text-blue-700">
         <p>
           This article is out of date and no longer reflects how this website is
-          built. I've kept the original article because this website was one of
-          the first public things I made, and I was right to be proud of it.
-          I've since written about{" "}
+          built. I've kept the original article because this was one of the
+          first public things I made, and I am proud of it. I've since written
+          about{" "}
           <InlineLink href="/thoughts/rebuilding-this-website">
-            how this website was rebuilt
+            how I rebuilt this website
           </InlineLink>
           .
         </p>

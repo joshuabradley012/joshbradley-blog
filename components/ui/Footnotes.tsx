@@ -8,7 +8,6 @@ import {
   useState,
 } from "react";
 import { Ol, Li } from "@/components/ui/List";
-import { cn } from "@/lib/utils";
 
 interface Footnote {
   id: number;
@@ -105,20 +104,18 @@ export function Footnotes() {
               key={footnote.id}
               id={`fn${footnote.id}`}
               data-footnote-id={`${footnote.id}. `}
-              className={cn(
-                `marker:content-[attr(data-footnote-id)]`,
-                activeFootnote === `#fn${footnote.id}`
-                  ? "bg-neutral-700/10 text-neutral-700"
-                  : "",
-              )}
+              data-active={activeFootnote === `#fn${footnote.id}`}
+              className={
+                "marker:content-[attr(data-footnote-id)] data-[active=true]:bg-neutral-500/10 data-[active=true]:text-neutral-700"
+              }
             >
-              {footnote.content}
               <a
                 href={`#fnref${footnote.id}`}
-                className="ml-1 transition-colors hover:text-black"
+                className="mr-1 transition-colors hover:text-black"
               >
                 ^
               </a>
+              {footnote.content}
             </Li>
           ))}
       </Ol>
