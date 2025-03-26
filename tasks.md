@@ -1,4 +1,14 @@
-- Write best notes into articles, and write rebuild article
+- Write articles
+  - Ignorance vs Technology
+  - Efficiency like a bubble
+  - I am my career
+  - Composable Code
+  - Shadow Work
+  - Learning to Fly
+  - Inflection points
+  - 10,000 Lines of Code
+  - Startup Culture Changed Me
+  - Rebuilding this Website
 - Add an embed tweet component, can use Vercel's react-tweet
 - Add a video component
 - Add a mermaid renderer component

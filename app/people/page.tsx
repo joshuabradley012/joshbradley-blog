@@ -125,6 +125,11 @@ export default function People() {
           </InlineLink>
         </Li>
         <Li>
+          <InlineLink href="https://en.wikipedia.org/wiki/Helen_Keller">
+            Helen Keller
+          </InlineLink>
+        </Li>
+        <Li>
           <InlineLink href="https://en.wikipedia.org/wiki/Jack_Kerouac">
             Jack Kerouac
           </InlineLink>
@@ -253,16 +258,6 @@ export default function People() {
           <InlineLink href="https://en.wikipedia.org/wiki/Steve_Jobs">
             Steve Jobs
           </InlineLink>
-        </Li>
-        <Li>
-          <InlineLink href="https://tim.blog/">Tim Ferriss</InlineLink> (
-          <InlineLink href="https://x.com/tferriss">twitter</InlineLink>)
-        </Li>
-        <Li>
-          <InlineLink href="https://www.tonyrobbins.com/">
-            Tony Robbins
-          </InlineLink>{" "}
-          (<InlineLink href="https://x.com/TonyRobbins">twitter</InlineLink>)
         </Li>
         <Li>
           <InlineLink href="https://vitalik.eth.limo/">

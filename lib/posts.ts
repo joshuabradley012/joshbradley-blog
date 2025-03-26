@@ -18,6 +18,15 @@ export function getAllPosts(): Post[] {
         import("../components/posts/Rebuild").then((mod) => mod.default),
     },
     {
+      slug: "goodbye-procore",
+      title: "Goodbye, Procore",
+      description:
+        "Reflecting on what I learned during my 4 years working for Procore.",
+      date: "Nov 21, 2021",
+      component: () =>
+        import("../components/posts/Procore").then((mod) => mod.default),
+    },
+    {
       slug: "object-collisions-with-canvas",
       title: "Simulating Object Collisions With Canvas",
       description:

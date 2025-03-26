@@ -38,9 +38,16 @@ export default function Principles() {
         <Li>Simplicity</Li>
         <Li>Brevity</Li>
         <Li>Power</Li>
+        <Li>Constructive and Desctructive Waves</Li>
         <Li>Free Markets</Li>
+        <Li>Supply and Demand</Li>
         <Li>Safety and Trust</Li>
         <Li>Rational and Intuitive Thinking</Li>
+        <Li>Antirational</Li>
+        <Li>Deception</Li>
+        <Li>Computation</Li>
+        <Li>Multidimensional</Li>
+        <Li>Intelligence</Li>
         <Li>Consciouss vs Unconsciouss</Li>
         <Li>Long Tail Events</Li>
         <Li>Agency</Li>
@@ -55,6 +62,7 @@ export default function Principles() {
         <Li>Entropy</Li>
         <Li>Structure</Li>
         <Li>Depth</Li>
+        <Li>Truth</Li>
         <Li>Conformity vs Independence</Li>
         <Li>Creativity</Li>
         <Li>Knowledge</Li>
@@ -66,9 +74,15 @@ export default function Principles() {
         <Li>Debt</Li>
         <Li>Reserve Currency</Li>
         <Li>Scarcity</Li>
+        <Li>Irreducible Complexity</Li>
+        <Li>Happiness</Li>
+        <Li>Strong Opinions</Li>
+        <Li>Supremacy</Li>
+        <Li>Inflation</Li>
         <Li>Wealth</Li>
         <Li>God</Li>
-        <Li>Prioritization</Li>
+        <Li>Focus</Li>
+        <Li>Computation</Li>
         <Li>Stillness</Li>
         <Li>Culture and Values</Li>
         <Li>Compound Interest</Li>
@@ -79,6 +93,7 @@ export default function Principles() {
         <Li>Leverage</Li>
         <Li>Presence</Li>
         <Li>Duality</Li>
+        <Li>Non-Duality</Li>
         <Li>Numeracy</Li>
         <Li>Literacy</Li>
         <Li>Durability</Li>
@@ -90,20 +105,22 @@ export default function Principles() {
         <Li>Honesty</Li>
         <Li>Systems</Li>
         <Li>Leadership</Li>
-        <Li>Outcomes</Li>
-        <Li>Reality</Li>
+        <Li>Reality/Grounded</Li>
         <Li>Communication</Li>
         <Li>Open-Minded</Li>
         <Li>Status Games</Li>
         <Li>Accountability</Li>
         <Li>Responsibility</Li>
         <Li>Suffering</Li>
+        <Li>Stoicism</Li>
+        <Li>Wisdom</Li>
+        <Li>Time and Space</Li>
         <Li>Reciprocity</Li>
         <Li>Pascal's Wager</Li>
         <Li>Enlightenment</Li>
         <Li>Superposition</Li>
         <Li>Quantum Observer Effect</Li>
-        <Li>Incentive</Li>
+        <Li>Incentive and Outcomes</Li>
         <Li>Balance</Li>
         <Li>Optimism</Li>
         <Li>Decentralization</Li>
@@ -111,9 +128,12 @@ export default function Principles() {
         <Li>Language and Storytelling</Li>
         <Li>Limits</Li>
         <Li>Effectiveness</Li>
+        <Li>Reputation</Li>
         <Li>Logic</Li>
         <Li>Virality</Li>
         <Li>Death</Li>
+        <Li>Imerpmanence</Li>
+        <Li>Unconditional Love</Li>
       </Ul>
     </div>
   );
