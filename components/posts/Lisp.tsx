@@ -278,7 +278,7 @@ eq[x x]
           meta="lisp"
           code={`
 (def _null (x)
-(is x nil))
+  (is x nil))
 
 (_null nil)
 ; returns t
@@ -299,7 +299,7 @@ eq[x x]
           meta="lisp"
           code={`
 (def _and (x y)
-(if (is x t) (is y t) t nil))
+  (if (is x t) (is y t) t nil))
 
 (_and 'x 'y)
 ; returns t
@@ -318,7 +318,7 @@ eq[x x]
           meta="lisp"
           code={`
 (def _not (x)
-(if (is x nil) t))
+  (if (is x nil) t))
 
 (_not nil)
 ; returns t
@@ -343,19 +343,19 @@ eq[x x]
           meta="lisp"
           code={`
 (def _caar (x)
-(car (car x)))
+  (car (car x)))
 
 (def _cadr (x)
-(car (cdr x)))
+  (car (cdr x)))
 
 (def _cadar (x)
-(car (cdr (car x))))
+  (car (cdr (car x))))
 
 (def _caddr (x)
-(car (cdr (cdr x))))
+  (car (cdr (cdr x))))
 
 (def _caddar (x)
-(car (cdr (cdr (car x)))))
+  (car (cdr (cdr (car x)))))
 
 (_cadr '(a b c d))
 ; returns b
@@ -378,7 +378,7 @@ eq[x x]
           meta="lisp"
           code={`
 (def _append (x y)
-(if (_null x) y (cons (car x) (_append (cdr x) y))))
+  (if (_null x) y (cons (car x) (_append (cdr x) y))))
 
 (_append '(a b) '(c d))
 ; returns (a b c d)
@@ -403,7 +403,7 @@ eq[x x]
           meta="lisp"
           code={`
 (def _list (x y)
-(cons x (cons y nil)))
+  (cons x (cons y nil)))
 
 (_list 'a 'b)
 ; returns (a b)
@@ -422,10 +422,10 @@ eq[x x]
           meta="lisp"
           code={`
 (def _pair (x y)
-(if (_and (_null x) (_null y)) nil
-    (_and (_not (atom x)) (_not (atom y)))
-    (cons (_list (car x) (car y))
-          (_pair (cdr x) (cdr y)))))
+  (if (_and (_null x) (_null y)) nil
+      (_and (_not (atom x)) (_not (atom y)))
+      (cons (_list (car x) (car y))
+            (_pair (cdr x) (cdr y)))))
 
 (_pair '(x y z) '(a b c))
 ; returns ((x a) (y b) (z c))
@@ -442,8 +442,8 @@ eq[x x]
           meta="lisp"
           code={`
 (def _assoc (x y)
-(if (is (caar y) x) (_cadar y)
-  (_assoc x (cdr y))))
+  (if (is (caar y) x) (_cadar y)
+    (_assoc x (cdr y))))
 
 (_assoc 'y '((x a) (y b)))
 ; returns b
@@ -471,38 +471,38 @@ eq[x x]
           meta="lisp"
           code={`
 (def _eval (e a)
-(if
-  (atom e) (_assoc e a)
-  (atom (car e)) (if
-    (is (car e) 'quote) (_cadr e)
-    (is (car e) 'atom)  (atom (_eval (_cadr  e) a))
-    (is (car e) 'eq)    (is   (_eval (_cadr  e) a)
-                              (_eval (_caddr e) a))
-    (is (car e) 'car)   (car  (_eval (_cadr  e) a))
-    (is (car e) 'cdr)   (cdr  (_eval (_cadr  e) a))
-    (is (car e) 'cons)  (cons (_eval (_cadr  e) a)
-                              (_eval (_caddr e) a))
-    (is (car e) 'cond)  (_evcon (cdr e) a)
-    (_eval (cons (_assoc (car e) a)
-                  (cdr e))
-            a))
-  (is (caar e) 'label)
-    (_eval (cons (_caddar e) (cdr e))
-            (cons (_list (_cadar e) (car e)) a))
-  (is (caar e) 'lambda)
-    (_eval (_caddar e)
-            (_append (_pair (_cadar e) (_evlis (cdr e) a))
-                    a))))
+  (if
+    (atom e) (_assoc e a)
+    (atom (car e)) (if
+      (is (car e) 'quote) (_cadr e)
+      (is (car e) 'atom)  (atom (_eval (_cadr  e) a))
+      (is (car e) 'eq)    (is   (_eval (_cadr  e) a)
+                                (_eval (_caddr e) a))
+      (is (car e) 'car)   (car  (_eval (_cadr  e) a))
+      (is (car e) 'cdr)   (cdr  (_eval (_cadr  e) a))
+      (is (car e) 'cons)  (cons (_eval (_cadr  e) a)
+                                (_eval (_caddr e) a))
+      (is (car e) 'cond)  (_evcon (cdr e) a)
+      (_eval (cons (_assoc (car e) a)
+                    (cdr e))
+              a))
+    (is (caar e) 'label)
+      (_eval (cons (_caddar e) (cdr e))
+              (cons (_list (_cadar e) (car e)) a))
+    (is (caar e) 'lambda)
+      (_eval (_caddar e)
+              (_append (_pair (_cadar e) (_evlis (cdr e) a))
+                      a))))
 
 (def _evcon (c a)
-(if (_eval (_caar c) a)
-    (_eval (_cadar c) a)
-    (_evcon (cdr c) a)))
+  (if (_eval (_caar c) a)
+      (_eval (_cadar c) a)
+      (_evcon (cdr c) a)))
 
 (def _evlis (m a)
-(if (_null m) nil
-    (cons (_eval  (car m) a)
-          (_evlis (cdr m) a))))
+  (if (_null m) nil
+      (cons (_eval  (car m) a)
+            (_evlis (cdr m) a))))
           `}
         />
 
@@ -671,14 +671,14 @@ eq[x x]
           meta="lisp"
           code={`
 (def _evcon (c a)
-(if (_eval (_caar c) a)
-    (_eval (_cadar c) a)
-    (_evcon (cdr c) a)))
+  (if (_eval (_caar c) a)
+      (_eval (_cadar c) a)
+      (_evcon (cdr c) a)))
 
 (_evcon '(((atom c1) a1) ((atom c2) a2) ((atom c3) a3))
-      '((c1 (a b)) (a1 not_atom)
-        (c2 (c d)) (a2 still_not_atom)
-        (c3 e)     (a3 is_atom)))
+        '((c1 (a b)) (a1 not_atom)
+          (c2 (c d)) (a2 still_not_atom)
+          (c3 e)     (a3 is_atom)))
 ; returns is_atom
           `}
         />
@@ -692,9 +692,9 @@ eq[x x]
           meta="lisp"
           code={`
 (_eval '(cond ((atom c1) a1) ((atom c2) a2) ((atom c3) a3))
-      '((c1 (a b)) (a1 not_atom)
-        (c2 (c d)) (a2 still_not_atom)
-        (c3 e)     (a3 is_atom)))
+       '((c1 (a b)) (a1 not_atom)
+         (c2 (c d)) (a2 still_not_atom)
+         (c3 e)     (a3 is_atom)))
 ; returns is_atom
           `}
         />
@@ -725,7 +725,7 @@ eq[x x]
 (_eval '((lambda (param)
           (cond ((atom param) (quote is_atom))
                 ((quote t)    (quote not_atom))))
-        arg)
+         arg)
       '((arg (a b))))
 ; returns not_atom
           `}
@@ -747,8 +747,8 @@ eq[x x]
           meta="lisp"
           code={`
 (_eval '(cond ((atom param) (quote is_atom))
-            ((quote t)    (quote not_atom)))
-      '((param (a b)) (arg (a b))))
+              ((quote t)    (quote not_atom)))
+       '((param (a b)) (arg (a b))))
 ; returns not_atom
           `}
         />
@@ -789,10 +789,10 @@ eq[x x]
           meta="lisp"
           code={`
 (_eval '((label ff (lambda (x)
-                    (cond ((atom x) x)
-                          ((quote t) (ff (car x))))))
-        y)
-      '((y ((a b) c))))
+                     (cond ((atom x) x)
+                           ((quote t) (ff (car x))))))
+         y)
+       '((y ((a b) c))))
 ; returns a
           `}
         />
@@ -812,11 +812,11 @@ eq[x x]
 (_eval '((lambda (x)
           (cond ((atom x) x)
                 ((quote t) (ff (car x)))))
-        y)
-      '((ff (label ff (lambda (x)
-              (cond ((atom x) x)
-                    ((quote t) (ff (car x)))))))
-        (y ((a b) c))))
+         y)
+       '((ff (label ff (lambda (x)
+               (cond ((atom x) x)
+                     ((quote t) (ff (car x)))))))
+         (y ((a b) c))))
 ; returns a
           `}
         />
@@ -850,11 +850,11 @@ eq[x x]
           meta="lisp"
           code={`
 (def _appq (m)
-(if (_null m) nil (cons (_list 'quote (car m))
-                        (_appq (cdr m)))))
+  (if (_null m) nil (cons (_list 'quote (car m))
+                          (_appq (cdr m)))))
 
 (def _apply (f args)
-(_eval (cons f (_appq args)) nil))
+  (_eval (cons f (_appq args)) nil))
           `}
         />
 
@@ -867,9 +867,9 @@ eq[x x]
           meta="lisp"
           code={`
 (_apply '(label ff (lambda (x)
-                  (cond ((atom x) x)
-                        ((quote t) (ff (car x))))))
-'(a b))
+                     (cond ((atom x) x)
+                           ((quote t) (ff (car x))))))
+        '(a b))
           `}
         />
 
@@ -881,10 +881,10 @@ eq[x x]
           meta="lisp"
           code={`
 (_eval '((label ff (lambda (x)
-                    (cond ((atom x) x)
-                          ((quote t) (ff (car x))))))
-        (quote a) (quote b))
-      'nil)
+                     (cond ((atom x) x)
+                           ((quote t) (ff (car x))))))
+         (quote a) (quote b))
+       'nil)
           `}
         />
 
