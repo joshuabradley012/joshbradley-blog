@@ -18,6 +18,15 @@ export function getAllPosts(): Post[] {
         import("../components/posts/Rebuild").then((mod) => mod.default),
     },
     {
+      slug: "technologys-knowledge-gap",
+      title: "Technology's Knowledge Gap",
+      description:
+        "Technology grows exponentially but understanding grows linearly. The difference is our collective knowledge gap.",
+      date: "Jan 7, 2022",
+      component: () =>
+        import("../components/posts/KnowledgeGap").then((mod) => mod.default),
+    },
+    {
       slug: "goodbye-procore",
       title: "Goodbye, Procore",
       description:
