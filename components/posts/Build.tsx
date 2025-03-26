@@ -161,28 +161,28 @@ export default function Build() {
         meta={`javascript title="Array in ServiceWorker"`}
         code={`
 const pagesToCache = [
-{{ with .Site.Pages }}
-  {{ range  (where . "Type" "page") }}
-    '{{ .RelPermalink }}',
+  {{ with .Site.Pages }}
+    {{ range  (where . "Type" "page") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Kind" "taxonomyTerm") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Kind" "taxonomy") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
+    {{ range (where . "Type" "post") }}
+      '{{ .RelPermalink }}',
+    {{ end }}
   {{ end }}
-  {{ range (where . "Kind" "taxonomyTerm") }}
-    '{{ .RelPermalink }}',
-  {{ end }}
-  {{ range (where . "Kind" "taxonomy") }}
-    '{{ .RelPermalink }}',
-  {{ end }}
-  {{ range (where . "Type" "post") }}
-    '{{ .RelPermalink }}',
-  {{ end }}
-{{ end }}
 ];
 
 self.addEventListener('install', (event) => {
-event.waitUntil(
-  caches.open('cacheName').then(function(cache) {
-    cache.addAll(pagesToCache);
-  })
-);
+  event.waitUntil(
+    caches.open('cacheName').then(function(cache) {
+      cache.addAll(pagesToCache);
+    })
+  );
 });
         `}
       />
@@ -284,27 +284,27 @@ $content-width: 46rem;
         code={`
 var navToggle = document.getElementById('nav-toggle');
 navToggle.addEventListener('click', function() {
-document.body.classList.toggle('nav-open');
+  document.body.classList.toggle('nav-open');
 });`}
       />
 
       <BlockCode
         meta={`javascript title="Lazyload"`}
         code={`
-window.addEventListener('DOMContentLoaded', lazyload, false);
 function lazyload() {
-var imgs = document.getElementsByClassName('lazyload');
-for (var i = 0; i < imgs.length; i++) {
-  var img = imgs[i];
-  if (img.nodeName === 'IMG') {
-    img.addEventListener('load', function() { this.className += ' loaded' });
-    img.dataset.src ? img.src = img.dataset.src : null;
-    img.dataset.srcset ? img.srcset = img.dataset.srcset : null;
-  } else {
-    img.dataset.src ? img.style.backgroundImage = 'url(' + img.dataset.src + ')' : null;
+  var imgs = document.getElementsByClassName('lazyload');
+  for (var i = 0; i < imgs.length; i++) {
+    var img = imgs[i];
+    if (img.nodeName === 'IMG') {
+      img.addEventListener('load', function() { this.className += ' loaded' });
+      img.dataset.src ? img.src = img.dataset.src : null;
+      img.dataset.srcset ? img.srcset = img.dataset.srcset : null;
+    } else {
+      img.dataset.src ? img.style.backgroundImage = 'url(' + img.dataset.src + ')' : null;
+    }
   }
 }
-}
+window.addEventListener('DOMContentLoaded', lazyload, false);
         `}
       />
 
@@ -340,11 +340,11 @@ for (var i = 0; i < imgs.length; i++) {
         meta={`javascript title="Cache with network fallback"`}
         code={`
 self.addEventListener('fetch', (event) => {
-event.respondWith(
-  caches.match(normalizedUrl).then(function(response) {
-    return response || fetch(event.request);
-  })
-);
+  event.respondWith(
+    caches.match(normalizedUrl).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
 });
         `}
       />
@@ -359,19 +359,19 @@ event.respondWith(
         meta={`javascript title="Stale-while-revalidate"`}
         code={`
 self.addEventListener('fetch', (event) => {
-const normalizedUrl = new URL(event.request.url);
-normalizedUrl.search = '';
-event.respondWith(
-  caches.open(cacheName).then((cache) => {
-    return cache.match(normalizedUrl).then((response) => {
-      let fetchPromise = fetch(normalizedUrl).then((networkResponse) => {
-        cache.put(normalizedUrl, networkResponse.clone());
-        return networkResponse;
+  const normalizedUrl = new URL(event.request.url);
+  normalizedUrl.search = '';
+  event.respondWith(
+    caches.open(cacheName).then((cache) => {
+      return cache.match(normalizedUrl).then((response) => {
+        let fetchPromise = fetch(normalizedUrl).then((networkResponse) => {
+          cache.put(normalizedUrl, networkResponse.clone());
+          return networkResponse;
+        });
+        return response || fetchPromise;
       });
-      return response || fetchPromise;
-    });
-  })
-);
+    })
+  );
 });
         `}
       />

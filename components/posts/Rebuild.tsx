@@ -13,7 +13,6 @@ import {
   Footnotes,
 } from "@/components/ui/Footnotes";
 
-import ogImage from "@/public/images/cd5.png";
 const data = [
   { name: "Jan", value: 400 },
   { name: "Feb", value: 300 },
@@ -93,7 +92,8 @@ export default function Rebuilding() {
 
         <BlockCode
           meta={`jsx showLineNumbers {13-14,48-49} /unified/ title="BlockCode.tsx" caption="This is showing how to create a code block using RSC."`}
-          code={`import { unified } from "unified";
+          code={`
+import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -101,58 +101,58 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { cn } from "@/lib/utils";
 
 async function highlightCode(code: string) {
-const file = await unified()
-  .use(remarkParse)
-  .use(remarkRehype)
-  .use(rehypePrettyCode, {
-    theme: "github-light",
-    keepBackground: false,
-  })
-  .use(rehypeStringify)
-  .process(code);
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrettyCode, {
+      theme: "github-light",
+      keepBackground: false,
+    })
+    .use(rehypeStringify)
+    .process(code);
 
-return String(file);
+  return String(file);
 }
 
 export async function BlockCode({
-code,
-className,
+  code,
+  className,
 }: {
-code: string;
-className?: string;
+  code: string;
+  className?: string;
 }) {
-const highlightedCode = await highlightCode(code);
-return (
-  <section
-    className={cn("my-8 text-xs", className)}
-    dangerouslySetInnerHTML={{
-      __html: highlightedCode,
-    }}
-  />
-);
+  const highlightedCode = await highlightCode(code);
+  return (
+    <section
+      className={cn("my-8 text-xs", className)}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
 }
 
 export async function InlineCode({
-code,
-className,
+  code,
+  className,
 }: {
-code: string;
-className?: string;
+  code: string;
+  className?: string;
 }) {
-let highlightedCode = await highlightCode(code);
-highlightedCode = highlightedCode.replace(/^<p>/, "");
-highlightedCode = highlightedCode.replace(/<\/p>$/, "");
-return (
-  <span
-    className={cn(
-      "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
-      className,
-    )}
-    dangerouslySetInnerHTML={{
-      __html: highlightedCode,
-    }}
-  />
-);
+  let highlightedCode = await highlightCode(code);
+  highlightedCode = highlightedCode.replace(/^<p>/, "");
+  highlightedCode = highlightedCode.replace(/<\/p>$/, "");
+  return (
+    <span
+      className={cn(
+        "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
+        className,
+      )}
+      dangerouslySetInnerHTML={{
+        __html: highlightedCode,
+      }}
+    />
+  );
 }
           `}
         />
