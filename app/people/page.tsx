@@ -29,11 +29,6 @@ export default function People() {
           (<InlineLink href="https://x.com/andy_matuschak">twitter</InlineLink>)
         </Li>
         <Li>
-          <InlineLink href="https://en.wikipedia.org/wiki/Ayn_Rand">
-            Ayn Rand
-          </InlineLink>
-        </Li>
-        <Li>
           <InlineLink href="https://en.wikipedia.org/wiki/Ben_Horowitz">
             Ben Horowitz
           </InlineLink>{" "}

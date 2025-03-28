@@ -34,6 +34,7 @@ export default function Principles() {
         <Li>Combinatorics</Li>
         <Li>Statistics</Li>
         <Li>Rising Complexity</Li>
+        <Li>Emergence</Li>
         <Li>Malthusian trap</Li>
         <Li>Simplicity</Li>
         <Li>Brevity</Li>

@@ -102,12 +102,16 @@ export default function Quotes() {
           This is not <strong>panache:</strong> it is out nature.
         </p>
       </BlockQuote>
-      <BlockQuote author="Walt Whitman" source="Song of Myself, 51">
-        <pre className="overflow-x-auto font-serif">
-          {`Do I contradict myself?
-Very well then I contradict myself,
-(I am large, I contain multitudes.)`}
-        </pre>
+      <BlockQuote
+        author="Walt Whitman"
+        source="Song of Myself, 51"
+        className="space-y-0"
+      >
+        <p className="pl-4 -indent-4">Do I contradict myself?</p>
+        <p className="pl-4 -indent-4">Very well then I contradict myself,</p>
+        <p className="mb-4 pl-4 -indent-4">
+          (I am large, I contain multitudes.)
+        </p>
       </BlockQuote>
       <BlockQuote author="Shunryū Suzuki" source="Zen Mind, Beginner's Mind">
         <p>
@@ -200,49 +204,103 @@ Very well then I contradict myself,
           and it sets each man separate from all other men.
         </p>
       </BlockQuote>
-      <BlockQuote author="Kahlil Gibran" source="The Prophet">
-        <p>
-          THEN a woman said, Speak to us of Joy and Sorrow. And he answered:
-          Your joy is your sorrow unmasked. And the selfsame well from which
-          your laughter rises was oftentimes filled with your tears. And how
-          else can it be? The deeper that sorrow carves into your being, the
-          more joy you can contain. Is not the cup that holds your wine the very
-          cup that was burned in the potter's oven? And is not the lute that
-          soothes your spirit, the very wood that was hollowed with knives? When
-          you are joyous, look deep into your heart and you shall find it is
-          only that which has given you sorrow that is giving you joy. When you
-          are sorrowful look again in your heart, and you shall see that in
-          truth you are weeping for that which has been your delight.
+      <BlockQuote
+        author="Kahlil Gibran"
+        source="The Prophet"
+        className="space-y-0"
+      >
+        <p className="pl-4 -indent-4">
+          THEN a woman said, Speak to us of Joy and Sorrow.
         </p>
-        <p>
+        <p className="pl-4 -indent-4">And he answered:</p>
+        <p className="pl-4 -indent-4">Your joy is your sorrow unmasked.</p>
+        <p className="pl-4 -indent-4">
+          And the selfsame well from which your laughter rises was oftentimes
+          filled with your tears.
+        </p>
+        <p className="pl-4 -indent-4">And how else can it be?</p>
+        <p className="pl-4 -indent-4">
+          The deeper that sorrow carves into your being, the more joy you can
+          contain.
+        </p>
+        <p className="pl-4 -indent-4">
+          Is not the cup that holds your wine the very cup that was burned in
+          the potter's oven?
+        </p>
+        <p className="pl-4 -indent-4">
+          And is not the lute that soothes your spirit, the very wood that was
+          hollowed with knives?
+        </p>
+        <p className="pl-4 -indent-4">
+          When you are joyous, look deep into your heart and you shall find it
+          is only that which has given you sorrow that is giving you joy.
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          When you are sorrowful, look again in your heart and you shall see
+          that in truth you are weeping for that which has been your delight.
+        </p>
+        <p className="pl-4 -indent-4">
           Some of you say, "Joy is greater than sorrow," and others say, "Nay,
-          sorrow is the greater." But I say unto you, they are inseparable.
+          sorrow is the greater."
+        </p>
+        <p className="pl-4 -indent-4">
+          But I say unto you, they are inseparable.
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
           Together they come, and when one sits alone with you at your board,
           remember that the other is asleep upon your bed.
         </p>
-        <p>
+        <p className="pl-4 -indent-4">
           Verily you are suspended like scales between your sorrow and your joy.
-          Only when you are empty are you at standstill and balanced. When the
-          treasure-keeper lifts you to weigh his gold and his silver, needs must
-          your joy or your sorrow rise or fall.
+        </p>
+        <p className="pl-4 -indent-4">
+          Only when you are empty are you at standstill and balanced.
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          When the treasure-keeper lifts you to weigh his gold and his silver,
+          needs must your joy or your sorrow rise or fall.
         </p>
       </BlockQuote>
-      <BlockQuote author="William Shakespeare" source="Hamlet">
-        <pre className="overflow-x-auto font-serif">
-          {`To be, or not to be, that is the question:
-Whether 'tis nobler in the mind to suffer
-The slings and arrows of outrageous fortune,
-Or to take arms against a sea of troubles
-And by opposing end them. To die—to sleep,
-No more; and by a sleep to say we end
-The heart-ache and the thousand natural shocks
-That flesh is heir to: 'tis a consummation
-Devoutly to be wish'd. To die, to sleep;
-To sleep, perchance to dream—ay, there's the rub:
-For in that sleep of death what dreams may come,
-When we have shuffled off this mortal coil,
-Must give us pause.`}
-        </pre>
+      <BlockQuote
+        author="William Shakespeare"
+        source="Hamlet"
+        className="space-y-0"
+      >
+        <p className="pl-4 -indent-4">
+          To be, or not to be, that is the question:
+        </p>
+        <p className="pl-4 -indent-4">
+          Whether 'tis nobler in the mind to suffer
+        </p>
+        <p className="pl-4 -indent-4">
+          The slings and arrows of outrageous fortune,
+        </p>
+        <p className="pl-4 -indent-4">
+          Or to take arms against a sea of troubles
+        </p>
+        <p className="pl-4 -indent-4">
+          And by opposing end them. To die—to sleep,
+        </p>
+        <p className="pl-4 -indent-4">No more; and by a sleep to say we end</p>
+        <p className="pl-4 -indent-4">
+          The heart-ache and the thousand natural shocks
+        </p>
+        <p className="pl-4 -indent-4">
+          That flesh is heir to: 'tis a consummation
+        </p>
+        <p className="pl-4 -indent-4">
+          Devoutly to be wish'd. To die, to sleep;
+        </p>
+        <p className="pl-4 -indent-4">
+          To sleep, perchance to dream—ay, there's the rub:
+        </p>
+        <p className="pl-4 -indent-4">
+          For in that sleep of death what dreams may come,
+        </p>
+        <p className="pl-4 -indent-4">
+          When we have shuffled off this mortal coil,
+        </p>
+        <p className="mb-4 pl-4 -indent-4">Must give us pause.</p>
       </BlockQuote>
       <BlockQuote author="F. Scott Fitzgerald" source="The Great Gatsby">
         <p>
@@ -278,33 +336,60 @@ Must give us pause.`}
           achieve it.
         </p>
       </BlockQuote>
-      <BlockQuote author="Dylan Thomas" className="mb-0">
-        <pre className="overflow-x-auto font-serif">
-          {`Do not go gentle into that good night,
-Old age should burn and rave at close of day;
-Rage, rage against the dying of the light.
-
-Though wise men at their end know dark is right,
-Because their words had forked no lightning they
-Do not go gentle into that good night.
-
-Good men, the last wave by, crying how bright
-Their frail deeds might have danced in a green bay,
-Rage, rage against the dying of the light.
-
-Wild men who caught and sang the sun in flight,
-And learn, too late, they grieved it on its way,
-Do not go gentle into that good night.
-
-Grave men, near death, who see with blinding sight
-Blind eyes could blaze like meteors and be gay,
-Rage, rage against the dying of the light.
-
-And you, my father, there on the sad height,
-Curse, bless, me now with your fierce tears, I pray.
-Do not go gentle into that good night.
-Rage, rage against the dying of the light.`}
-        </pre>
+      <BlockQuote author="Dylan Thomas" className="mb-0 space-y-0">
+        <p className="pl-4 -indent-4">Do not go gentle into that good night,</p>
+        <p className="pl-4 -indent-4">
+          Old age should burn and rave at close of day;
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          Rage, rage against the dying of the light.
+        </p>
+        <p className="pl-4 -indent-4">
+          Though wise men at their end know dark is right,
+        </p>
+        <p className="pl-4 -indent-4">
+          Because their words had forked no lightning they
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          Do not go gentle into that good night.
+        </p>
+        <p className="pl-4 -indent-4">
+          Good men, the last wave by, crying how bright
+        </p>
+        <p className="pl-4 -indent-4">
+          Their frail deeds might have danced in a green bay,
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          Rage, rage against the dying of the light.
+        </p>
+        <p className="pl-4 -indent-4">
+          Wild men who caught and sang the sun in flight,
+        </p>
+        <p className="pl-4 -indent-4">
+          And learn, too late, they grieved it on its way,
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          Do not go gentle into that good night.
+        </p>
+        <p className="pl-4 -indent-4">
+          Grave men, near death, who see with blinding sight
+        </p>
+        <p className="pl-4 -indent-4">
+          Blind eyes could blaze like meteors and be gay,
+        </p>
+        <p className="mb-4 pl-4 -indent-4">
+          Rage, rage against the dying of the light.
+        </p>
+        <p className="pl-4 -indent-4">
+          And you, my father, there on the sad height,
+        </p>
+        <p className="pl-4 -indent-4">
+          Curse, bless, me now with your fierce tears, I pray.
+        </p>
+        <p className="pl-4 -indent-4">Do not go gentle into that good night.</p>
+        <p className="mb-4 pl-4 -indent-4">
+          Rage, rage against the dying of the light.
+        </p>
       </BlockQuote>
     </div>
   );
