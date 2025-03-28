@@ -1,5 +1,4 @@
 - Write articles
-  - Ignorance vs Technology
   - Efficiency like a bubble
   - I am my career
   - Composable Code

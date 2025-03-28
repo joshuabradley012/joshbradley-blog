@@ -58,7 +58,7 @@ export default function Build() {
         , Nikkita Tonsky wrote:
       </p>
 
-      <BlockQuote>
+      <BlockQuote author="Nikkita Tonsky">
         <p>
           Windows 95 was 30MB. Today we have web pages heavier than that!
           Windows 10 is 4GB, which is 133 times as big. But is it 133 times as

@@ -57,8 +57,8 @@ export function FootnoteLink({ id }: { id: number }) {
     <span>
       <sup>
         <a
-          id={`fnref${id}`}
-          href={`#fn${id}`}
+          id={`s${id}`}
+          href={`#f${id}`}
           className="tabular-nums transition-colors hover:text-black"
         >
           [{id}]
@@ -102,15 +102,15 @@ export function Footnotes() {
           .map((footnote) => (
             <Li
               key={footnote.id}
-              id={`fn${footnote.id}`}
+              id={`f${footnote.id}`}
               data-footnote-id={`${footnote.id}. `}
-              data-active={activeFootnote === `#fn${footnote.id}`}
+              data-active={activeFootnote === `#f${footnote.id}`}
               className={
                 "marker:content-[attr(data-footnote-id)] data-[active=true]:bg-neutral-500/10 data-[active=true]:text-neutral-700"
               }
             >
               <a
-                href={`#fnref${footnote.id}`}
+                href={`#s${footnote.id}`}
                 className="mr-1 transition-colors hover:text-black"
               >
                 ^
