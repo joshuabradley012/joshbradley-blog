@@ -63,8 +63,8 @@ export default function Procore() {
         determined problem solver spread through the company. I received plenty
         of verbal praise but saw little actual career growth, especially when
         compared to peers who seemed to be receiving a promotion or raise with
-        every cycle. In four years I received one promotion and one horizontal
-        transfer into web development.
+        every cycle. In four years I received one promotion and one title change
+        into web development.
       </p>
 
       <p>

@@ -39,7 +39,8 @@ export default function Principles() {
         <Li>Simplicity</Li>
         <Li>Brevity</Li>
         <Li>Power</Li>
-        <Li>Constructive and Desctructive Waves</Li>
+        <Li>Zero to One</Li>
+        <Li>Waves Interference</Li>
         <Li>Free Markets</Li>
         <Li>Supply and Demand</Li>
         <Li>Safety and Trust</Li>

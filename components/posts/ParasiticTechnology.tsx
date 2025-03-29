@@ -44,33 +44,32 @@ export default function ParasiticTechnology() {
         </p>
 
         <p>
-          Technology is the most apparent manifestation. There likely isn't a
-          single person alive who could make a pencil on their own: to build the
-          tools, harvest the wood, carve the shape, make the glue, mine the
-          graphite, mix the paint, tap the rubber, and bind it all with a thin
-          strip of iridescent metal. If it is likely that nobody could make a
-          pencil, then it is certain that nobody could construct a computer. The
-          many layers of infrastructure, architecture, algorithms, and software
-          that are the collective result of thousands of years of human progress
-          cannot possibly be contained by one person.
+          Technology is the most apparent manifestation of this gap. There
+          likely isn't a single person alive who could make a pencil on their
+          own: to build the tools, harvest the wood, carve the shape, make the
+          glue, mine the graphite, mix the paint, tap the rubber, and bind it
+          all with a thin strip of iridescent metal. If it is likely that nobody
+          could make a pencil, then it is certain that nobody could construct a
+          computer. The many layers of infrastructure, architecture, algorithms,
+          and software that are the collective result of thousands of years of
+          human progress cannot possibly be contained by one person.
         </p>
 
         <p>
           It is a miracle that anything works at all. Our world is a testament
           to the cooperative power of humanity. But make no mistake—this is a
-          miracle paid for with blood. That sacrifice built the modern world:
-          medicine, education, electricity, and the web of knowledge we now
-          depend on. It is dizzying to consider the loss of life and progress
-          that accompanied the rise and fall of great civilizations, let alone
-          the personal sacrifices made by history's greatest thinkers. Perhaps
-          our greatest imperative is to form systems that protect and nourish
-          these vital discoveries for generations to come.
+          miracle paid for with blood. It is dizzying to consider the loss of
+          life and progress that accompanied the rise and fall of great
+          civilizations, let alone the personal sacrifices made by history's
+          greatest thinkers. That sacrifice built the modern world: medicine,
+          education, electricity, and the web of knowledge we now depend on. But
+          dark ages have shown us that progress is not a guarantee.
         </p>
 
         <p>
           Isaac Asimov's <em>Foundation</em> paints the tragedy of a society
-          blessed with space-age technology without the stability to sustain the
-          knowledge of how to maintain these systems—completely reliant on, and
+          blessed with space-age technology but without the stability to sustain
+          the knowledge of how to maintain it—completely reliant on, and
           vulnerable to, a handful of knowledge keepers.
         </p>
 
@@ -83,7 +82,8 @@ export default function ParasiticTechnology() {
           </InlineLink>{" "}
           is a perilous vulnerability. And the unspoken cold war between the USA
           and China continues to escalate as we sprint forward in the race for
-          AI.
+          AI. Perhaps our greatest imperative is to form systems that protect us
+          from these vulnerabilities for generations to come.
         </p>
 
         <BlockQuote author="Vladimir Putin">
@@ -115,7 +115,9 @@ export default function ParasiticTechnology() {
         </p>
 
         <p>
-          Though he was an irredeemable, murderous terrorist,{" "}
+          But as the gap between knowledge and understanding continues to grow,
+          the price of this trade-off becomes more pronounced. Though he was an
+          irredeemable, murderous terrorist,{" "}
           <InlineLink href="https://www.washingtonpost.com/wp-srv/national/longterm/unabomber/manifesto.text.htm">
             Ted Kaczynski's manifesto
           </InlineLink>{" "}
@@ -126,19 +128,22 @@ export default function ParasiticTechnology() {
         </p>
 
         <p>
-          However, the key characteristic of a symbiotic parasite is that it
-          benefits the host more than it harms it. Yuval Noah Harari brilliantly
-          argues that we are already cyborgs. When was the last time you went a
-          day without your phone? Who among us could live without the superpower
-          of near-infinite knowledge at our fingertips? It is no surprise that
-          many prioritize the cell phone as a basic necessity—from homeless
-          Americans to{" "}
+          However, it is a symbiotic relationship—one where the host is
+          benefited more than it is harmed.
+        </p>
+
+        <p>
+          Yuval Noah Harari brilliantly argues that we are already cyborgs. When
+          was the last time you went a day without your phone? Who among us
+          could live without the superpower of near-infinite knowledge at our
+          fingertips? It is no surprise that many prioritize the cell phone as a
+          basic necessity—from homeless Americans to{" "}
           <InlineLink href="https://kk.org/thetechnium/the-post-produc/">
             rural Chinese who have chosen connectivity over running water
           </InlineLink>
           . The ability to connect with any person, anywhere, in real time is
           indistinguishable from magic. It is a power that ancient kings would
-          have warred for. This is the force that elevates the otherwise
+          have warred for. It is a force that elevates the otherwise
           undiscovered geniuses of our world.
         </p>
 
@@ -151,26 +156,27 @@ export default function ParasiticTechnology() {
         </BlockQuote>
 
         <p>
-          Progress is the only way forward. Entertaining the anti-rational meme
-          of degrowth is irresponsibly dangerous. It glorifies primitivism and
-          encourages a slow spiral into irrelevance and totalitarianism. The
-          EU's growth has stagnated. Venezuela's socialist experiment descended
-          into chaos. The echoes of China's Cultural Revolution
-          <FootnoteLink id={2} /> reverberate through its iron fist. Instead, we
-          must strengthen the fundamental values of the Western world in order
-          to maintain our technological supremacy.
+          Progress is the only way forward. We must find the geniuses of our
+          world and embrace the radical societal change in front of us with our
+          full creative potential. It is the only way to ensure the future
+          prosperity of humanity. Entertaining the anti-rational meme of
+          degrowth is dangerous. It glorifies primitivism and encourages a slow
+          spiral into irrelevance and totalitarianism. The EU's growth has
+          stagnated. Venezuela's socialist experiment descended into chaos. The
+          echoes of China's Cultural Revolution
+          <FootnoteLink id={2} /> still reverberate through its iron fist.
+          Instead, we must strengthen the fundamental values of the Western
+          world in order to maintain our technological supremacy.
         </p>
 
         <p>
           That strength will be found in embracing AI. Onshoring semiconductor
           production. Ensuring alignment with freedom of speech. Recruiting
           talent from every corner of the world. Modernizing education to
-          embrace the promise of every child now having access to a completely
-          knowledgeable personal tutor. Clear thought, oration, leadership,
-          business acumen, and first-principles reasoning will become more
-          important than ever before. Embracing the radical societal change in
-          front of us with our full creative potential is the only way to ensure
-          the future prosperity of humanity.
+          provide every child with a fully knowledgeable AI tutor. As we make
+          this transition, clear thought, oration, leadership, business acumen,
+          and first-principles reasoning will become more important than ever
+          before.
         </p>
 
         <p>
@@ -178,7 +184,6 @@ export default function ParasiticTechnology() {
           preserve its eternal flame—even if it is to be viewed through a
           computer screen.
         </p>
-
         <Footnotes />
       </div>
     </FootnotesProvider>
