@@ -57,7 +57,7 @@ export default function ParasiticTechnology() {
 
         <p>
           It is a miracle that anything works at all. Our world is a testament
-          to the cooperative power of humanity. But make no mistake—this is a
+          to the cooperative power of humanity. Make no mistake—this is a
           miracle paid for with blood. It is dizzying to consider the loss of
           life and progress that accompanied the rise and fall of great
           civilizations, let alone the personal sacrifices made by history's
@@ -82,8 +82,8 @@ export default function ParasiticTechnology() {
           </InlineLink>{" "}
           is a perilous vulnerability. And the unspoken cold war between the USA
           and China continues to escalate as we sprint forward in the race for
-          AI. Perhaps our greatest imperative is to form systems that protect us
-          from these vulnerabilities for generations to come.
+          AI. Perhaps our greatest imperative is to form systems that protect
+          against these vulnerabilities for generations to come.
         </p>
 
         <BlockQuote author="Vladimir Putin">
@@ -173,10 +173,9 @@ export default function ParasiticTechnology() {
           That strength will be found in embracing AI. Onshoring semiconductor
           production. Ensuring alignment with freedom of speech. Recruiting
           talent from every corner of the world. Modernizing education to
-          provide every child with a fully knowledgeable AI tutor. As we make
-          this transition, clear thought, oration, leadership, business acumen,
-          and first-principles reasoning will become more important than ever
-          before.
+          provide every child with an AI tutor. Reforming regulation to
+          prioritize innovation. Elevating entrepreneurship, leadership,
+          oration, and first-principles reasoning.
         </p>
 
         <p>
@@ -184,6 +183,7 @@ export default function ParasiticTechnology() {
           preserve its eternal flame—even if it is to be viewed through a
           computer screen.
         </p>
+
         <Footnotes />
       </div>
     </FootnotesProvider>

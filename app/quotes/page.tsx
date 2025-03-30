@@ -105,7 +105,7 @@ export default function Quotes() {
       <BlockQuote
         author="Walt Whitman"
         source="Song of Myself, 51"
-        className="space-y-0"
+        className="space-y-0 text-left"
       >
         <p className="pl-4 -indent-4">Do I contradict myself?</p>
         <p className="pl-4 -indent-4">Very well then I contradict myself,</p>
@@ -207,7 +207,7 @@ export default function Quotes() {
       <BlockQuote
         author="Kahlil Gibran"
         source="The Prophet"
-        className="space-y-0"
+        className="space-y-0 text-left"
       >
         <p className="pl-4 -indent-4">
           THEN a woman said, Speak to us of Joy and Sorrow.
@@ -264,7 +264,7 @@ export default function Quotes() {
       <BlockQuote
         author="William Shakespeare"
         source="Hamlet"
-        className="space-y-0"
+        className="space-y-0 text-left"
       >
         <p className="pl-4 -indent-4">
           To be, or not to be, that is the question:
@@ -336,7 +336,7 @@ export default function Quotes() {
           achieve it.
         </p>
       </BlockQuote>
-      <BlockQuote author="Dylan Thomas" className="mb-0 space-y-0">
+      <BlockQuote author="Dylan Thomas" className="mb-0 space-y-0 text-left">
         <p className="pl-4 -indent-4">Do not go gentle into that good night,</p>
         <p className="pl-4 -indent-4">
           Old age should burn and rave at close of day;

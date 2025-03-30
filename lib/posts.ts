@@ -29,6 +29,14 @@ export function getAllPosts(): Post[] {
         ),
     },
     {
+      slug: "efficient-ideas",
+      title: "Efficient Ideas",
+      description: "The most impactful ideas are efficient, like a bubble.",
+      date: "Jan 12, 2022",
+      component: () =>
+        import("../components/posts/EfficientIdeas").then((mod) => mod.default),
+    },
+    {
       slug: "goodbye-procore",
       title: "Goodbye, Procore",
       description:

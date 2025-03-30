@@ -1,12 +1,11 @@
 - Write articles
-  - Efficiency like a bubble
   - I am my career
-  - Composable Code
   - Shadow Work
   - Learning to Fly
   - Inflection points
   - 10,000 Lines of Code
   - Startup Culture Changed Me
+  - Composable Code
   - Rebuilding this Website
 - Add an embed tweet component, can use Vercel's react-tweet
 - Add a video component
