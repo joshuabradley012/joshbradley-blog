@@ -22,41 +22,43 @@ export async function GET(request: NextRequest) {
             height: "100%",
             width: "100%",
             display: "flex",
-            textAlign: "left",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            flexDirection: "row",
             flexWrap: "nowrap",
+            padding: "40px 120px 40px 40px",
           }}
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "center",
-              justifyItems: "center",
-              padding: "0 180px",
+              fontSize: 860,
+              fontStyle: "normal",
+              fontFamily: "Inter",
+              color: "#e5e5e5",
+              marginLeft: 60,
+              textAlign: "right",
+              lineHeight: 1,
+              whiteSpace: "pre-wrap",
+              position: "absolute",
+              top: -120,
+              right: 0,
             }}
           >
-            <img
-              alt={title}
-              height={84}
-              src="data:image/svg+xml,%3Csvg width='100' height='100' fill='#5F46BA' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' /%3E%3C/svg%3E"
-              width={84}
-            />
-            <div
-              style={{
-                fontSize: 60,
-                fontStyle: "normal",
-                fontFamily: "Inter",
-                color: "black",
-                marginLeft: 60,
-                lineHeight: 1.4,
-                whiteSpace: "pre-wrap",
-              }}
-            >
-              {title}
-            </div>
+            §
+          </div>
+          <div
+            style={{
+              fontSize: 94,
+              fontStyle: "normal",
+              fontFamily: "Inter",
+              color: "black",
+              marginLeft: 60,
+              lineHeight: 1.4,
+              whiteSpace: "pre-wrap",
+              textWrap: "balance",
+            }}
+          >
+            {title}
           </div>
         </div>
       ),
