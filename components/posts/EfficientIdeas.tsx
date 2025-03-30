@@ -33,7 +33,7 @@ export default function EfficientIdeas() {
       <p className="pl-4 -indent-4">
         Instead, the mind tends toward castles of thought:
       </p>
-      <p className="mb-4 pl-4 -indent-4">
+      <p className="mb-4 pl-8 -indent-4">
         complex, robust, insurmountable towers of absolute certainty.
       </p>
 
@@ -48,7 +48,7 @@ export default function EfficientIdeas() {
       <p className="pl-4 -indent-4">Balls that roll and bounce.</p>
       <p className="pl-4 -indent-4">Rivers that carve mountains down.</p>
       <p className="mb-4 pl-4 -indent-4">
-        Delicate instruments that resonate and produce sound.
+        Delicate instruments that produce sound.
       </p>
 
       <p className="pl-4 -indent-4">

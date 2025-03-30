@@ -22,7 +22,7 @@ export function getAllPosts(): Post[] {
       title: "Parasitic Technology",
       description:
         "Technology grows exponentially but understanding grows linearly. The difference is our collective knowledge gap.",
-      date: "Jan 7, 2025",
+      date: "Feb 7, 2025",
       component: () =>
         import("../components/posts/ParasiticTechnology").then(
           (mod) => mod.default,

@@ -19,8 +19,7 @@ export default function Principles() {
           Charlie Munger
         </InlineLink>
         , and <InlineLink href="https://nav.al/">Naval Ravikant</InlineLink>, I
-        have begun recording the principles which guide me through my decision
-        making.
+        am recording the principles which guide me through my decision making.
       </p>
       <Ul>
         <Li>Occam's Razor</Li>

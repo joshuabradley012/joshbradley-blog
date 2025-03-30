@@ -9,22 +9,25 @@ export default function Home() {
 
         <p>
           I seek the wisdom needed to live a great life. I think about how the
-          world works and where the future is heading. I write about philosophy,
+          world works and where the future is headed. I write about philosophy,
           technology, business, and politics.
         </p>
+
         <p>
-          Currently, I am building{" "}
+          Right now, I'm building{" "}
           <InlineLink href="https://celest.tech">Celest</InlineLink>, an
-          AI-driven software for modeling content. I hope to dedicate my time
-          towards gaining and sharing knowledge to create value for others.
+          AI-driven software for creating content. My goal is to spend my life
+          gaining and sharing knowledge for the benefit of humanity.
         </p>
+
         <p>
-          I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO employee,
-          and the founder of{" "}
+          I'm a self-taught engineer, UC Davis dropout, and ex-Procore IPO
+          employee. I founded{" "}
           <InlineLink href="https://bradleydigital.agency">
             Bradley Digital
-          </InlineLink>
-          . I grew up in Bakersfield and currently reside in LA.
+          </InlineLink>{" "}
+          to help startups grow. I grew up in Bakersfield and currently reside
+          in LA.
         </p>
       </div>
       <hr />

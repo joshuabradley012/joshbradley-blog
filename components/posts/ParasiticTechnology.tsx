@@ -156,26 +156,29 @@ export default function ParasiticTechnology() {
         </BlockQuote>
 
         <p>
-          Progress is the only way forward. We must find the geniuses of our
-          world and embrace the radical societal change in front of us with our
-          full creative potential. It is the only way to ensure the future
-          prosperity of humanity. Entertaining the anti-rational meme of
-          degrowth is dangerous. It glorifies primitivism and encourages a slow
-          spiral into irrelevance and totalitarianism. The EU's growth has
-          stagnated. Venezuela's socialist experiment descended into chaos. The
-          echoes of China's Cultural Revolution
+          Progress is the only way forward. We must find our geniuses and
+          embrace the radical societal change in front of us with our full
+          creative potential. It is the only way to ensure the future prosperity
+          of humanity.
+        </p>
+        <p>
+          Entertaining the anti-rational meme of degrowth is dangerous. It
+          glorifies primitivism and encourages a slow spiral into irrelevance
+          and totalitarianism. The EU's growth has stagnated. Venezuela's
+          socialist experiment descended into chaos. The echoes of China's
+          Cultural Revolution
           <FootnoteLink id={2} /> still reverberate through its iron fist.
           Instead, we must strengthen the fundamental values of the Western
           world in order to maintain our technological supremacy.
         </p>
 
         <p>
-          That strength will be found in embracing AI. Onshoring semiconductor
-          production. Ensuring alignment with freedom of speech. Recruiting
-          talent from every corner of the world. Modernizing education to
-          provide every child with an AI tutor. Reforming regulation to
-          prioritize innovation. Elevating entrepreneurship, leadership,
-          oration, and first-principles reasoning.
+          Strength will be found in embracing AI. Onshoring semiconductor
+          production. Alinging with free expression. Recruiting talent from
+          every corner of the world. Modernizing education to provide every
+          child with an AI tutor. Reforming regulation to prioritize innovation.
+          Elevating entrepreneurship, leadership, oration, and first-principles
+          reasoning.
         </p>
 
         <p>

@@ -13,8 +13,9 @@ export default function People() {
     <div className="space-y-4">
       <H1>People</H1>
       <p>
-        This list is by no means exhaustive. It is a collection of the thinkers,
-        writers, and builders who have had the greatest influence on my life.
+        This list is a collection of the thinkers, writers, and builders who
+        have had the greatest influence on my life. Their ideas have been
+        faithful companions.
       </p>
       <Ul>
         <Li>

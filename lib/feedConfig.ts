@@ -20,7 +20,7 @@ export const feedConfig = {
   // Assets
   logoUrl: "/logo.png",
   ogImage: "/api/og",
-  faviconUrl: "/favicon.ico",
+  faviconUrl: "/favicon",
 
   // Other settings
   language: "en",

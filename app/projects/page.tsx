@@ -142,7 +142,7 @@ export default function Projects() {
         <InlineLink href="https://www.andrewantone.com/">
           Andrew Antone
         </InlineLink>{" "}
-        to design her brand and then build her a Next.js website.
+        to design her brand and then I built her a Next.js website.
       </p>
 
       <div className="mt-16 mb-8 flex">
