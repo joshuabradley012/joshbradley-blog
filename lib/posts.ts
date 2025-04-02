@@ -29,6 +29,15 @@ export function getAllPosts(): Post[] {
         ),
     },
     {
+      slug: "ten-thousand-lines-of-code",
+      title: "10,000 Lines of Code",
+      description:
+        "Lessons learned from writing 10,000 lines of code while building a startup.",
+      date: "Dec 4, 2024",
+      component: () =>
+        import("../components/posts/TenThousand").then((mod) => mod.default),
+    },
+    {
       slug: "efficient-ideas",
       title: "Efficient Ideas",
       description: "The most impactful ideas are efficient, like a bubble.",

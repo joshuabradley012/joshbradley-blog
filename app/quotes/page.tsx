@@ -187,6 +187,12 @@ export default function Quotes() {
           down they are different from everyone else.
         </p>
       </BlockQuote>
+      <BlockQuote author="Karl Popper">
+        <p>
+          It is impossible to speak in such a way that you cannot be
+          misunderstood.
+        </p>
+      </BlockQuote>
       <BlockQuote author="Bret Weinstein">
         <p>
           The population is made up of four types of people: A small number hunt
@@ -194,6 +200,27 @@ export default function Quotes() {
           silent. A tiny number oppose it. The final group—as if by magic—become
           witches.
         </p>
+      </BlockQuote>
+      <BlockQuote author="Friedrich Nietzsche" source="Thus Spoke Zarathustra">
+        <p>
+          I tell you: one must still have chaos in oneself, to give birth to a
+          dancing star. I tell you: you have still chaos in yourselves.
+        </p>
+        <p>
+          Alas! There comes the time when man will no longer give birth to any
+          star. Alas! There comes the time of the most despicable man, who can
+          no longer despise himself.
+        </p>
+      </BlockQuote>
+      <BlockQuote
+        author="Henry Wadsworth Longfellow"
+        source="The Seaside And The Fireside"
+        className="space-y-0 text-left"
+      >
+        <p className="pl-4 -indent-4">In the elder days of art</p>
+        <p className="pl-4 -indent-4">Builders wrought with greatest care</p>
+        <p className="pl-4 -indent-4">Each minute and unseen part,</p>
+        <p className="pl-4 -indent-4">For the Gods are everywhere.</p>
       </BlockQuote>
       <BlockQuote author="John Steinbeck" source="East of Eden">
         <p>
