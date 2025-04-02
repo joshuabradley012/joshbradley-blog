@@ -39,51 +39,45 @@ export default function ParasiticTechnology() {
       <div className="space-y-4">
         <p>
           Knowledge grows exponentially while understanding grows linearly. This
-          gap is approaching a critical point across many dimensions of the
-          modern world.
+          gap is creating tension in many parts of society.
         </p>
 
         <p>
-          Technology is the most apparent manifestation of this gap. There
-          likely isn't a single person alive who could make a pencil on their
-          own: to build the tools, harvest the wood, carve the shape, make the
-          glue, mine the graphite, mix the paint, tap the rubber, and bind it
-          all with a thin strip of iridescent metal. If it is likely that nobody
-          could make a pencil, then it is certain that nobody could construct a
-          computer. The many layers of infrastructure, architecture, algorithms,
-          and software that are the collective result of thousands of years of
-          human progress cannot possibly be contained by one person.
+          Technology is particularly affected by this tension. There likely
+          isn't a single person alive who could make a pencil: to build the
+          tools, harvest the wood, carve the shape, formulate the glue, mine the
+          graphite, mix the paint, tap the rubber, and bind it all with a thin
+          strip of iridescent metal. If it is likely that nobody could make a
+          pencil, then it is certain that nobody could construct a computer.
+          Layers of infrastructure, architecture, algorithms, and software that
+          are the collective result of thousands of years of human progress.
+          That knowledge cannot possibly be contained by one person.
         </p>
 
         <p>
-          It is a miracle that anything works at all. Our world is a testament
-          to the cooperative power of humanity. Make no mistake—this is a
-          miracle paid for with blood. It is dizzying to consider the loss of
-          life and progress that accompanied the rise and fall of great
-          civilizations, let alone the personal sacrifices made by history's
-          greatest thinkers. That sacrifice built the modern world: medicine,
-          education, electricity, and the web of knowledge we now depend on. But
-          dark ages have shown us that progress is not a guarantee.
+          It is a miracle that anything works. Our world is a testament to the
+          cooperative power of humanity, held together by a living encyclopedia
+          of knowledge. But this stability is not a gurantee. Despite our best
+          efforts, dark ages have come. It is dizzying to consider the loss of
+          life and progress caused by the rise and fall of great civilizations.
         </p>
 
         <p>
-          Isaac Asimov's <em>Foundation</em> paints the tragedy of a society
-          blessed with space-age technology but without the stability to sustain
-          the knowledge of how to maintain it—completely reliant on, and
-          vulnerable to, a handful of knowledge keepers.
+          Isaac Asimov's <em>Foundation</em> tells the tragedy of a society
+          blessed with space-age technology but cursed the lack of knowledge
+          needed to run it—completely reliant on, and vulnerable to, a handful
+          of knowledge keepers.
         </p>
 
         <p>
-          This delicate power dynamic is already playing out. The vector of free
-          speech is controlled by a handful of entrepreneurs—drifting like bags
-          in the wind of power.{" "}
+          This delicate power dynamic can be seen in our world. The vector of
+          free speech is controlled by a handful of entrepreneurs—drifting like
+          bags in the wind of power.{" "}
           <InlineLink href="https://www.usitc.gov/publications/332/working_papers/us_exposure_to_the_taiwanese_semiconductor_industry_11-21-2023_508.pdf">
-            Taiwan's 90% control of the advanced semiconductor industry
-          </InlineLink>{" "}
-          is a perilous vulnerability. And the unspoken cold war between the USA
-          and China continues to escalate as we sprint forward in the race for
-          AI. Perhaps our greatest imperative is to form systems that protect
-          against these vulnerabilities for generations to come.
+            Taiwan controls 90% of the advanced semiconductor industry
+          </InlineLink>
+          , and it could be easily disrupted. USA and China continue to escalate
+          a cold war for AI. They each hold a lever which could move the world.
         </p>
 
         <BlockQuote author="Vladimir Putin">
@@ -91,45 +85,42 @@ export default function ParasiticTechnology() {
         </BlockQuote>
 
         <p>
+          Though he was an irredeemable, murderous terrorist,{" "}
+          <InlineLink href="https://www.washingtonpost.com/wp-srv/national/longterm/unabomber/manifesto.text.htm">
+            Ted Kaczynski's manifesto
+          </InlineLink>{" "}
+          makes a compelling argument: as technology becomes more complex,
+          society becomes more montonous. He says that technology demands
+          society to control our behavior in order to produce more technology.
+          He thinks of technology as an unnatural and evil parasite on society.
+        </p>
+
+        <p>
+          However, it is a symbiotic relationship—one where the host is
+          benefited more than it is harmed. But yes, the host is harmed.
+        </p>
+
+        <p>
           One concerning signal is the{" "}
           <InlineLink href="https://x.com/patrickc/status/1900594918923681829">
             drop in literacy and numeracy across the Western world
           </InlineLink>
-          . It is easy to interpret this as our phones destroying our attention
-          spans. It is more unsettling to consider that we are crossing a
-          threshold of complexity—where fewer people have the capacity to
-          operate advanced technology <em>and</em> memorize facts
-          simultaneously.
+          . It is easy to interpret as our phones are destroying our attention
+          spans. It is unsettling to consider that technology may be displacing
+          to societal need for education as knowing how operate technology
+          becomes more important.
         </p>
 
         <p>
-          To a degree, this is the traditional trade-off of progress. Great
-          orators lamented as Plato recorded Socrates' knowledge, ruining future
+          Perhaps this is the traditional trade-off of progress. Great orators
+          lamented as Plato recorded Socrates' teachings, ruining future
           generations' faculty of memory. Aristocrats warned that the printing
           press would confuse the mind. Teachers ridiculed children for the idea
           of carrying around a calculator—even after the belittling job title of
           "Computer"
           <FootnoteLink id={1} /> had been replaced by technology of the same
-          name. Every generation will have its Luddites as knowledge morphs to
-          meet society's demands.
-        </p>
-
-        <p>
-          But as the gap between knowledge and understanding continues to grow,
-          the price of this trade-off becomes more pronounced. Though he was an
-          irredeemable, murderous terrorist,{" "}
-          <InlineLink href="https://www.washingtonpost.com/wp-srv/national/longterm/unabomber/manifesto.text.htm">
-            Ted Kaczynski's manifesto
-          </InlineLink>{" "}
-          makes a compelling argument: that technology narrows the range of
-          acceptable behavior into a fragile monoculture of insidious control.
-          This does not justify his actions, but it does highlight a dilemma. We
-          are deeply entangled with parasitic technology.
-        </p>
-
-        <p>
-          However, it is a symbiotic relationship—one where the host is
-          benefited more than it is harmed.
+          name. Every generation will have its Luddites as society morphs to
+          meet knowledge's demands. Despite this, civilization progresses.
         </p>
 
         <p>
@@ -156,29 +147,26 @@ export default function ParasiticTechnology() {
         </BlockQuote>
 
         <p>
-          Progress is the only way forward. We must find our geniuses and
-          embrace the radical societal change in front of us with our full
-          creative potential. It is the only way to ensure the future prosperity
-          of humanity.
+          Progress is the only way forward. We must find our geniuses and direct
+          their creative potential towards the societal change in front of us.
+          It is the only way to ensure the prosperity of future generations.
         </p>
         <p>
           Entertaining the anti-rational meme of degrowth is dangerous. It
-          glorifies primitivism and encourages a slow spiral into irrelevance
-          and totalitarianism. The EU's growth has stagnated. Venezuela's
-          socialist experiment descended into chaos. The echoes of China's
-          Cultural Revolution
+          encourages a slow spiral into irrelevance and totalitarianism. The
+          EU's growth has stagnated. Venezuela's socialist experiment descended
+          into chaos. The echoes of China's Cultural Revolution
           <FootnoteLink id={2} /> still reverberate through its iron fist.
           Instead, we must strengthen the fundamental values of the Western
-          world in order to maintain our technological supremacy.
+          world to maintain our technological supremacy.
         </p>
 
         <p>
           Strength will be found in embracing AI. Onshoring semiconductor
           production. Alinging with free expression. Recruiting talent from
-          every corner of the world. Modernizing education to provide every
-          child with an AI tutor. Reforming regulation to prioritize innovation.
-          Elevating entrepreneurship, leadership, oration, and first-principles
-          reasoning.
+          every corner of the world. Modernizing education to use AI. Reforming
+          regulation to prioritize innovation. Encouraging entrepreneurship,
+          leadership, oration, and first-principles reasoning.
         </p>
 
         <p>

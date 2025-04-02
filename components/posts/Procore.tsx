@@ -16,30 +16,28 @@ export default function Procore() {
         realize just how much of an anomaly this was—or what it would mean for
         my career. So when I received the call in 2017 with my hiring offer, I
         didn't hesitate to say yes. I remember crying as I felt a weight lifting
-        off of me. I'd had a very traumatic year after a series of difficult
-        years and this was a break that I desperately needed. The struggle of
-        working through my early career as a college drop-out was being rewarded
-        with consistent income, benefits, and career growth. This brought me
-        hope that I hadn't felt in years. From the bottom of my heart, thank you
-        Procore.
+        off of me. I'd had a very traumatic year and this was a break that I
+        desperately needed. The struggle of working through my early career as a
+        college drop-out was being rewarded with consistent income, benefits,
+        and career growth. This brought me hope that I hadn't felt in years.
+        From the bottom of my heart, thank you Procore.
       </p>
 
       <p>
         The lifestyle was incredible. My breaks involved walks along the Pacific
-        Ocean. I made friends with good people, an experience that had eluded me
-        for most of my life. I enjoyed free meals, lavish events, a beer-stocked
-        fridge, and generous benefits. I sat next to a beautiful, witty, and
+        Ocean. I made friends with good people. I enjoyed free meals, lavish
+        events, and a beer-stocked fridge. I sat next to a beautiful, witty, and
         inspiring woman, and I was there the day she brought her puppy to work
         for the first time. They quickly became a big part of my life. Having a
         dog to play with, walk, and babysit brought me back to my childhood and
-        softened my heart in ways I didn't expect. I finished most days snapping
-        pictures of the blood-red sun as it sank heavy into the horizon.
+        softened my heart. I finished most days snapping pictures of the
+        blood-red sun as it sank heavy into the horizon.
       </p>
 
       <p>
-        However, the rose-tinted glasses didn't last long. I was quickly thrust
-        into an entry level position of a large and dysfunctional marketing
-        department. I joined just a week after the incumbent CMO had been
+        However, my rose-tinted perspective didn't last long. I was quickly
+        thrust into an entry level position of a large and dysfunctional
+        marketing department. I joined one week after the incumbent CMO had been
         sacked, on a team with a long history of spotty leadership, under a
         manager who glorified getting paid to do nothing. And there was a lot to
         do.

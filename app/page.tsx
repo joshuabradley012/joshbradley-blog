@@ -17,7 +17,7 @@ export default function Home() {
           Right now, I'm building{" "}
           <InlineLink href="https://celest.tech">Celest</InlineLink>, an
           AI-driven software for creating content. My goal is to spend my life
-          gaining and sharing knowledge for the benefit of humanity.
+          gaining and sharing knowledge.
         </p>
 
         <p>

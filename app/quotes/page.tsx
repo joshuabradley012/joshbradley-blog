@@ -220,7 +220,7 @@ export default function Quotes() {
         <p className="pl-4 -indent-4">In the elder days of art</p>
         <p className="pl-4 -indent-4">Builders wrought with greatest care</p>
         <p className="pl-4 -indent-4">Each minute and unseen part,</p>
-        <p className="pl-4 -indent-4">For the Gods are everywhere.</p>
+        <p className="mb-4 pl-4 -indent-4">For the Gods are everywhere.</p>
       </BlockQuote>
       <BlockQuote author="John Steinbeck" source="East of Eden">
         <p>

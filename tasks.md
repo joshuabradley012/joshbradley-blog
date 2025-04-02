@@ -3,7 +3,6 @@
   - Shadow Work
   - Learning to Fly
   - Inflection points
-  - 10,000 Lines of Code
   - Startup Culture Changed Me
   - Composable Code
   - Rebuilding this Website
