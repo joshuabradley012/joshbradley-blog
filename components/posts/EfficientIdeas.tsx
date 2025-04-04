@@ -25,14 +25,12 @@ export default function EfficientIdeas() {
       <p className="mb-4 pl-4 -indent-4">It is efficient.</p>
 
       <p className="pl-4 -indent-4">
-        Though abundant in nature, efficiency in thought is rare.
+        Though abundant in nature, efficiency is rare in thought.
       </p>
       <p className="pl-4 -indent-4">
         It appears delicate—like one gust of wind could sweep it away.
       </p>
-      <p className="pl-4 -indent-4">
-        Instead, the mind tends toward castles of thought:
-      </p>
+      <p className="pl-4 -indent-4">Instead, the mind tends toward castles:</p>
       <p className="mb-4 pl-8 -indent-4">
         complex, robust, insurmountable towers of absolute certainty.
       </p>

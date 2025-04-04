@@ -29,8 +29,8 @@ export function getAllPosts(): Post[] {
         ),
     },
     {
-      slug: "startup-lessons",
-      title: "Startup Lessons",
+      slug: "lessons-on-startups",
+      title: "Lessons on Startups",
       description: "Lessons learned from building a startup.",
       date: "Dec 4, 2024",
       component: () =>

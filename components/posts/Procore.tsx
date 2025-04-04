@@ -61,8 +61,8 @@ export default function Procore() {
         determined problem solver spread through the company. I received plenty
         of verbal praise but saw little actual career growth, especially when
         compared to peers who seemed to be receiving a promotion or raise with
-        every cycle. In four years I received one promotion and one title change
-        into web development.
+        every cycle. In four years I received one promotion and a title change
+        that moved me into web development.
       </p>
 
       <p>
@@ -129,13 +129,13 @@ export default function Procore() {
       <p>
         I owe a lot to the third manager I had while working at Procore. He
         truly valued my contributions and empathized with my unrepresentative
-        compensation. He vouched for my work and secured me a generous equity
+        compensation. He went to bat for me and secured me a generous equity
         award. Amortized over my four years, I still didn't break a six figure
         salary, but I am eternally grateful for him and he has remained a
         generous and loyal friend to this day. Despite this, it was too little,
         too late, and my motivation had withered. I stopped working 60-hour
-        weeks and I bided my time as the last of my shares vested. I joined a
-        coding bootcamp and materialized the career I had been chasing. I was an
+        weeks and I waited as the last of my shares vested. I joined a coding
+        bootcamp and materialized the career I had been chasing. I was an
         engineer—dammit.
       </p>
 

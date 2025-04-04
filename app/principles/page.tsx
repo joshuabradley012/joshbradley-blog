@@ -49,7 +49,7 @@ export default function Principles() {
         <Li>Computation</Li>
         <Li>Multidimensional</Li>
         <Li>Intelligence</Li>
-        <Li>Consciouss vs Unconsciouss</Li>
+        <Li>Conscious vs Unconscious</Li>
         <Li>Long Tail Events</Li>
         <Li>Agency</Li>
         <Li>Globalization</Li>
