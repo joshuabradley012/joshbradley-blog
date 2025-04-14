@@ -342,6 +342,12 @@ export default function Quotes() {
           vast and endless sea.
         </p>
       </BlockQuote>
+      <BlockQuote author="William Faulkner">
+        <p>
+          You cannot swim for new horizons until you have courage to lose sight
+          of the shore.
+        </p>
+      </BlockQuote>
       <BlockQuote author="C.S Lewis" source="The Four Loves">
         <p>
           There is no safe investment. To love at all is to be vulnerable. Love

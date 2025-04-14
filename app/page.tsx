@@ -32,17 +32,14 @@ export default function Home() {
       </div>
       <hr />
       <div className="flex flex-wrap gap-4 text-xs">
-        <InlineLink href="mailto:hello@joshbradley.me">Email</InlineLink>
-        <InlineLink href="https://x.com/josh_b_rad">Twitter</InlineLink>
+        <InlineLink href="https://x.com/joshtbradley">Twitter</InlineLink>
         <InlineLink href="https://github.com/joshuabradley012">
           GitHub
         </InlineLink>
         <InlineLink href="https://www.linkedin.com/in/joshuabradley012/">
           LinkedIn
         </InlineLink>
-        <InlineLink href="https://www.instagram.com/josh_b_rad/">
-          Instagram
-        </InlineLink>
+        <InlineLink href="/api/rss">RSS</InlineLink>
       </div>
     </>
   );
