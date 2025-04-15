@@ -1,203 +1,64 @@
-import { BlockCode, InlineCode } from "@/components/ui/Code";
-import { BlockMath, InlineMath } from "@/components/ui/Math";
-import LineChart from "@/components/ui/LineChart";
-import CounterDemo from "@/components/demos/CounterDemo";
 import BlockQuote from "@/components/ui/BlockQuote";
-import Figure from "@/components/ui/Figure";
-import { H2 } from "@/components/ui/Headings";
-import { Ul, Ol, Li } from "@/components/ui/List";
 import InlineLink from "@/components/ui/InlineLink";
-import {
-  FootnotesProvider,
-  FootnoteLink,
-  Footnotes,
-} from "@/components/ui/Footnotes";
 
-const data = [
-  { name: "Jan", value: 400 },
-  { name: "Feb", value: 300 },
-  { name: "Mar", value: 600 },
-  { name: "Apr", value: 800 },
-  { name: "May", value: 500 },
-  { name: "Jun", value: 900 },
-];
-
-const footnotes = [
-  {
-    id: 1,
-    content: (
-      <>
-        This is a footnote with a link to{" "}
-        <InlineLink href="https://www.google.com">Google</InlineLink> and some
-        more text to test the layout. And even more text to test the layout.
-      </>
-    ),
-  },
-  {
-    id: 2,
-    content: <>This is another footnote, with nothing fancy.</>,
-  },
-];
-
-export default function Rebuilding() {
+export default function Rebuild() {
   return (
-    <FootnotesProvider footnotes={footnotes}>
-      <div className="space-y-4">
-        <BlockQuote author="C.S Lewis" source="The Four Loves">
-          <p>
-            There is no safe investment. To love at all is to be vulnerable.
-            Love anything, and your heart will certainly be wrung and possibly
-            be broken. If you want to make sure of keeping it intact, you must
-            give your heart to no one, not even to an animal. Wrap it carefully
-            round with hobbies and little luxuries; avoid all entanglements;
-            lock it up safe in the casket of coffin of your selfishness. But in
-            that casket-safe, dark, motionless, air-less, it will change. It
-            will not be broken; it will become unbreakable, impenetrable,
-            irredeemable. The alternative to tragedy, or at least to the risk of
-            tragedy, is damnation. The only place outside Heaven where you can
-            be perfectly safe from all the dangers and perturbations of love is
-            Hell.
-          </p>
-        </BlockQuote>
-
+    <div className="space-y-4">
+      <p>
+        This version of my website is a departure from my{" "}
+        <InlineLink href="/thoughts/building-this-website">
+          old philosophy.
+        </InlineLink>{" "}
+        I have shifted from performance to experience.{" "}
+        <InlineLink href="https://shud.in/">Shu Ding's website</InlineLink>{" "}
+        heavily inspired this redesign—I borrowed many details, including
+        layout, font choices, and transition animations. I find it elegant and
+        timeless.
+      </p>
+      <p>
+        I chose to build this using Next.js, without MDX or any other content
+        layer. Each post is written in React, allowing me to embed any component
+        anywhere—creating an interactive medium through which I can express my
+        ideas.
+      </p>
+      <p>
+        That is the purpose of a blog, isn't it? To express ideas. To formalize
+        the thoughts that{" "}
+        <InlineLink href="https://jsomers.net/careenium.pdf">careen</InlineLink>{" "}
+        about my mind into something people can read—and perhaps be inspired by.
+        My last website, built in Ghost, felt stifling. Adding custom pages was
+        impossible. Interactivity was a challenge. I considered Substack, but it
+        was limited too. Custom React feels right. Handcrafted. Simple.
+        Expressive. A blank canvas for my thoughts.
+      </p>
+      <p>
+        This is my digital garden—a place to curate content that fulfills me.
+        Already, I've enjoyed sifting through my notes, searching for gems to
+        cut and polish. My mind wanders to what it might become.
+      </p>
+      <p>
+        Grand ideas of being a "blogger" come to mind. I could be like Scott
+        Alexander or Tyler Cowen—a thought leader inspiring the greatest minds
+        of our generation. But there is fear. Fear of being judged. Fear of
+        failing. Fear of doing something new.
+      </p>
+      <p>
+        At worst, that fear consumes me—leaving me stranded between my old life
+        and my new self. At best, I alchemize it into motivation. Faced with the
+        choice between the pain of conformity and the pain of individuation, I
+        choose the latter.
+      </p>
+      <BlockQuote author="William Faulkner">
         <p>
-          This blog post demonstrates how we can create fully interactive
-          components directly within our blog posts. The chart below is built
-          with Recharts and has interactive state managed within the component
-          with some more text to test the layout and just a bit more.
-          <FootnoteLink id={1} />
+          You cannot swim for new horizons until you have courage to lose sight
+          of the shore.
         </p>
-
-        <Ol>
-          <Li>This is a list item</Li>
-          <Li>This is another list item</Li>
-          <Li>This is yet another list item</Li>
-        </Ol>
-
-        <Ul>
-          <Li>This is a list item</Li>
-          <Li>This is another list item</Li>
-          <Li>This is yet another list item</Li>
-        </Ul>
-
-        <LineChart data={data} />
-
-        <p>
-          This is an amazing example of an inline code block. Testing to ensure
-          it works in the middle of a sentence{" "}
-          <InlineCode meta="js" code="const array = [1, 2, 3]" /> oh hell yeah
-          that's a thing. I just want to make sure it works with multiple lines.
-          Because that will be a thing.
-        </p>
-
-        <BlockCode
-          meta={`jsx showLineNumbers {13-14,48-49} /unified/ title="BlockCode.tsx" caption="This is showing how to create a code block using RSC."`}
-          code={`
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import rehypePrettyCode from "rehype-pretty-code";
-import { cn } from "@/lib/utils";
-
-async function highlightCode(code: string) {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, {
-      theme: "github-light",
-      keepBackground: false,
-    })
-    .use(rehypeStringify)
-    .process(code);
-
-  return String(file);
-}
-
-export async function BlockCode({
-  code,
-  className,
-}: {
-  code: string;
-  className?: string;
-}) {
-  const highlightedCode = await highlightCode(code);
-  return (
-    <section
-      className={cn("my-8 text-xs", className)}
-      dangerouslySetInnerHTML={{
-        __html: highlightedCode,
-      }}
-    />
-  );
-}
-
-export async function InlineCode({
-  code,
-  className,
-}: {
-  code: string;
-  className?: string;
-}) {
-  let highlightedCode = await highlightCode(code);
-  highlightedCode = highlightedCode.replace(/^<p>/, "");
-  highlightedCode = highlightedCode.replace(/<\/p>$/, "");
-  return (
-    <span
-      className={cn(
-        "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
-        className,
-      )}
-      dangerouslySetInnerHTML={{
-        __html: highlightedCode,
-      }}
-    />
-  );
-}
-          `}
-        />
-
-        <p>
-          Now, let's see how we can use the math renderer. I want to ensure it
-          works inline with text, like so:{" "}
-          <InlineMath math="\int_0^\infty x^2 dx" />.<FootnoteLink id={2} /> And
-          also works in block quotes. And I need to make sure it works with
-          multiple lines. Just a little longer like this.
-        </p>
-
-        <BlockMath
-          math="f(x) = \int_{-\infty}^{\infty}
-          \hat{f}(\xi)e^{2 \pi i \xi x}
-          \,d\xi"
-        />
-
-        <H2>How it works</H2>
-        <p>
-          This entire blog post is a React component, giving us the power to
-          include any interactive elements we want. We're using useState hooks
-          to track user interactions, and we can include any React libraries we
-          need.
-        </p>
-
-        <Figure
-          src="/api/og"
-          alt="OG Image"
-          caption="This is a caption"
-          width={1200}
-          height={630}
-        />
-
-        <H2>Adding custom interactions</H2>
-        <CounterDemo />
-
-        <p>
-          The beauty of this approach is that we can nest custom components
-          within our blog posts, keeping our code organized while providing
-          rich, interactive experiences for readers.
-        </p>
-
-        <Footnotes />
-      </div>
-    </FootnotesProvider>
+      </BlockQuote>
+      <p>
+        I don't know what lies on the other side of this experience. But I'm
+        excited to find out. If you're here, I hope you'll stick around. There's
+        more to come—whatever it ends up becoming.
+      </p>
+    </div>
   );
 }
