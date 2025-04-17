@@ -17,10 +17,10 @@ const links = [
     href: "/people",
     text: "people",
   },
-  {
-    href: "/principles",
-    text: "principles",
-  },
+  // {
+  //   href: "/principles",
+  //   text: "principles",
+  // },
   {
     href: "/projects",
     text: "projects",

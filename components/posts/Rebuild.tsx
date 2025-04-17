@@ -19,28 +19,16 @@ export default function Rebuild() {
         I chose to build this using Next.js, without MDX or any other content
         layer. Each post is written in React, allowing me to embed any component
         anywhere—creating an interactive medium through which I can express my
-        ideas.
+        ideas. My last website, built in Ghost, felt stifling. Adding custom
+        pages was impossible. Interactivity was a challenge. I considered
+        Substack, but it was limited too. Custom React feels right. Handcrafted.
+        Simple. Expressive. A blank canvas for my thoughts.
       </p>
       <p>
-        That is the purpose of a blog, isn't it? To express ideas. To formalize
-        the thoughts that{" "}
-        <InlineLink href="https://jsomers.net/careenium.pdf">careen</InlineLink>{" "}
-        about my mind into something people can read—and perhaps be inspired by.
-        My last website, built in Ghost, felt stifling. Adding custom pages was
-        impossible. Interactivity was a challenge. I considered Substack, but it
-        was limited too. Custom React feels right. Handcrafted. Simple.
-        Expressive. A blank canvas for my thoughts.
-      </p>
-      <p>
-        This is my digital garden—a place to curate content that fulfills me.
-        Already, I've enjoyed sifting through my notes, searching for gems to
-        cut and polish. My mind wanders to what it might become.
-      </p>
-      <p>
-        Grand ideas of being a "blogger" come to mind. I could be like Scott
-        Alexander or Tyler Cowen—a thought leader inspiring the greatest minds
-        of our generation. But there is fear. Fear of being judged. Fear of
-        failing. Fear of doing something new.
+        I am inspired to create. I've enjoyed sifting through my old notes,
+        finding gems to cut and polish. I have aspirations for what I might
+        make. But there is fear too. Fear of being judged. Fear of failing. Fear
+        of doing something new.
       </p>
       <p>
         At worst, that fear consumes me—leaving me stranded between my old life
