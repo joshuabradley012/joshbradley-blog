@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Ol, Li } from "@/components/ui/List";
+import { Ol, Li } from "@/components/List";
 
 interface Footnote {
   id: number;

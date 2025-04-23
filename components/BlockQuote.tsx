@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import InlineLink from "@/components/ui/InlineLink";
+import InlineLink from "@/components/InlineLink";
 
 interface BlockQuoteProps extends React.HTMLAttributes<HTMLQuoteElement> {
   author?: string;

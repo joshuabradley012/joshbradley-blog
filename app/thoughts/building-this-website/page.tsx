@@ -1,13 +1,13 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import { BlockCode, InlineCode } from "@/components/ui/Code";
-import { H2, H3 } from "@/components/ui/Headings";
-import BlockQuote from "@/components/ui/BlockQuote";
-import Figure from "@/components/ui/Figure";
-import { Ol, Li } from "@/components/ui/List";
-import InlineLink from "@/components/ui/InlineLink";
+import { BlockCode, InlineCode } from "@/components/Code";
+import { H2, H3 } from "@/components/Headings";
+import BlockQuote from "@/components/BlockQuote";
+import Figure from "@/components/Figure";
+import { Ol, Li } from "@/components/List";
+import InlineLink from "@/components/InlineLink";
 
 const post = getPostBySlug("building-this-website");
 

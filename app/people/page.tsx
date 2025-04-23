@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { H1 } from "@/components/ui/Headings";
-import { Ul, Li } from "@/components/ui/List";
-import InlineLink from "@/components/ui/InlineLink";
+import { H1 } from "@/components/Headings";
+import { Ul, Li } from "@/components/List";
+import InlineLink from "@/components/InlineLink";
 
 export const metadata: Metadata = {
   title: "People",

@@ -1,7 +1,7 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
-import BlockQuote from "@/components/ui/BlockQuote";
-import InlineLink from "@/components/ui/InlineLink";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
+import BlockQuote from "@/components/BlockQuote";
+import InlineLink from "@/components/InlineLink";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
 

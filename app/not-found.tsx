@@ -1,4 +1,4 @@
-import InlineLink from "@/components/ui/InlineLink";
+import InlineLink from "@/components/InlineLink";
 
 export default function NotFound() {
   return (

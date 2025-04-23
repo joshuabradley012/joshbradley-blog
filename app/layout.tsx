@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Inter, JetBrains_Mono } from "next/font/google";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import { feedConfig } from "@/lib/feedConfig";
-import Nav from "@/components/ui/Nav";
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 const inter = Inter({

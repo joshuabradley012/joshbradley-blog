@@ -1,23 +1,23 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import { BlockCode, InlineCode } from "@/components/ui/Code";
-import { BlockMath, InlineMath } from "@/components/ui/Math";
-import Figure from "@/components/ui/Figure";
-import { Ol, Li } from "@/components/ui/List";
-import InlineLink from "@/components/ui/InlineLink";
-import { H2 } from "@/components/ui/Headings";
-import ExecuteAnimationScript from "@/components/ui/ExecuteAnimationScript";
+import { BlockCode, InlineCode } from "@/components/Code";
+import { BlockMath, InlineMath } from "@/components/Math";
+import Figure from "@/components/Figure";
+import { Ol, Li } from "@/components/List";
+import InlineLink from "@/components/InlineLink";
+import { H2 } from "@/components/Headings";
+import ExecuteAnimationScript from "@/components/ExecuteAnimationScript";
 import elasticCollision from "@/public/images/elastic-2d.gif";
 
-const post = getPostBySlug("building-this-website");
+const post = getPostBySlug("object-collisions-with-canvas");
 
 export async function generateMetadata() {
   return createMetadata(post);
 }
 
-export default function BuildingThisWebsite() {
+export default function ObjectCollisionsWithCanvas() {
   return (
     <>
       <BlogJsonLd post={post} />
@@ -286,7 +286,7 @@ class Canvas {
     this.ctx = this.canvas.getContext('2d');
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -327,7 +327,7 @@ class Ball {
     this.radius = radius;
   }
 }
-        `}
+          `}
         />
 
         <p>Now for a test…</p>
@@ -338,7 +338,7 @@ class Ball {
 const canvas = new Canvas();
 const ball = new Ball();
 canvas.drawCircle(ball);
-        `}
+          `}
         />
 
         <ExecuteAnimationScript id="example-1">
@@ -437,7 +437,7 @@ class Vector {
     return Math.atan2(this.x, this.y);
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -456,7 +456,7 @@ class Ball {
     this.radius = radius;
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -501,7 +501,7 @@ class State {
     return new State(this.display, actors);
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -555,7 +555,7 @@ class Ball {
     });
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -583,7 +583,7 @@ class Canvas {
     }
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -611,7 +611,7 @@ const runAnimation = animation => {
   };
   requestAnimationFrame(frame);
 };
-        `}
+          `}
         />
 
         <p>
@@ -633,7 +633,7 @@ runAnimation(time => {
   state = state.update(time);
   display.sync(state);
 });
-        `}
+          `}
         />
 
         <ExecuteAnimationScript id="example-2">
@@ -827,7 +827,7 @@ class Canvas {
   }
   ...
 }
-        `}
+          `}
         />
 
         <p>Now we have motion!</p>
@@ -1045,7 +1045,7 @@ class Ball {
     });
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -1094,7 +1094,7 @@ runAnimation(time => {
   state = state.update(time);
   display.sync(state);
 });
-        `}
+          `}
         />
 
         <ExecuteAnimationScript id="example-4">
@@ -1354,7 +1354,7 @@ class Ball {
     return 4 * Math.PI * this.radius ** 2;
   }
 }
-        `}
+          `}
         />
 
         <p>
@@ -1404,7 +1404,7 @@ const collisionVector = (b1, b2) => {
       )
     );
 };
-        `}
+          `}
         />
 
         <p>
@@ -1502,7 +1502,7 @@ class Ball {
   }
   ...
 }
-`}
+          `}
         />
 
         <p>
@@ -1536,7 +1536,7 @@ runAnimation(time => {
   state = state.update(time);
   display.sync(state);
 });
-`}
+          `}
         />
 
         <ExecuteAnimationScript id="example-5">
@@ -2107,7 +2107,7 @@ class Ball {
   }
   ...
 }
-`}
+          `}
         />
 
         <p>
@@ -2147,7 +2147,7 @@ runAnimation(time => {
   state = state.update(time);
   display.sync(state);
 });
-`}
+          `}
         />
 
         <ExecuteAnimationScript id="example-7">
@@ -2409,7 +2409,7 @@ collidingBalls({
   width: 622,
   parent: document.getElementById('hero'),
 });
-`}
+          `}
         />
 
         <p>

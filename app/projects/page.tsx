@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { H1 } from "@/components/ui/Headings";
-import InlineLink from "@/components/ui/InlineLink";
-import { Ul, Li } from "@/components/ui/List";
+import { H1 } from "@/components/Headings";
+import InlineLink from "@/components/InlineLink";
+import { Ul, Li } from "@/components/List";
 import {
   Assignar,
   Celest,

@@ -1,14 +1,14 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import InlineLink from "@/components/ui/InlineLink";
-import BlockQuote from "@/components/ui/BlockQuote";
+import InlineLink from "@/components/InlineLink";
+import BlockQuote from "@/components/BlockQuote";
 import {
   FootnotesProvider,
   FootnoteLink,
   Footnotes,
-} from "@/components/ui/Footnotes";
+} from "@/components/Footnotes";
 
 const post = getPostBySlug("parasitic-technology");
 

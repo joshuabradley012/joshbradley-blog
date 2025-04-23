@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BlockQuote from "@/components/ui/BlockQuote";
+import BlockQuote from "@/components/BlockQuote";
 
 export const metadata: Metadata = {
   title: "Quotes",

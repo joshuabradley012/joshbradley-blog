@@ -1,8 +1,8 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import { H2 } from "@/components/ui/Headings";
+import { H2 } from "@/components/Headings";
 
 const post = getPostBySlug("lessons-on-startups");
 

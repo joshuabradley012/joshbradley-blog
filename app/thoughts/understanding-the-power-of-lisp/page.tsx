@@ -1,15 +1,15 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import { BlockCode, InlineCode } from "@/components/ui/Code";
-import { H2, H3 } from "@/components/ui/Headings";
-import InlineLink from "@/components/ui/InlineLink";
+import { BlockCode, InlineCode } from "@/components/Code";
+import { H2, H3 } from "@/components/Headings";
+import InlineLink from "@/components/InlineLink";
 import {
   FootnotesProvider,
   FootnoteLink,
   Footnotes,
-} from "@/components/ui/Footnotes";
+} from "@/components/Footnotes";
 
 const post = getPostBySlug("understanding-the-power-of-lisp");
 

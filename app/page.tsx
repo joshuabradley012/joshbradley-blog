@@ -1,5 +1,5 @@
-import InlineLink from "@/components/ui/InlineLink";
-import { H1 } from "@/components/ui/Headings";
+import InlineLink from "@/components/InlineLink";
+import { H1 } from "@/components/Headings";
 
 export default function Home() {
   return (

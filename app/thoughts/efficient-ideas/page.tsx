@@ -1,8 +1,8 @@
-import { PostHeader } from "@/components/ui/PostHeader";
-import BlogJsonLd from "@/components/ui/BlogJsonLd";
+import { PostHeader } from "@/components/PostHeader";
+import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
-import { InlineMath } from "@/components/ui/Math";
+import { InlineMath } from "@/components/Math";
 
 const post = getPostBySlug("efficient-ideas");
 
