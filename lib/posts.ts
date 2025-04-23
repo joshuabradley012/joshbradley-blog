@@ -1,11 +1,4 @@
-export type Post = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  coverImage?: string;
-  component: () => Promise<any>;
-};
+import type { Post } from "@/types";
 
 export function getAllPosts(): Post[] {
   return [
@@ -14,8 +7,6 @@ export function getAllPosts(): Post[] {
       title: "Rebuilding This Website",
       description: "The design choices behind building a custom React blog.",
       date: "Mar 20, 2025",
-      component: () =>
-        import("../components/posts/Rebuild").then((mod) => mod.default),
     },
     {
       slug: "parasitic-technology",
@@ -23,26 +14,18 @@ export function getAllPosts(): Post[] {
       description:
         "Technology grows exponentially but understanding grows linearly. The difference is our collective knowledge gap.",
       date: "Feb 7, 2025",
-      component: () =>
-        import("../components/posts/ParasiticTechnology").then(
-          (mod) => mod.default,
-        ),
     },
     {
       slug: "lessons-on-startups",
       title: "Lessons on Startups",
       description: "Lessons learned from building a startup.",
       date: "Dec 4, 2024",
-      component: () =>
-        import("../components/posts/StartupLessons").then((mod) => mod.default),
     },
     {
       slug: "efficient-ideas",
       title: "Efficient Ideas",
       description: "The most impactful ideas are efficient, like a bubble.",
       date: "Jan 12, 2022",
-      component: () =>
-        import("../components/posts/EfficientIdeas").then((mod) => mod.default),
     },
     {
       slug: "goodbye-procore",
@@ -50,8 +33,6 @@ export function getAllPosts(): Post[] {
       description:
         "Reflecting on what I learned during my 4 years working for Procore.",
       date: "Nov 21, 2021",
-      component: () =>
-        import("../components/posts/Procore").then((mod) => mod.default),
     },
     {
       slug: "object-collisions-with-canvas",
@@ -59,10 +40,6 @@ export function getAllPosts(): Post[] {
       description:
         "Simulating object collisions is a rewarding way to learn the basics of HTML canvas and physics simulation.",
       date: "Jul 25, 2020",
-      component: () =>
-        import("../components/posts/ObjectCollisions").then(
-          (mod) => mod.default,
-        ),
     },
     {
       slug: "understanding-the-power-of-lisp",
@@ -70,8 +47,6 @@ export function getAllPosts(): Post[] {
       description:
         "Notable programmers describe understanding and coding in LISP as a semi-religious experience. What gives the language this power?",
       date: "Apr 3, 2020",
-      component: () =>
-        import("../components/posts/Lisp").then((mod) => mod.default),
     },
     {
       slug: "building-this-website",
@@ -79,13 +54,14 @@ export function getAllPosts(): Post[] {
       description:
         "This site is tiny and powerful, featuring schema markup and ServiceWorkers. Here is what I learned while building it.",
       date: "Jan 27, 2020",
-      component: () =>
-        import("../components/posts/Build").then((mod) => mod.default),
     },
-    // Add more posts here
   ];
 }
 
-export function getPostBySlug(slug: string): Post | undefined {
-  return getAllPosts().find((post) => post.slug === slug);
+export function getPostBySlug(slug: string): Post {
+  const post = getAllPosts().find((post) => post.slug === slug);
+  if (!post) {
+    throw new Error(`Post with slug ${slug} not found`);
+  }
+  return post;
 }

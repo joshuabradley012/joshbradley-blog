@@ -1,4 +1,4 @@
-import { Post } from "@/lib/posts";
+import type { Post } from "@/types";
 import { feedConfig } from "@/lib/feedConfig";
 
 export default function BlogJsonLd({ post }: { post: Post }) {
