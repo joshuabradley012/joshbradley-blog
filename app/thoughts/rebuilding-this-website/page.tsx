@@ -18,30 +18,38 @@ export default function RebuildingThisWebsite() {
       <PostHeader post={post} />
       <div className="space-y-4">
         <p>
-          This version of my website is a departure from my{" "}
+          This website is a departure from my{" "}
           <InlineLink href="/thoughts/building-this-website">
-            old philosophy.
+            old philosophy
+          </InlineLink>
+          , I have shifted from performance to experience. Previously my website
+          was 16kb and loaded in 50-100ms. Blazing fast, minimal, and static. It
+          was an experiment in how simple a website could be, and in many ways
+          it was delightful. However, its speed didn't make up for its rough
+          edges, it was difficult to add custom pages and its design was
+          lacking. I considered Substack but found it lacking too. So I sought
+          inspiration for a redesign, and while going through{" "}
+          <InlineLink href="https://deadsimplesites.com/">
+            Dead Simple Sites
           </InlineLink>{" "}
-          I have shifted from performance to experience.{" "}
-          <InlineLink href="https://shud.in/">Shu Ding's website</InlineLink>{" "}
-          heavily inspired this redesign—I borrowed many details, including
-          layout, font choices, and transition animations. I find it elegant and
-          timeless.
+          I found{" "}
+          <InlineLink href="https://shud.in/">Shu Ding's website</InlineLink>. I
+          borrowed many details, including layout, font choices, and transition
+          animations. I believe result is timeless and elegant.
         </p>
         <p>
-          I chose to build this using Next.js, without MDX or any other content
-          layer. Each post is written in React, allowing me to embed any
-          component anywhere—creating an interactive medium through which I can
-          express my ideas. My last website, built in Ghost, felt stifling.
-          Adding custom pages was impossible. Interactivity was a challenge. I
-          considered Substack, but it was limited too. Custom React feels right.
-          Handcrafted. Simple. Expressive. A blank canvas for my thoughts.
+          I decided to build without MDX or any other content layer. After
+          experimenting with MDX, I realized it added subtle constraints that I
+          didn't want to be limited by, so I opted for pure React in Next.js.
+          This allows me to embed any component anywhere—creating an interactive
+          medium through which I can express my ideas. Handcrafted. Simple.
+          Expressive. A blank canvas for my thoughts.
         </p>
         <p>
-          I am inspired to create. I've enjoyed sifting through my old notes,
-          finding gems to cut and polish. I have aspirations for what I might
-          make. But there is fear too. Fear of being judged. Fear of failing.
-          Fear of doing something new.
+          The next challenge is writing those thoughts. I have many aspirations,
+          many old notes which I enjoy sifting through, but it is difficult and
+          time consuming to cut and polish them into gems. There is fear too.
+          Fear of being judged. Fear of failing. Fear of doing something new.
         </p>
         <p>
           At worst, that fear consumes me—leaving me stranded between my old
