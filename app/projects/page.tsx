@@ -13,8 +13,8 @@ import {
   Procore,
   Silo,
 } from "@/icons";
-import cd5 from "@/public/images/cd5.png";
-import pacifica from "@/public/images/pacifica.png";
+import cd5 from "@/images/cd5.png";
+import pacifica from "@/images/pacifica.png";
 
 export const metadata: Metadata = {
   title: "Projects",
