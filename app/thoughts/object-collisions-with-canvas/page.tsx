@@ -9,7 +9,7 @@ import { Ol, Li } from "@/components/List";
 import InlineLink from "@/components/InlineLink";
 import { H2 } from "@/components/Headings";
 import ExecuteAnimationScript from "@/components/ExecuteAnimationScript";
-import elasticCollision from "@/images/elastic-2d.gif";
+import elasticCollision from "@/public/images/elastic-2d.gif";
 
 const post = getPostBySlug("object-collisions-with-canvas");
 
