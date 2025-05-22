@@ -130,7 +130,7 @@ export default function AIIsInevitable() {
 
         <p>
           Concretely, <strong>Celest</strong> should think of itself as a
-          research lab searching for the world's first autonomous business. To
+          research lab developing the world's first autonomous business. To
           coordinate a network of agents that develop and offer a service that
           anyone can pay for. Our role is to design and monitor these networks,
           and to continue removing ourself from the process. We should consider
