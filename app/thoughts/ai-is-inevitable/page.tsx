@@ -57,7 +57,7 @@ export default function AIIsInevitable() {
         <p>
           Let's be naive and speak the truth that tech executives are dancing
           around. AI is going to change everything. Within the next 5-10 years
-          AI will exceed humanity across all dimensions–intelligence,
+          AI will exceed humanity across all dimensions—intelligence,
           creativity, depth, breadth, and speed. It will be the default
           interface for all technology and the world will be unrecognizable
           within the next 40 years. The best thing that you or I can do is to
