@@ -17,9 +17,9 @@ export default function AIIsInevitable() {
       <PostHeader post={post} />
       <div className="space-y-4">
         <p>
-          The economic era we know is ending. This is a natural cycle that all
-          things go through, celebrate what we had and prepare yourself for a
-          new reality. A reality where AI has no boundaries.
+          The technological era we know is ending. This is a natural cycle that
+          all things go through, celebrate what we had and prepare yourself for
+          a new reality. A reality where AI has no boundaries.
         </p>
 
         <p>
@@ -82,19 +82,9 @@ export default function AIIsInevitable() {
         </p>
 
         <p>
-          History shows that the tech boom from 1960-2020 had huge winners, and
-          many more losers. Companies that lost failed to keep pace with change.
-          They engineered short term solutions to long term problems and were
-          quickly outcompeted. Companies that won anticipated and embraced
-          change. They looked ahead, remained on the cutting edge of demand, and
-          adapted as the market evolved.
-        </p>
-
-        <p>
-          Drawing from these examples, we can consider that the most compelling
-          frontier is that of agents. Entities that can direct themselves to
-          complete work for humans. From here we can directionally anticipate a
-          future where agents complete work for themselves.
+          I believe that the most compelling frontier is that of agents.
+          Entities that can direct themselves to complete work for humans. We
+          can anticipate a future where agents complete work for themselves.
         </p>
 
         <p>
