@@ -31,16 +31,23 @@ export async function GET(request: NextRequest) {
         >
           <div
             style={{
-              fontSize: 32,
+              fontSize: 48,
               fontStyle: "normal",
               fontFamily: "Inter",
-              color: "black",
-              textAlign: "right",
+              color: "white",
+              backgroundColor: "black",
+              textAlign: "center",
               lineHeight: 1,
               whiteSpace: "pre-wrap",
               position: "absolute",
               top: 24,
               right: 24,
+              borderRadius: 9999,
+              width: 64,
+              height: 64,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             §
