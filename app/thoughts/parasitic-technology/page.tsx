@@ -112,8 +112,8 @@ export default function ParasiticTechnology() {
           </p>
 
           <p>
-            But it is a symbiotic relationship—one where the host benefits more
-            than it is harmed. And yet, the host is harmed.
+            It is a symbiotic relationship—one where the host benefits more than
+            it is harmed. And yet, the host is harmed.
           </p>
 
           <p>

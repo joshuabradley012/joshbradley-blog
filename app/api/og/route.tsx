@@ -26,34 +26,40 @@ export async function GET(request: NextRequest) {
             justifyContent: "space-between",
             flexDirection: "row",
             flexWrap: "nowrap",
-            padding: "40px 120px 40px 40px",
+            padding: "60px 60px 60px 60px",
           }}
         >
           <div
             style={{
-              fontSize: 860,
+              fontSize: 48,
               fontStyle: "normal",
               fontFamily: "Inter",
-              color: "#e5e5e5",
-              marginLeft: 60,
-              textAlign: "right",
+              color: "white",
+              backgroundColor: "black",
+              textAlign: "center",
               lineHeight: 1,
               whiteSpace: "pre-wrap",
               position: "absolute",
-              top: -120,
-              right: 0,
+              top: 24,
+              right: 24,
+              borderRadius: 9999,
+              width: 64,
+              height: 64,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             §
           </div>
           <div
             style={{
-              fontSize: 94,
+              fontSize: 64,
               fontStyle: "normal",
               fontFamily: "Inter",
               color: "black",
-              marginLeft: 60,
               lineHeight: 1.4,
+              marginTop: "auto",
               whiteSpace: "pre-wrap",
               textWrap: "balance",
             }}

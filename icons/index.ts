@@ -1,4 +1,5 @@
 export { default as Assignar } from "@/icons/assignar.svg";
+export { default as Arrow } from "@/icons/arrow.svg";
 export { default as Celest } from "@/icons/celest.svg";
 export { default as Close } from "@/icons/close.svg";
 export { default as Elcap } from "@/icons/elcap.svg";
