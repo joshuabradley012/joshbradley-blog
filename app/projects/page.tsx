@@ -38,14 +38,8 @@ export default function Projects() {
         </Link>
       </div>
       <p>
-        I'm building <InlineLink href="https://celest.tech/">Celest</InlineLink>{" "}
-        with my co-founder{" "}
-        <InlineLink href="https://www.linkedin.com/in/marco-malacara-b89612152/">
-          Marco Malacara
-        </InlineLink>
-        . We are rebuilding the foundation of marketing technology on an
-        AI-driven datalayer that will enable smart, personalized content
-        throughout the customer journey.
+        I'm building <InlineLink href="https://celest.tech/">Celest</InlineLink>
+        , where we're designing the future of autonomous business.
       </p>
       <p>
         My focus is on engineering the core product, tackling the challenge of
