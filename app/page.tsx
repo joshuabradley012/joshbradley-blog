@@ -8,6 +8,12 @@ export default function Home() {
         <H1>Josh Bradley</H1>
 
         <p>
+          I seek to understand the systems that power our reality and I write
+          about the future they may create. My aspiration is to guide humanity
+          towards a world where work is optional and abundance is universal.
+        </p>
+
+        <p>
           I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO employee,
           and I founded{" "}
           <InlineLink href="https://bradleydigital.agency/">
@@ -16,12 +22,6 @@ export default function Home() {
           to help startups grow. Now, I'm building{" "}
           <InlineLink href="https://celest.tech/">Celest</InlineLink>, a
           platform to build software using multi-agent systems.
-        </p>
-
-        <p>
-          I seek to understand the systems that power our reality and I write
-          about the future they may create. My aspiration is to guide humanity
-          towards a world where work is optional and abundance is universal.
         </p>
       </div>
       <hr />
