@@ -1325,7 +1325,7 @@ runAnimation(time => {
         <p>
           Where <InlineMath math="\textbf v^{\prime}" /> is the resulting
           velocity vector, <InlineMath math="\textbf v" /> is the current
-          velocity, <InlineMath math="m" /> is mass, and{" "}
+          velocity, <InlineMath math="\textbf m" /> is mass, and{" "}
           <InlineMath math="\textbf x" /> is the position. Angle brackets{" "}
           <InlineMath math="\langle \ldots \rangle" /> denote the{" "}
           <InlineLink href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length">

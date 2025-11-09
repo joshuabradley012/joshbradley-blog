@@ -4,7 +4,6 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypePrettyCode from "rehype-pretty-code";
 import { cn } from "@/lib/utils";
-import "katex/dist/katex.min.css";
 
 async function highlightCode(code: string) {
   const file = await unified()

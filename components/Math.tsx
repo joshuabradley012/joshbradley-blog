@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import KaTeX from "katex";
 import { cn } from "@/lib/utils";
+import "katex/dist/katex.min.css";
 
 const createMathComponent = (
   Component: React.ComponentType<{ html: string }>,

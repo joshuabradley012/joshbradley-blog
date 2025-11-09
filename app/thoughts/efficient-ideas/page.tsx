@@ -32,12 +32,12 @@ export default function EfficientIdeas() {
           It requires the least amount of energy to create.
         </p>
         <p className="pl-4 -indent-4">
-          This is why <InlineMath math="\pi" /> appears everywhere in nature—
+          This is why <InlineMath math="\pi" /> appears everywhere in nature:
         </p>
         <p className="pl-8 -indent-4">
-          the minimal structure necessary to prevent collapse.
+          it is the minimal structure needed to prevent collapse,
         </p>
-        <p className="mb-4 pl-4 -indent-4">It is efficient.</p>
+        <p className="mb-4 pl-8 -indent-4">it is efficient.</p>
 
         <p className="pl-4 -indent-4">
           Though abundant in nature, efficiency is rare in thought.
@@ -48,14 +48,10 @@ export default function EfficientIdeas() {
         <p className="pl-4 -indent-4">
           Instead, the mind tends toward castles:
         </p>
-        <p className="mb-4 pl-8 -indent-4">
+        <p className="pl-8 -indent-4">
           complex, robust, insurmountable towers of absolute certainty.
         </p>
-
-        <p className="pl-4 -indent-4">
-          You know what they say—the bigger they are, the harder they fall.
-        </p>
-        <p className="pl-4 -indent-4">Every great city is reduced to dust.</p>
+        <p className="pl-4 -indent-4">To dust all things return.</p>
         <p className="mb-4 pl-4 -indent-4">
           And in that rubble, the essential forms are found.
         </p>
@@ -75,25 +71,6 @@ export default function EfficientIdeas() {
         <p className="mb-4 pl-4 -indent-4">
           But the test of time can strengthen and solidify it into something
           eternal.
-        </p>
-
-        <p className="pl-4 -indent-4">
-          We have discovered these irreducible truths:
-        </p>
-        <p className="pl-8 -indent-4">
-          love, language, music, individual freedom, free markets, inalienable
-          rights,
-        </p>
-        <p className="pl-8 -indent-4">
-          spirit, the scientific method, calculus, evolution, computation,
-          quantum theory,
-        </p>
-        <p className="mb-8 pl-8 -indent-4">life—and death.</p>
-
-        <p className="pl-4 -indent-4">
-          <strong>
-            <em>What else has not yet been found?</em>
-          </strong>
         </p>
       </div>
     </>
