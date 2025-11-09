@@ -40,8 +40,7 @@ export default function Projects() {
       <p>
         I'm building <InlineLink href="https://celest.tech/">Celest</InlineLink>
         , where we're designing the future of autonomous business. This starts
-        with a platform to build web apps using multi-agent systems, which I am
-        working on now.
+        with a platform to build web apps using multi-agent systems.
       </p>
       <p>
         The challenge is to create something that delights both users and AI.

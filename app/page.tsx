@@ -8,9 +8,10 @@ export default function Home() {
         <H1>Josh Bradley</H1>
 
         <p>
-          I seek to understand the systems that power our reality and I write
-          about the future they may create. My aspiration is to guide humanity
-          towards a world where work is optional and abundance is universal.
+          I seek to understand the systems that structure our reality and I
+          write to explore how those systems may shape the future. My aspiration
+          is to guide humanity towards a world where work is optional and
+          abundance is universal.
         </p>
 
         <p>
