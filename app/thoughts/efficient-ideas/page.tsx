@@ -51,7 +51,7 @@ export default function EfficientIdeas() {
         <p className="pl-8 -indent-4">
           complex, robust, insurmountable towers of absolute certainty.
         </p>
-        <p className="pl-4 -indent-4">To dust all things return.</p>
+        <p className="pl-4 -indent-4">But all things return to dust.</p>
         <p className="mb-4 pl-4 -indent-4">
           And in that rubble, the essential forms are found.
         </p>
