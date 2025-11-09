@@ -27,9 +27,9 @@ export default function Projects() {
     <div className="space-y-4">
       <H1>Projects</H1>
       <p>
-        I've had the pleasure of working on some great projects. I owe so much
-        of my personal and professional growth to the people I've worked with on
-        these teams.
+        I've had the pleasure of working on great projects with great people. I
+        owe so much of my personal and professional growth to the teams I've
+        been a part of.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -39,12 +39,12 @@ export default function Projects() {
       </div>
       <p>
         I'm building <InlineLink href="https://celest.tech/">Celest</InlineLink>
-        , where we're designing the future of autonomous business.
+        , where we're designing the future of autonomous business. This starts
+        with a platform to build web apps using multi-agent systems, which I am
+        working on now.
       </p>
       <p>
-        My focus is on engineering the core product, tackling the challenge of
-        creating something that both users and AI love to use. We are building
-        using Next.js and Vercel.
+        The challenge is to create something that delights both users and AI.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -55,13 +55,13 @@ export default function Projects() {
       <p>
         I worked at <InlineLink href="https://procore.com/">Procore</InlineLink>{" "}
         for 4 years, learning everything about digital marketing. I worked here
-        pre and post-IPO, experiencing how world class teams scale through
-        hypergrowth.
+        pre- and post-IPO, experiencing how world class teams scale through
+        hyper-growth.
       </p>
       <p>
-        I wore many hats, doing web development, conversion rate optimization,
-        analytics, reporting, paid ads, and SEO. It helped me refine my
-        understanding of elite marketing teams.
+        I wore many hats; web development, conversion rate optimization,
+        analytics, reporting, paid ads, and SEO. It helped me understand how
+        elite marketing teams operate.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -85,7 +85,7 @@ export default function Projects() {
         <InlineLink href="https://usesilo.com/">Silo</InlineLink> was my first
         client after founding Bradley Digital. I built them a cutting edge
         website on Next.js to represent their world-class brand and support
-        their quickly growing startup.
+        their growing startup.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -108,8 +108,8 @@ export default function Projects() {
       <p>
         <InlineLink href="https://www.pacifica.edu/">Pacifica</InlineLink> was
         the first big website I worked on back in 2017. I built key sections,
-        including the navigation, the faculty page, and article page in a custom
-        WordPress theme.
+        including the navigation, the faculty page, and the article page in a
+        custom WordPress theme.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -150,8 +150,8 @@ export default function Projects() {
           Carlin Dunne Foundation
         </InlineLink>{" "}
         to build an application that helps users track their concussion
-        recovery. I took over their Gatsby project to help them reach
-        production.
+        recovery. With the help of AI, I rebuilt a legacy Gatsby project into a
+        modern Next stack.
       </p>
 
       <hr />
