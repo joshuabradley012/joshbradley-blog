@@ -9,9 +9,9 @@ export default function Home() {
 
         <p>
           I seek to understand the systems that structure our reality and I
-          write to explore how those systems may shape the future. My aspiration
-          is to guide humanity towards a world where work is optional and
-          abundance is universal.
+          write to explore how those systems will shape the future. My
+          aspiration is to guide humanity towards a world where work is optional
+          and abundance is universal.
         </p>
 
         <p>
