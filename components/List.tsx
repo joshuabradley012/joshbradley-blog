@@ -30,7 +30,7 @@ export function Li({
   ...props
 }: React.HTMLAttributes<HTMLLIElement>) {
   return (
-    <li className={className} {...props}>
+    <li className={cn("[&_ul]:mt-1", className)} {...props}>
       {children}
     </li>
   );

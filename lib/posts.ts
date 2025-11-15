@@ -16,6 +16,13 @@ export function getAllPosts(): Post[] {
       date: "Mar 20, 2025",
     },
     {
+      slug: "reframing-ambition",
+      title: "Reframing Ambition",
+      description:
+        "Ambition is not about achieving goals, it's about becoming the best version of yourself.",
+      date: "Mar 12, 2025",
+    },
+    {
       slug: "parasitic-technology",
       title: "Parasitic Technology",
       description:
@@ -27,6 +34,13 @@ export function getAllPosts(): Post[] {
       title: "Lessons on Startups",
       description: "Lessons learned from building a startup.",
       date: "Dec 4, 2024",
+    },
+    {
+      slug: "why-i-founded-celest",
+      title: "Why I Founded Celest",
+      description:
+        "Why I founded Celest and what I learned from the experience.",
+      date: "Nov 21, 2024",
     },
     {
       slug: "efficient-ideas",

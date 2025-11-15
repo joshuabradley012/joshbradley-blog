@@ -20,9 +20,7 @@ export default function Home() {
           <InlineLink href="https://bradleydigital.agency/">
             Bradley Digital
           </InlineLink>{" "}
-          to help startups grow. Now, I'm building{" "}
-          <InlineLink href="https://celest.tech/">Celest</InlineLink>, a
-          platform to build software using multi-agent systems.
+          to help startups grow. Now, I'm looking for my next adventure.
         </p>
       </div>
       <hr />

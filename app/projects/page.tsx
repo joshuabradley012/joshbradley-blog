@@ -33,17 +33,12 @@ export default function Projects() {
       </p>
 
       <div className="mt-16 mb-8 flex">
-        <Link href="https://celest.tech/" target="_blank">
-          <Celest className="h-5 text-black" />
-        </Link>
+        <Celest className="h-5 text-black" />
       </div>
       <p>
-        I'm building <InlineLink href="https://celest.tech/">Celest</InlineLink>
-        , where we're designing the future of autonomous business. This starts
-        with a platform to build web apps using multi-agent systems.
-      </p>
-      <p>
-        The challenge is to create something that delights both users and AI.
+        I founded Celest to redefine Marketing Technology. But our runway was
+        cut short. This experience humbled and refined me into a better engineer
+        and person.
       </p>
 
       <div className="mt-16 mb-8 flex">
