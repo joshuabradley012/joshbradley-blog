@@ -34,13 +34,13 @@ export default function Projects() {
       </p>
 
       <div className="mt-16 mb-8 flex">
-        <Link href="https://www.carlindunne5.com/" target="_blank">
+        <Link href="https://cd5.vercel.app/" target="_blank">
           <Image className="w-8 grayscale" src={cd5} alt="CD5" />
         </Link>
       </div>
       <p>
         I am working with the{" "}
-        <InlineLink href="https://www.carlindunne5.com/">
+        <InlineLink href="https://cd5.vercel.app/">
           Carlin Dunne Foundation
         </InlineLink>{" "}
         to build an application that helps users track their concussion
