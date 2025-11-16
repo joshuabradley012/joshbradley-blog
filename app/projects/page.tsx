@@ -26,10 +26,41 @@ export default function Projects() {
   return (
     <div className="space-y-4">
       <H1>Projects</H1>
+
       <p>
         I've had the pleasure of working on great projects with great people. I
         owe so much of my personal and professional growth to the teams I've
         been a part of.
+      </p>
+
+      <div className="mt-16 mb-8 flex">
+        <Link href="https://www.carlindunne5.com/" target="_blank">
+          <Image className="w-8 grayscale" src={cd5} alt="CD5" />
+        </Link>
+      </div>
+      <p>
+        I am working with the{" "}
+        <InlineLink href="https://www.carlindunne5.com/">
+          Carlin Dunne Foundation
+        </InlineLink>{" "}
+        to build an application that helps users track their concussion
+        recovery. With the help of AI, I rebuilt a legacy Gatsby project into a
+        modern Next stack.
+      </p>
+
+      <div className="mt-16 mb-8 flex">
+        <Link href="https://jordyhelps.com/" target="_blank">
+          <Jordyhelps className="h-6 text-black" />
+        </Link>
+      </div>
+      <p>
+        My life coach,{" "}
+        <InlineLink href="https://jordyhelps.com/">Jordy</InlineLink>, is the
+        greatest person I know. I worked with{" "}
+        <InlineLink href="https://www.andrewantone.com/">
+          Andrew Antone
+        </InlineLink>{" "}
+        to design her brand and then I built her a Next.js website.
       </p>
 
       <div className="mt-16 mb-8 flex">
@@ -95,18 +126,6 @@ export default function Projects() {
       </p>
 
       <div className="mt-16 mb-8 flex">
-        <Link href="https://pacifica.edu/" target="_blank">
-          <Image className="w-24 invert" src={pacifica} alt="Pacifica" />
-        </Link>
-      </div>
-      <p>
-        <InlineLink href="https://www.pacifica.edu/">Pacifica</InlineLink> was
-        the first big website I worked on back in 2017. I built key sections,
-        including the navigation, the faculty page, and the article page in a
-        custom WordPress theme.
-      </p>
-
-      <div className="mt-16 mb-8 flex">
         <Link href="https://www.usekojo.com/" target="_blank">
           <Kojo className="h-4 text-black" />
         </Link>
@@ -119,33 +138,15 @@ export default function Projects() {
       </p>
 
       <div className="mt-16 mb-8 flex">
-        <Link href="https://jordyhelps.com/" target="_blank">
-          <Jordyhelps className="h-6 text-black" />
+        <Link href="https://pacifica.edu/" target="_blank">
+          <Image className="w-24 invert" src={pacifica} alt="Pacifica" />
         </Link>
       </div>
       <p>
-        My life coach,{" "}
-        <InlineLink href="https://jordyhelps.com/">Jordy</InlineLink>, is the
-        greatest person I know. I worked with{" "}
-        <InlineLink href="https://www.andrewantone.com/">
-          Andrew Antone
-        </InlineLink>{" "}
-        to design her brand and then I built her a Next.js website.
-      </p>
-
-      <div className="mt-16 mb-8 flex">
-        <Link href="https://www.carlindunne5.com/" target="_blank">
-          <Image className="w-8 grayscale" src={cd5} alt="CD5" />
-        </Link>
-      </div>
-      <p>
-        I am working with the{" "}
-        <InlineLink href="https://www.carlindunne5.com/">
-          Carlin Dunne Foundation
-        </InlineLink>{" "}
-        to build an application that helps users track their concussion
-        recovery. With the help of AI, I rebuilt a legacy Gatsby project into a
-        modern Next stack.
+        <InlineLink href="https://www.pacifica.edu/">Pacifica</InlineLink> was
+        the first big website I worked on back in 2017. I built key sections,
+        including the navigation, the faculty page, and the article page in a
+        custom WordPress theme.
       </p>
 
       <hr />
