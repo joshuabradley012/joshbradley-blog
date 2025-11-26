@@ -155,6 +155,11 @@ export default function Projects() {
 
       <Ul>
         <Li>
+          <InlineLink href="https://github.com/joshuabradley012/nested-tree">
+            Nested tree
+          </InlineLink>
+        </Li>
+        <Li>
           <InlineLink href="https://github.com/joshuabradley012/joshbradley-hugo">
             Hugo theme (20 stars)
           </InlineLink>
