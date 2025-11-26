@@ -79,6 +79,8 @@ export default function ObjectCollisionsWithCanvas() {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext('2d');
+              this.ctx.fillStyle = 'rgba(245, 242, 236, 1)';
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -87,7 +89,7 @@ export default function ObjectCollisionsWithCanvas() {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = 'rgba(255, 255, 255, .4)';
+              this.ctx.fillStyle = 'rgba(245, 242, 236, .4)';
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -233,7 +235,7 @@ export default function ObjectCollisionsWithCanvas() {
           };
 
           collidingBalls({
-            count: 60,
+            count: 40,
             height: 350,
             width: 622,
             parent: document.getElementById('hero'),
@@ -350,6 +352,8 @@ canvas.drawCircle(ball);
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             drawCircle(actor) {
@@ -660,6 +664,8 @@ runAnimation(time => {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -856,6 +862,8 @@ class Canvas {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -864,7 +872,7 @@ class Canvas {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+              this.ctx.fillStyle = "rgba(245, 242, 236, .4)";
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -1121,6 +1129,8 @@ runAnimation(time => {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -1129,7 +1139,7 @@ runAnimation(time => {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+              this.ctx.fillStyle = "rgba(245, 242, 236, .4)";
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -1563,6 +1573,8 @@ runAnimation(time => {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -1571,7 +1583,7 @@ runAnimation(time => {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+              this.ctx.fillStyle = "rgba(245, 242, 236, .4)";
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -1794,6 +1806,8 @@ runAnimation(time => {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext("2d");
+              this.ctx.fillStyle = "rgba(245, 242, 236, 1)";
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -1802,7 +1816,7 @@ runAnimation(time => {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = "rgba(255, 255, 255, .4)";
+              this.ctx.fillStyle = "rgba(245, 242, 236, .4)";
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -2206,6 +2220,8 @@ runAnimation(time => {
               this.canvas.height = height;
               parent.appendChild(this.canvas);
               this.ctx = this.canvas.getContext('2d');
+              this.ctx.fillStyle = 'rgba(245, 242, 236, 1)';
+              this.ctx.fillRect(0, 0, width, height);
             }
 
             sync(state) {
@@ -2214,7 +2230,7 @@ runAnimation(time => {
             }
 
             clearDisplay() {
-              this.ctx.fillStyle = 'rgba(255, 255, 255, .4)';
+              this.ctx.fillStyle = 'rgba(245, 242, 236, .4)';
               this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             }
 
@@ -2404,7 +2420,7 @@ const collidingBalls = ({
 }
 
 collidingBalls({
-  count: 60,
+  count: 40,
   height: 350,
   width: 622,
   parent: document.getElementById('hero'),

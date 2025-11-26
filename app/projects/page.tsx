@@ -50,7 +50,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://jordyhelps.com/" target="_blank">
-          <Jordyhelps className="h-6 text-black" />
+          <Jordyhelps className="h-6 text-neutral-900" />
         </Link>
       </div>
       <p>
@@ -64,7 +64,7 @@ export default function Projects() {
       </p>
 
       <div className="mt-16 mb-8 flex">
-        <Celest className="h-5 text-black" />
+        <Celest className="h-5 text-neutral-900" />
       </div>
       <p>
         I founded Celest to redefine Marketing Technology. But our runway was
@@ -74,7 +74,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://procore.com/" target="_blank">
-          <Procore className="h-3.5 text-black" />
+          <Procore className="h-3.5 text-neutral-900" />
         </Link>
       </div>
       <p>
@@ -91,7 +91,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://procore.com/jobsite" target="_blank">
-          <Jobsite className="h-6 text-black" />
+          <Jobsite className="h-6 text-neutral-900" />
         </Link>
       </div>
       <p>
@@ -103,7 +103,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://usesilo.com/" target="_blank">
-          <Silo className="h-5 text-black" />
+          <Silo className="h-5 text-neutral-900" />
         </Link>
       </div>
       <p>
@@ -115,7 +115,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://assignar.com/" target="_blank">
-          <Assignar className="h-6 text-black" />
+          <Assignar className="h-6 text-neutral-900" />
         </Link>
       </div>
       <p>
@@ -127,7 +127,7 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://www.usekojo.com/" target="_blank">
-          <Kojo className="h-4 text-black" />
+          <Kojo className="h-4 text-neutral-900" />
         </Link>
       </div>
       <p>

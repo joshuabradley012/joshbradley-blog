@@ -65,7 +65,7 @@ const InternalBlockMath = ({
 }) => {
   return (
     <div
-      className={cn("my-8 text-base text-black", className)}
+      className={cn("my-8 text-base text-neutral-900", className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -80,7 +80,7 @@ const InternalInlineMath = ({
 }) => {
   return (
     <span
-      className={cn("text-black", className)}
+      className={cn("text-neutral-900", className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

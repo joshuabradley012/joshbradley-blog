@@ -15,13 +15,13 @@ export default function Thoughts() {
         <Link
           key={post.slug}
           href={`/thoughts/${post.slug}`}
-          className="group relative flex justify-between transition-colors hover:text-black"
+          className="group relative flex justify-between transition-colors hover:text-neutral-900"
         >
-          <div className="absolute top-[10px] left-0 w-full border-t border-neutral-200 transition-colors group-hover:border-black" />
-          <h2 className="relative block bg-white pr-2 text-left">
+          <div className="absolute top-[10px] left-0 w-full border-t border-neutral-200 transition-colors group-hover:border-neutral-900" />
+          <h2 className="relative block bg-neutral-50 pr-2 text-left">
             {post.title}
           </h2>
-          <time className="relative ml-2 block bg-white pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-black">
+          <time className="relative ml-2 block bg-neutral-50 pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-neutral-900">
             {post.date}
           </time>
         </Link>

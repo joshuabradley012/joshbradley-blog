@@ -10,9 +10,36 @@
 
   --text-2xs: 0.625rem;
   --text-2xs--line-height: calc(0.75 / 0.625);
+
+  --color-neutral-50: #faf9f5;
+  --color-neutral-100: #f5f2ec;
+  --color-neutral-200: #e8e6dc;
+  --color-neutral-300: #d4d2c9;
+  --color-neutral-400: #adaba2;
+  --color-neutral-500: #87867f;
+  --color-neutral-600: #73726d;
+  --color-neutral-700: #5e5d59;
+  --color-neutral-800: #3e3d3b;
+  --color-neutral-900: #1f1e1d;
+  --color-neutral-950: #0f0f0e;
+
+  --color-blue-50: #f5f7fa;
+  --color-blue-100: #ebf1f7;
+  --color-blue-200: #d6e4f5;
+  --color-blue-300: #b3cff0;
+  --color-blue-400: #44a6e4;
+  --color-blue-500: #5e7edf;
+  --color-blue-600: #4b65b3;
+  --color-blue-700: #3b4f8c;
+  --color-blue-800: #2f3f70;
+  --color-blue-900: #263359;
+  --color-blue-950: #192038;
 }
 
 @layer base {
+  body {
+    background-color: var(--color-neutral-50);
+  }
   *::selection {
     background-color: oklch(0.371 0 0 / 0.1);
   }
@@ -30,8 +57,8 @@
 
   figure[data-rehype-pretty-code-figure] pre {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-neutral-200) var(--color-neutral-50);
-    @apply overflow-x-auto border border-neutral-200 bg-neutral-50 py-2;
+    scrollbar-color: var(--color-neutral-200) var(--color-neutral-100);
+    @apply overflow-x-auto border border-neutral-200 bg-neutral-100 py-2;
   }
 
   figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar {
@@ -121,7 +148,7 @@
 
 @layer components {
   .btn {
-    @apply cursor-pointer rounded border border-neutral-400 px-2 py-1 text-xs transition-colors hover:border-black hover:text-black;
+    @apply cursor-pointer rounded border border-neutral-400 px-2 py-1 text-xs transition-colors hover:border-neutral-900 hover:text-neutral-900;
   }
 }
 

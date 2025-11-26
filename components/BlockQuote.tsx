@@ -18,7 +18,7 @@ export default function BlockQuote({
   return (
     <blockquote
       className={cn(
-        "xs:pl-6 xs:-ml-6 my-8 -ml-4 space-y-4 border-l border-black pl-4 font-serif text-base text-black italic sm:-ml-8 sm:pl-8 md:-ml-12 md:pl-12",
+        "xs:pl-6 xs:-ml-6 my-8 -ml-4 space-y-4 border-l border-neutral-900 pl-4 font-serif text-base text-neutral-900 italic sm:-ml-8 sm:pl-8 md:-ml-12 md:pl-12",
         className,
       )}
       {...props}

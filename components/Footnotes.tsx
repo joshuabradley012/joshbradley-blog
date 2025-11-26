@@ -59,7 +59,7 @@ export function FootnoteLink({ id }: { id: number }) {
         <a
           id={`s${id}`}
           href={`#f${id}`}
-          className="tabular-nums transition-colors hover:text-black"
+          className="tabular-nums transition-colors hover:text-neutral-900"
         >
           [{id}]
         </a>
@@ -111,7 +111,7 @@ export function Footnotes() {
             >
               <a
                 href={`#s${footnote.id}`}
-                className="mr-1 transition-colors hover:text-black"
+                className="mr-1 transition-colors hover:text-neutral-900"
               >
                 ^
               </a>

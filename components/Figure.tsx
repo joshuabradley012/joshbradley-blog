@@ -16,7 +16,7 @@ export default function Figure({
 }: FigureProps) {
   return (
     <figure className={cn("my-8", className)}>
-      <div className="border border-neutral-200">
+      <div className="border border-neutral-200 bg-neutral-100">
         <Image alt={alt} className={cn("w-full", imgClassName)} {...props} />
       </div>
       {caption && (

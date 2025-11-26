@@ -61,7 +61,7 @@ export async function InlineCode({
   return (
     <span
       className={cn(
-        "rounded border border-neutral-200 bg-neutral-50 px-1 py-0.5 text-xs",
+        "rounded border border-neutral-200 bg-neutral-100 px-1 py-0.5 text-xs",
         className,
       )}
       dangerouslySetInnerHTML={{
