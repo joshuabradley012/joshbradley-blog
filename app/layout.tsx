@@ -108,7 +108,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`text-sm text-neutral-900 antialiased ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}
+        className={`text-sm text-neutral-800 antialiased ${inter.variable} ${lora.variable} ${jetbrainsMono.variable}`}
       >
         <div className="xs:flex-row xs:p-6 flex flex-col p-4 pb-12 sm:p-12 md:p-24 md:pb-24">
           <Nav />

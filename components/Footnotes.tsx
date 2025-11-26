@@ -106,7 +106,7 @@ export function Footnotes() {
               data-footnote-id={`${footnote.id}. `}
               data-active={activeFootnote === `#f${footnote.id}`}
               className={
-                "marker:content-[attr(data-footnote-id)] data-[active=true]:bg-neutral-500/10 data-[active=true]:text-neutral-700"
+                "marker:content-[attr(data-footnote-id)] data-[active=true]:bg-neutral-500/10 data-[active=true]:text-neutral-900"
               }
             >
               <a

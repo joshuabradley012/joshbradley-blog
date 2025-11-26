@@ -41,7 +41,12 @@
     background-color: var(--color-neutral-50);
   }
   *::selection {
-    background-color: oklch(0.371 0 0 / 0.1);
+    background-color: color-mix(
+      in srgb,
+      var(--color-neutral-500) 10%,
+      transparent
+    );
+    color: var(--color-neutral-900);
   }
 
   em,
