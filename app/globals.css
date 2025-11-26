@@ -67,7 +67,11 @@
   }
 
   figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar {
-    @apply h-1 bg-transparent;
+    @apply h-1 bg-neutral-100;
+  }
+
+  figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar-track {
+    @apply bg-neutral-100;
   }
 
   figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar-thumb {
@@ -143,7 +147,11 @@
   }
 
   .katex-display::-webkit-scrollbar {
-    @apply h-1 bg-transparent;
+    @apply h-1 bg-neutral-100;
+  }
+
+  .katex-display::-webkit-scrollbar-track {
+    @apply bg-neutral-100;
   }
 
   .katex-display::-webkit-scrollbar-thumb {
