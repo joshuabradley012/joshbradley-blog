@@ -69,8 +69,7 @@ export default function EfficientIdeas() {
           paper-thin, deceptively simple, and seemingly unstable.
         </p>
         <p className="mb-4 pl-4 -indent-4">
-          But the test of time can strengthen and solidify it into something
-          eternal.
+          But the test of time can solidify it into something eternal.
         </p>
       </div>
     </>
