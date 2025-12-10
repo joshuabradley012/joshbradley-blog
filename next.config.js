@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         source: "/object-collisions-with-canvas",
-        destination: "/thoughts/object-collisions-with-canvas",
+        destination: "/thoughts/simulating-object-collisions",
         permanent: true,
       },
     ];

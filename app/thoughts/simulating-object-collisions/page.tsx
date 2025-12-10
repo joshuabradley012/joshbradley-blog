@@ -11,7 +11,7 @@ import { H2 } from "@/components/Headings";
 import ExecuteAnimationScript from "@/components/ExecuteAnimationScript";
 import elasticCollision from "@/public/images/elastic-2d.gif";
 
-const post = getPostBySlug("object-collisions-with-canvas");
+const post = getPostBySlug("simulating-object-collisions");
 
 export async function generateMetadata() {
   return createMetadata(post);

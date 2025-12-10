@@ -56,8 +56,8 @@ export function getAllPosts(): Post[] {
       date: "Nov 21, 2021",
     },
     {
-      slug: "object-collisions-with-canvas",
-      title: "Simulating Object Collisions With Canvas",
+      slug: "simulating-object-collisions",
+      title: "Simulating Object Collisions",
       description:
         "Simulating object collisions is a rewarding way to learn the basics of HTML canvas and physics simulation.",
       date: "Jul 25, 2020",
