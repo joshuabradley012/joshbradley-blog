@@ -43,9 +43,8 @@ export default function Projects() {
         <InlineLink href="https://cd5.vercel.app/">
           Carlin Dunne Foundation
         </InlineLink>{" "}
-        to build an application that helps users track their concussion
-        recovery. With the help of AI, I rebuilt a legacy Gatsby project into a
-        modern Next stack.
+        to build concussion recovery platform. With the help of AI, I rebuilt a
+        legacy Gatsby project into a modern Next.js project.
       </p>
 
       <div className="mt-16 mb-8 flex">
