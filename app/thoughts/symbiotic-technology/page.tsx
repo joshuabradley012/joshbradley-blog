@@ -10,7 +10,7 @@ import {
   Footnotes,
 } from "@/components/Footnotes";
 
-const post = getPostBySlug("parasitic-technology");
+const post = getPostBySlug("symbiotic-technology");
 
 const footnotes = [
   {
@@ -43,7 +43,7 @@ export async function generateMetadata() {
   return createMetadata(post);
 }
 
-export default function ParasiticTechnology() {
+export default function SymbioticTechnology() {
   return (
     <>
       <BlogJsonLd post={post} />

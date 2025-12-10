@@ -23,8 +23,8 @@ export function getAllPosts(): Post[] {
       date: "Mar 12, 2025",
     },
     {
-      slug: "parasitic-technology",
-      title: "Parasitic Technology",
+      slug: "symbiotic-technology",
+      title: "Symbiotic Technology",
       description:
         "Technology grows exponentially but understanding grows linearly. The difference is our collective knowledge gap.",
       date: "Feb 7, 2025",
