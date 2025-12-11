@@ -30,10 +30,9 @@ const footnotes = [
     content: (
       <>
         Mao's Cultural Revolution is one of the bloodiest events in history, yet
-        surprisingly few know the details. While America experienced its "Summer
-        of Love," 1–2 million Chinese citizens were executed in the name of
-        political reform, and another 30–60 million starved in the resulting
-        famine.
+        surprisingly few know the details. In 1966-1976, 1–2 million Chinese
+        citizens were executed in the name of political reform, and another
+        30–60 million starved to death due to the resulting famine.
       </>
     ),
   },
@@ -190,9 +189,9 @@ export default function SymbioticTechnology() {
           </p>
 
           <p>
-            The torch of the Enlightenment has not yet been extinguished. Let us
-            preserve its eternal flame—even if it is to be viewed through a
-            computer screen.
+            The torch of the Enlightenment has yet to be extinguished. Let us
+            preserve its eternal flame, even if it is viewed through a computer
+            screen.
           </p>
 
           <Footnotes />
