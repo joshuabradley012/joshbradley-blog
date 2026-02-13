@@ -22,7 +22,7 @@ export default function Home() {
           </InlineLink>{" "}
           to help startups grow. Now, I'm building AI for wholesale at{" "}
           <InlineLink href="https://www.coreranger.com/">
-            ICore Ranger
+            Core Ranger
           </InlineLink>
           .
         </p>
