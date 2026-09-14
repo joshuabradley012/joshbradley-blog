@@ -19,7 +19,7 @@
     "next": "15.2.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^2.12.0",
+    "recharts": "^3.10.1",
     "rehype-pretty-code": "^0.14.1",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
