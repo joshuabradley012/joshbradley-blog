@@ -39,37 +39,26 @@ export default function EfficientIdeas() {
         </p>
         <p className="mb-4 pl-8 -indent-4">it is efficient.</p>
 
+        <p className="pl-4 -indent-4">When solidified it becomes a ball,</p>
+        <p className="mb-4 pl-8 -indent-4">
+          that can roll, resonate, and bounce.
+        </p>
+
         <p className="pl-4 -indent-4">
           Though abundant in nature, efficiency is rare in thought.
         </p>
-        <p className="pl-4 -indent-4">
+        <p className="mb-4 pl-4 -indent-4">
           It appears delicate—like one gust of wind could sweep it away.
         </p>
-        <p className="pl-4 -indent-4">
-          Instead, the mind tends toward castles:
-        </p>
-        <p className="pl-8 -indent-4">
-          complex, robust, insurmountable towers of absolute certainty.
-        </p>
-        <p className="pl-4 -indent-4">But all things return to dust.</p>
-        <p className="mb-4 pl-4 -indent-4">
-          And in that rubble, the essential forms are found.
-        </p>
-
-        <p className="pl-4 -indent-4">Balls that roll and bounce.</p>
-        <p className="pl-4 -indent-4">Rivers that carve mountains down.</p>
-        <p className="mb-4 pl-4 -indent-4">
-          Delicate instruments that produce sound.
-        </p>
 
         <p className="pl-4 -indent-4">
-          The core of a great idea is like a bubble:
+          But the core of a great idea is like a bubble:
         </p>
-        <p className="pl-8 -indent-4">
+        <p className="mb-4 pl-8 -indent-4">
           paper-thin, deceptively simple, and seemingly unstable.
         </p>
         <p className="mb-4 pl-4 -indent-4">
-          But the test of time can solidify it into something eternal.
+          And it can solidify into something eternal.
         </p>
       </div>
     </>

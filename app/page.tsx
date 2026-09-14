@@ -7,20 +7,14 @@ export default function Home() {
       <div className="space-y-4">
         <H1>Josh Bradley</H1>
 
-        <p>
-          I seek to understand the systems that structure our reality and I
-          write to explore how those systems will shape the future. My
-          aspiration is to guide humanity towards a world where work is optional
-          and abundance is universal.
-        </p>
+        <p>I build software and I think about startups.</p>
 
         <p>
-          I'm a self-taught engineer, UC Davis dropout, ex-Procore IPO employee,
-          and I founded{" "}
+          I'm a self-taught engineer, ex-Procore IPO employee, and I founded{" "}
           <InlineLink href="https://bradleydigital.agency/">
             Bradley Digital
-          </InlineLink>{" "}
-          to help startups grow. Now, I'm building AI for wholesale at{" "}
+          </InlineLink>
+          . Now, I'm building next-gen distribution at{" "}
           <InlineLink href="https://www.coreranger.com/">
             Core Ranger
           </InlineLink>
