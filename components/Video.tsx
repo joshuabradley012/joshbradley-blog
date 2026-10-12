@@ -12,6 +12,9 @@ interface VideoProps {
   label: string;
   caption?: string;
   className?: string;
+  // For light-background footage: in dark mode, invert it to a dark panel
+  // (white becomes about neutral-100) and rotate hues back to the originals
+  invertInDark?: boolean;
 }
 
 // A muted, looping video for short animations. Much smaller than a GIF, and
@@ -24,6 +27,7 @@ export default function Video({
   label,
   caption,
   className,
+  invertInDark,
 }: VideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -53,7 +57,10 @@ export default function Video({
           width={width}
           height={height}
           aria-label={label}
-          className="h-auto w-full"
+          className={cn(
+            "h-auto w-full",
+            invertInDark && "dark:hue-rotate-180 dark:invert-[0.86]",
+          )}
           muted
           loop
           playsInline
