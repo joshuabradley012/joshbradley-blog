@@ -1,3 +1,9 @@
+// Unhashed files in public/ default to max-age=0 on Vercel, so every repeat
+// visit revalidates them. Let browsers reuse them for a day, and serve stale
+// copies for a week while revalidating in the background.
+const publicAssetCacheControl =
+  "public, max-age=86400, stale-while-revalidate=604800";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -20,19 +26,34 @@ const nextConfig = {
       },
     ];
   },
-  experimental: {
-    viewTransition: true,
+  async headers() {
+    return [
+      "/favicon/:path*",
+      "/images/:path*",
+      "/videos/:path*",
+      "/checkers/:path*",
+      "/tic-tac-toe/:path*",
+      "/reports/:path*",
+      "/logo.png",
+    ].map((source) => ({
+      source,
+      headers: [{ key: "Cache-Control", value: publicAssetCacheControl }],
+    }));
   },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: [
-        {
-          loader: "@svgr/webpack",
-        },
-      ],
-    });
-    return config;
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  experimental: {
+    // The stylesheet is small, so inlining it saves a render-blocking request.
+    inlineCss: true,
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
   },
 };
 

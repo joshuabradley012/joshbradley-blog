@@ -27,8 +27,12 @@ export const feedConfig = {
   copyright: `All rights reserved ${new Date().getFullYear()}, Josh Bradley`,
 };
 
+import { Feed } from "feed";
+import type { Post } from "@/types";
+import { getAllPosts } from "@/lib/posts";
+
 // Helper function to create feed options
-export function createFeedOptions() {
+export function createFeedOptions(posts: Post[]) {
   const {
     siteTitle,
     siteDescription,
@@ -51,7 +55,8 @@ export function createFeedOptions() {
     image: `${siteUrl}${ogImage}`,
     favicon: `${siteUrl}${faviconUrl}`,
     copyright,
-    updated: new Date(),
+    // Posts are sorted newest first, so the feed last changed with the newest one
+    updated: posts.length ? new Date(posts[0].date) : new Date(),
     generator: "Next.js using Feed",
     feedLinks: {
       rss2: `${siteUrl}${feedPaths.rss}`,
@@ -67,7 +72,7 @@ export function createFeedOptions() {
 }
 
 // Helper function to create feed items from posts
-export function createFeedItems(posts: any[], siteUrl: string) {
+export function createFeedItems(posts: Post[], siteUrl: string) {
   const { authorName, authorEmail } = feedConfig;
 
   return posts.map((post) => ({
@@ -84,4 +89,13 @@ export function createFeedItems(posts: any[], siteUrl: string) {
       },
     ],
   }));
+}
+
+export function createFeed() {
+  const posts = getAllPosts();
+  const feed = new Feed(createFeedOptions(posts));
+  createFeedItems(posts, feedConfig.siteUrl).forEach((item) =>
+    feed.addItem(item),
+  );
+  return feed;
 }

@@ -138,7 +138,11 @@ export default function Projects() {
 
       <div className="mt-16 mb-8 flex">
         <Link href="https://pacifica.edu/" target="_blank">
-          <Image className="w-24 invert" src={pacifica} alt="Pacifica" />
+          <Image
+            className="w-24 invert dark:invert-0"
+            src={pacifica}
+            alt="Pacifica"
+          />
         </Link>
       </div>
       <p>

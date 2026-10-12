@@ -36,9 +36,47 @@
   --color-blue-950: #192038;
 }
 
+/*
+ * Dark mode mirrors the warm neutral scale, so every neutral-* utility flips
+ * without needing dark: variants: 50 stays the page background and 900 stays
+ * the strongest text.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-neutral-50: #1a1918;
+    --color-neutral-100: #242321;
+    --color-neutral-200: #34332f;
+    --color-neutral-300: #45443f;
+    --color-neutral-400: #6b6a64;
+    --color-neutral-500: #8f8e86;
+    --color-neutral-600: #a8a69d;
+    --color-neutral-700: #c2c0b6;
+    --color-neutral-800: #d6d4ca;
+    --color-neutral-900: #ebe9e0;
+    --color-neutral-950: #f7f6f1;
+  }
+}
+
 @layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
   body {
     background-color: var(--color-neutral-50);
+  }
+
+  /* Shiki emits both themes as CSS variables; pick one per color scheme */
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    code[data-theme*=" "],
+    code[data-theme*=" "] span {
+      color: var(--shiki-dark);
+    }
   }
   *::selection {
     background-color: color-mix(
