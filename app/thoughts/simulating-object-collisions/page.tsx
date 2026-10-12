@@ -4,12 +4,11 @@ import { createMetadata } from "@/lib/metadata";
 import { getPostBySlug } from "@/lib/posts";
 import { BlockCode, InlineCode } from "@/components/Code";
 import { BlockMath, InlineMath } from "@/components/Math";
-import Figure from "@/components/Figure";
+import Video from "@/components/Video";
 import { Ol, Li } from "@/components/List";
 import InlineLink from "@/components/InlineLink";
 import { H2 } from "@/components/Headings";
 import ExecuteAnimationScript from "@/components/ExecuteAnimationScript";
-import elasticCollision from "@/public/images/elastic-2d.gif";
 
 const post = getPostBySlug("simulating-object-collisions");
 
@@ -1308,9 +1307,12 @@ runAnimation(time => {
           page.
         </p>
 
-        <Figure
-          src={elasticCollision}
-          alt="Two-dimensional elastic collision"
+        <Video
+          src="/videos/elastic-2d.mp4"
+          poster="/videos/elastic-2d-poster.jpg"
+          width={350}
+          height={200}
+          label="Two-dimensional elastic collision"
           caption="Two-dimensional elastic collision"
         />
 

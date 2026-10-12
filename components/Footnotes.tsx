@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, ReactNode } from "react";
 import { Ol, Li } from "@/components/List";
+import { useHash } from "@/lib/useHash";
 
 interface Footnote {
   id: number;
@@ -77,21 +72,7 @@ export function FootnoteLink({ id }: { id: number }) {
 // Component for footnotes list at bottom of page
 export function Footnotes() {
   const { footnotes } = useFootnotes();
-  const [activeFootnote, setActiveFootnote] = useState<string | null>(null);
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    setActiveFootnote(hash);
-
-    const handleHashChange = () => {
-      setActiveFootnote(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
+  const activeFootnote = useHash();
 
   return (
     <>

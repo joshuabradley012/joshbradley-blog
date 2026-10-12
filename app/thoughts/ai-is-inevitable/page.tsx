@@ -1,23 +1,18 @@
 import { PostHeader } from "@/components/PostHeader";
 import BlogJsonLd from "@/components/BlogJsonLd";
 import { createMetadata } from "@/lib/metadata";
-import { getPostBySlug } from "@/lib/posts";
+import { assertPublished, getPostBySlug } from "@/lib/posts";
 import { Ol, Li } from "@/components/List";
 
-//const post = getPostBySlug("ai-is-inevitable");
-const post = {
-  slug: "ai-is-inevitable",
-  title: "AI is Inevitable",
-  description:
-    "The economic era we know is ending. This is a natural cycle that all things go through, celebrate what we had and prepare yourself for a new reality. A reality where AI has no boundaries.",
-  date: "May 21, 2025",
-};
+const post = getPostBySlug("ai-is-inevitable");
 
 export async function generateMetadata() {
   return createMetadata(post);
 }
 
 export default function AIIsInevitable() {
+  assertPublished(post);
+
   return (
     <>
       <BlogJsonLd post={post} />

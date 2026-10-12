@@ -10,7 +10,7 @@ async function highlightCode(code: string) {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      theme: "github-light",
+      theme: { light: "github-light", dark: "github-dark" },
       keepBackground: false,
     })
     .use(rehypeStringify)

@@ -1,24 +1,29 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lora, Inter, JetBrains_Mono } from "next/font/google";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import { feedConfig } from "@/lib/feedConfig";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
+// Every preloaded font competes with the page itself on first load, so only
+// preload what is visible on every page: Inter for body text and Lora italic
+// for the nav. Italic text is always Lora, so Inter needs no italic face.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  style: ["normal", "italic"],
+  style: ["normal"],
 });
+// Only posts with code use the mono font, so let those pages fetch it lazily.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
-  style: ["normal", "italic"],
+  style: ["normal"],
+  preload: false,
 });
 const lora = Lora({
   subsets: ["latin"],
   variable: "--font-lora",
-  style: ["normal", "italic"],
+  style: ["italic"],
 });
 
 export const metadata: Metadata = {
@@ -58,11 +63,6 @@ export const metadata: Metadata = {
       url: "/favicon/favicon-96x96.png",
     },
     {
-      rel: "icon",
-      type: "image/svg+xml",
-      url: "/favicon/favicon.svg",
-    },
-    {
       rel: "shortcut icon",
       type: "image/x-icon",
       url: "/favicon/favicon.ico",
@@ -78,6 +78,13 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf9f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1918" },
+  ],
 };
 
 export default function RootLayout({
@@ -102,7 +109,7 @@ export default function RootLayout({
         />
         <link
           rel="alternate"
-          type="application/json"
+          type="application/feed+json"
           title={`${feedConfig.siteTitle} JSON Feed`}
           href={feedConfig.feedPaths.json}
         />

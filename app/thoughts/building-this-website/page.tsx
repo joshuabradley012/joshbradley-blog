@@ -21,7 +21,7 @@ export default function BuildingThisWebsite() {
       <BlogJsonLd post={post} />
       <PostHeader post={post} />
       <div className="space-y-4">
-        <div className="my-8 border border-blue-200 bg-blue-50 px-6 py-4 text-blue-700">
+        <div className="my-8 border border-blue-200 bg-blue-50 px-6 py-4 text-blue-700 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-200">
           <p>
             This article is out of date and no longer reflects how this website
             is built. I've kept the original article because it is one of the

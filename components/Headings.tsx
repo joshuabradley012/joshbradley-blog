@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { isValidElement } from "react";
+import { useHash } from "@/lib/useHash";
 
 function generateId(text: string): string {
   return text
@@ -12,32 +13,18 @@ function generateId(text: string): string {
     .trim(); // Remove leading/trailing spaces
 }
 
-function useHeading() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const [activeHeading, setActiveHeading] = useState<string | null>(null);
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    setActiveHeading(hash);
-
-    const handleHashChange = () => {
-      setActiveHeading(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (headingRef.current && !headingRef.current.id) {
-      const text = headingRef.current.textContent || "";
-      headingRef.current.id = generateId(text);
-    }
-  }, []);
-
-  return { headingRef, activeHeading };
+// Pull the plain text out of heading children like `Simplifying <span>_eval</span>`
+function textContent(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(textContent).join("");
+  }
+  if (isValidElement<{ children?: React.ReactNode }>(node)) {
+    return textContent(node.props.children);
+  }
+  return "";
 }
 
 function HeadingLink({
@@ -45,7 +32,7 @@ function HeadingLink({
   active,
   children,
 }: {
-  id?: string;
+  id: string;
   active: boolean;
   children: React.ReactNode;
 }) {
@@ -53,8 +40,8 @@ function HeadingLink({
     <a href={`#${id}`} className="group">
       <span
         data-active={active}
-        className="xs:pr-2 absolute -top-px -translate-x-full pr-1 font-serif text-neutral-400 opacity-0 transition-colors transition-opacity group-hover:opacity-100 hover:text-neutral-900 data-[active=true]:text-neutral-900 data-[active=true]:opacity-100"
-        aria-label="Copy link to section"
+        className="xs:pr-2 absolute -top-px -translate-x-full pr-1 font-serif text-neutral-400 italic opacity-0 transition-colors transition-opacity group-hover:opacity-100 hover:text-neutral-900 data-[active=true]:text-neutral-900 data-[active=true]:opacity-100"
+        aria-hidden="true"
       >
         §
       </span>
@@ -67,11 +54,8 @@ export function H1({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
-  const { headingRef } = useHeading();
-
   return (
     <h1
-      ref={headingRef}
       className={cn("mb-8 text-left font-medium text-neutral-900", className)}
       {...props}
     >
@@ -84,21 +68,19 @@ export function H2({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
-  const { headingRef, activeHeading } = useHeading();
+  const id = props.id ?? generateId(textContent(props.children));
+  const activeHash = useHash();
 
   return (
     <h2
-      ref={headingRef}
+      id={id}
       className={cn(
         "relative mt-8 text-left font-medium text-neutral-900",
         className,
       )}
       {...props}
     >
-      <HeadingLink
-        id={headingRef.current?.id}
-        active={activeHeading === `#${headingRef.current?.id}`}
-      >
+      <HeadingLink id={id} active={activeHash === `#${id}`}>
         {props.children}
       </HeadingLink>
     </h2>
@@ -109,21 +91,19 @@ export function H3({
   className,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
-  const { headingRef, activeHeading } = useHeading();
+  const id = props.id ?? generateId(textContent(props.children));
+  const activeHash = useHash();
 
   return (
     <h3
-      ref={headingRef}
+      id={id}
       className={cn(
         "relative mt-8 text-left font-medium text-neutral-900",
         className,
       )}
       {...props}
     >
-      <HeadingLink
-        id={headingRef.current?.id}
-        active={activeHeading === `#${headingRef.current?.id}`}
-      >
+      <HeadingLink id={id} active={activeHash === `#${id}`}>
         {props.children}
       </HeadingLink>
     </h3>
